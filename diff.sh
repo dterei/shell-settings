@@ -34,6 +34,10 @@ echo === ssh_startup.sh diff ===
 diff -u ~/.ssh_startup.sh .ssh_startup.sh
 echo
 
+echo === ssh config diff ===
+diff -u ~/.ssh/config config
+echo
+
 echo === zshrc diff ===
 diff -u ~/.zshrc .zshrc
 echo
