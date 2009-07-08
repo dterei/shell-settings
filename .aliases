@@ -28,14 +28,6 @@ alias m='mutt'
 alias v='vim'
 alias vi='vim'
 
-#ssh aliases
-alias sshut='ssh dterei@apu.cs.utexas.edu'
-alias sshcse='ssh davidt@cse.unsw.edu.au'
-alias sshhom='ssh david@dterei.mooo.com'
-alias sshdev='ssh -p 222 davidt@cluster.sirca.org.au'
-alias sshgry='ssh davidterei@greyarea.cse.unsw.edu.au'
-alias sshspk='ssh david@sparky.ce.chalmers.se'
-
 # cluster firewall alias
 alias ac3='telnet cluster.sirca.org.au'
 
