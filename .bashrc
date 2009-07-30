@@ -4,6 +4,11 @@
 # Author: David Terei
 # Last Modified: 11/08/2008
 
+# Environment variables
+if [ -f ~/.shenv ]; then
+	source ~/.shenv
+fi
+
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
 
@@ -43,11 +48,6 @@ xterm*|rxvt*)
 *)
 	;;
 esac
-
-# Environment variables
-if [ -f ~/.shenv ]; then
-	source ~/.shenv
-fi
 
 # Alias definitions.
 if [ -f ~/.aliases ]; then
