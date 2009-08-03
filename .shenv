@@ -73,6 +73,10 @@ if [ "$HOSTNAME" = "sparky" ] ; then
 fi
 
 # set PATH so it includes user's private bin if it exists
+if [ -d ~/Development/bin ] ; then
+	export PATH=~/Development/bin:${PATH}
+fi
+
 if [ -d ~/bin ] ; then
 	export PATH=~/bin:${PATH}
 fi
