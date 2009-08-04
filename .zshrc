@@ -57,7 +57,7 @@ for color in RED GREEN YELLOW BLUE MAGENTA CYAN WHITE; do
 done
 PR_NO_COLOR="%{$terminfo[sgr0]%}"
 promptinit
-PS1="[$PR_LIGHT_BLUE%n$PR_NO_COLOR:%(0?..$PR_RED%?$PR_NO_COLOR)$PR_LIGHT_RED%16<...<%~%<<$PR_NO_COLOR%(!.#.]) "
+PS1="[$PR_LIGHT_GREEN%n$PR_NO_COLOR:%(0?..$PR_RED%?$PR_NO_COLOR)$PR_LIGHT_BLUE%16<...<%~%<<$PR_NO_COLOR%(!.#.]) "
 RPS1="$PR_LIGHT_YELLOW(%D{%m-%d %H:%M})$PR_NO_COLOR"
 
 # Alias definitions.
