@@ -27,6 +27,7 @@ alias g='git'
 alias m='mutt'
 alias v='vim'
 alias vi='vim'
+alias ds='darcs'
 
 # cluster firewall alias
 alias ac3='telnet cluster.sirca.org.au'
