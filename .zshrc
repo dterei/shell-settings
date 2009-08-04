@@ -46,9 +46,6 @@ zstyle ':completion:*:descriptions' format '%U%B%d%b%u'
 
 #nice prompt
 autoload -U promptinit
-promptinit
-#export PROMPT=$'%m %(0?..%{\e[0;31m%}%?)%(1j.%{\e[0;32m%}%j.)%{\e[0;33m%}%16<...<%~%<<%{\e[0;36m%}%#%{\e[0m%} '
-
 autoload colors zsh/terminfo
 if [[ "$terminfo[colors]" -ge 8 ]]; then
 	colors
@@ -59,7 +56,8 @@ for color in RED GREEN YELLOW BLUE MAGENTA CYAN WHITE; do
 	(( count = $count + 1 ))
 done
 PR_NO_COLOR="%{$terminfo[sgr0]%}"
-PS1="$PR_BLUE%n$PR_NO_COLOR:$PR_RED%2c$PR_NO_COLOR%(!.#.$) "
+promptinit
+PS1="[$PR_LIGHT_BLUE%n$PR_NO_COLOR:%(0?..$PR_RED%?$PR_NO_COLOR)$PR_LIGHT_RED%16<...<%~%<<$PR_NO_COLOR%(!.#.]) "
 RPS1="$PR_LIGHT_YELLOW(%D{%m-%d %H:%M})$PR_NO_COLOR"
 
 # Alias definitions.
