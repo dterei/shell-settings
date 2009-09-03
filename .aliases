@@ -39,6 +39,7 @@ alias grep='grep -E'
 # nice function for easy text searching in files
 function fsearch() { find * -iname "$1" | xargs egrep "$2"; }
 function frsearch() { find * -regextype posix-extended -regex ".*$1" | xargs egrep "$2"; }
+function hsf() { find * -regextype posix-extended -regex ".**.(c|h|l?hs)" | xargs egrep "`echo $1 | sed -e 's/ /\\\s\*/'`" | grep -v "_darcs"; }
 
 # nice pause function (equivalent of DOS pause)
 function pause() { read -n1 -r -p "Press any key to continue..." key; }
