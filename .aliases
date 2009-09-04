@@ -44,3 +44,9 @@ function hsf() { find * -regextype posix-extended -regex ".**.(c|h|l?hs)" | xarg
 # nice pause function (equivalent of DOS pause)
 function pause() { read -n1 -r -p "Press any key to continue..." key; }
 
+# display broken sym links
+function find_bad_syms() { for f in $(find $1 -type l); do if [ ! -e "$f" ]; then echo "$f"; fi; done; }
+
+# remove broken sym links
+function rm_bad_syms() { find $1 -type l | while read f; do if [ ! -e "$f" ]; then echo "rm $f..."; rm -f "$f"; fi; done; }
+
