@@ -2,7 +2,7 @@
 # Designed to be shared among different shells and computers
 #
 # Author: David Terei
-# Last Modified: 21/06/2009
+# Last Modified: 21/10/2009
 
 # Environment variables
 if [ -f ~/.shenv ]; then
@@ -16,16 +16,33 @@ fi
 HISTFILE=~/.zsh/.zsh_history
 HISTSIZE=2000
 SAVEHIST=$HISTSIZE
-setopt INC_APPEND_HISTORY #SHARE_HISTORY
+setopt INC_APPEND_HISTORY # SHARE_HISTORY
 setopt APPEND_HISTORY
-setopt EXTENDED_HISTORY #puts timestamps in history
+setopt EXTENDED_HISTORY # puts timestamps in history
+setopt HISTIGNOREDUPS
 
 # shell settings
-setopt autocd autolist notify globdots correct pushdtohome cdablevars
-setopt correctall autocd recexact longlistjobs
-setopt autoresume histignoredups pushdsilent
-setopt extendedglob autopushd pushdminus rcquotes mailwarning
-unsetopt bgnice autoparamslash
+setopt autocd # change to dirs without cd
+setopt autolist
+#setopt correctall
+setopt nobeep # don't beep
+setopt autopushd # auto append dirs to push/pop list
+setopt autoresume 
+setopt cdablevars # avoid the need for an explicit $ for cd to vars
+#setopt correct # spelling correction
+setopt extendedglob # extended pattern matching
+#setopt globdots # pattern match against . files
+setopt longlistjobs
+setopt mailwarning
+setopt notify
+setopt pushdminus
+setopt pushdsilent
+setopt pushdtohome
+setopt rcquotes
+setopt recexact
+
+unsetopt autoparamslash
+unsetopt bgnice
 
 # Emacs or Vim keybindings
 #bindkey -v
