@@ -3,7 +3,6 @@
 # Designed to be shared among different shells and computers
 #
 # Author: David Terei
-# Last Modified: 21/06/2009
 
 umask 007
 

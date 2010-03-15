@@ -2,7 +2,6 @@
 # Designed to be shared among different shells and computers
 #
 # Author: David Terei
-# Last Modified: 11/08/2008
 
 # Environment variables
 if [ -f ~/.shenv ]; then
