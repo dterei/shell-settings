@@ -78,6 +78,11 @@ if [ "$HOSTNAME" = "sparky" ] ; then
 	export PATH=/opt/SUNWspro/extra/bin:/opt/gcc-vanilla/4.1.2/bin:/opt/csw/bin:/usr/bin:/usr/ccs/bin:$PATH
 fi
 
+# GHC Development
+export GHCDEV=/home/david/Ghc/llvm_reg/inplace/bin
+export GHCDEVBIN="$GHCDEV/ghc-stage2"
+export GHCDEVPKG="$GHCDEV/ghc-pkg"
+
 # set PATH so it includes user's private bin if it exists
 if [ -d ~/Development/bin ] ; then
 	export PATH=~/Development/bin:${PATH}

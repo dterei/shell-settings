@@ -80,8 +80,8 @@ alias gp='git push'
 alias gd='git diff | less'
 alias gc='git commit -v'
 alias gca='git commit -v -a'
-#alias gb='git branch'
-#alias gba='git branch -a'
-#alias gcount='git shortlog -sn'
-#alias gcp='git cherry-pick'
+
+# Ghc
+alias dghc="$GHCDEVBIN"
+alias dghc1="$GHCDEV/ghc-stage1"
 
