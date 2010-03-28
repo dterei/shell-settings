@@ -48,6 +48,7 @@ alias m='mutt'
 alias v='vim'
 alias vi='vim'
 alias ds='darcs'
+alias dist-version='lsb_release -a'
 
 # cluster firewall alias
 alias ac3='telnet cluster.sirca.org.au'
