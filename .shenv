@@ -78,8 +78,16 @@ if [ "$HOSTNAME" = "sparky" ] ; then
 	export PATH=/opt/SUNWspro/extra/bin:/opt/gcc-vanilla/4.1.2/bin:/opt/csw/bin:/usr/bin:/usr/ccs/bin:$PATH
 fi
 
+# my laptop
+if [ "$HOSTNAME" = "david-laptop" ] ; then
+	export WIN=/media/System/Users/david/
+	export win=/media/System/Users/david/
+	export UBN=/media/ubuntu32/home/david
+	export ubn=/media/ubuntu32/home/david
+fi
+
 # GHC Dev
-export GHCDEV=$HOME/Projects/ghc/llvm_reg/inplace/bin
+export GHCDEV=$HOME/Ghc/llvm_dev_reg/inplace/bin
 export GHCDEVBIN=$GHCDEV/ghc-stage2
 export GHCDEVPKG=$GHCDEV/ghc-pkg
 
