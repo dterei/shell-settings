@@ -7,7 +7,8 @@
 if [ "$TERM" != "dumb" ]; then
 	export LSCOLORS="Gxfxcxdxbxegedabagacad"
 	eval "`dircolors -b`" &>/dev/null
-	ls --color -d . &>/dev/null 2>&1 && alias ls='ls --color=auto' || alias ls='ls -G'
+	ls --color -d . &>/dev/null 2>&1 && \
+		alias ls='ls --color=auto' || alias ls='ls -G'
 fi
 
 # some more ls aliases
@@ -48,7 +49,6 @@ alias m='mutt'
 alias v='vim'
 alias vi='vim'
 alias ds='darcs'
-alias dist-version='lsb_release -a'
 
 # cluster firewall alias
 alias ac3='telnet cluster.sirca.org.au'
@@ -58,19 +58,48 @@ alias sed='sed -r'
 alias grep='grep -E'
 
 # nice function for easy text searching in files
-function fsearch() { find * -iname "$1" | xargs egrep "$2"; }
-function frsearch() { find * -regextype posix-extended -regex ".*$1" | xargs egrep "$2"; }
-function hsf() { find * -regextype posix-extended -regex ".**.(c|h|l?hs)" | xargs egrep "`echo $1 | sed -e 's/ /\\\s\*/'`" | grep -v "_darcs"; }
-function lmf() { find * -regextype posix-extended -regex ".**.(c|h|cpp|td|cxx|inc)" | xargs egrep "`echo $1 | sed -e 's/ /\\\s\*/'`" | grep -v "_darcs"; }
+function fsearch() {
+	find * -iname "$1" | xargs egrep "$2";
+}
+
+function frsearch() {
+	find * -regextype posix-extended -regex ".*$1" | xargs egrep "$2";
+}
+
+function hsf() {
+	find * -regextype posix-extended -regex ".**.(c|h|l?hs)" |\
+	xargs egrep "`echo $1 | sed -e 's/ /\\\s\*/'`" |\
+	grep -v "_darcs";
+}
+
+function lmf() {
+	find * -regextype posix-extended -regex ".**.(c|h|cpp|td|cxx|inc)" |\
+	xargs egrep "`echo $1 | sed -e 's/ /\\\s\*/'`" |\
+	grep -v "_darcs";
+}
 
 # nice pause function (equivalent of DOS pause)
 function pause() { read -n1 -r -p "Press any key to continue..." key; }
 
 # display broken sym links
-function find_bad_syms() { for f in $(find $1 -type l); do if [ ! -e "$f" ]; then echo "$f"; fi; done; }
+function find_bad_syms() {
+	for f in $(find $1 -type l); do
+		if [ ! -e "$f" ]; then
+			echo "$f";
+		fi;
+	done;
+}
 
 # remove broken sym links
-function rm_bad_syms() { find $1 -type l | while read f; do if [ ! -e "$f" ]; then echo "rm $f..."; rm -f "$f"; fi; done; }
+function rm_bad_syms() {
+	find $1 -type l |\
+		while read f; do
+			if [ ! -e "$f" ]; then
+				echo "rm $f...";
+				rm -f "$f";
+			fi;
+		done;
+}
 
 # Git
 alias g='git'
@@ -81,8 +110,12 @@ alias gp='git push'
 alias gd='git diff | less'
 alias gc='git commit -v'
 alias gca='git commit -v -a'
+alias gb='git branch'
+alias gcount='git shortlog -sn'
+alias gcp='git cherry-pick'
 
 # Ghc
-alias dghc="$GHCDEVBIN"
-alias dghc1="$GHCDEV/ghc-stage1"
+alias dghc='$GHCDEVBIN'
+alias dghc1='$GHCDEV/ghc-stage1'
+alias vghc='vim $TMPDIR/ghc*/*.ll -p'
 
