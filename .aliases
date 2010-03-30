@@ -45,6 +45,7 @@ function take() {
 # Super user
 alias _='sudo'
 alias ss='sudo su -'
+alias _g='gksu'
 
 # app aliases
 alias g='git'
@@ -107,6 +108,7 @@ function rm_bad_syms() {
 # Git
 alias g='git'
 alias gst='git status'
+alias gz='git status'
 alias gl='git pull'
 alias gup='git fetch && git rebase'
 alias gp='git push'
