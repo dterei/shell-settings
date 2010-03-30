@@ -11,6 +11,9 @@ if [ "$TERM" != "dumb" ]; then
 		alias ls='ls --color=auto' || alias ls='ls -G'
 fi
 
+# reload profile
+alias rlp='source ~/.profile'
+
 # some more ls aliases
 alias dir='ls --format=vertical'
 alias vdir='ls --format=long'
@@ -111,8 +114,10 @@ alias gd='git diff | less'
 alias gc='git commit -v'
 alias gca='git commit -v -a'
 alias gb='git branch'
-alias gcount='git shortlog -sn'
 alias gcp='git cherry-pick'
+alias gg='git log'
+alias ggp='git log -p'
+alias gcount='git shortlog -sn'
 
 # Ghc
 alias dghc='$GHCDEVBIN'
