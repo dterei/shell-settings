@@ -120,6 +120,9 @@ alias gcp='git cherry-pick'
 alias gg='git log'
 alias ggp='git log -p'
 alias gcount='git shortlog -sn'
+alias ga='git add'
+alias gai='git add -i'
+alias gsv='git svn'
 
 # Ghc
 alias dghc='$GHCDEVBIN'
