@@ -82,8 +82,8 @@ fi
 if [ "$HOSTNAME" = "david-laptop" ] ; then
 	export WIN=/media/System/Users/david/
 	export win=/media/System/Users/david/
-	export UBN=/media/ubuntu32/home/david
-	export ubn=/media/ubuntu32/home/david
+	export UBN=/media/ubuntu/home/david
+	export ubn=/media/ubuntu/home/david
 fi
 
 # GHC Dev
