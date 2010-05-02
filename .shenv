@@ -80,8 +80,8 @@ fi
 
 # my laptop
 if [ "$HOSTNAME" = "david-laptop" ] ; then
-	export WIN=/media/System/Users/david/
-	export win=/media/System/Users/david/
+	export WIN=/media/windows/Users/david/
+	export win=/media/windows/Users/david/
 	export UBN=/media/ubuntu/home/david
 	export ubn=/media/ubuntu/home/david
 fi
