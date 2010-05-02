@@ -129,3 +129,11 @@ alias dghc='$GHCDEVBIN'
 alias dghc1='$GHCDEV/ghc-stage1'
 alias vghc='vim $TMPDIR/ghc*/*.ll -p'
 
+# Aptitude
+alias ap='sudo aptitude'
+alias api='sudo aptitude install'
+alias apu='sudo aptitude update'
+alias apg='sudo aptitude full-upgrade'
+alias aps='sudo aptitude search'
+alias apc='sudo aptitude changelog'
+
