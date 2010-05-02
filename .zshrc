@@ -26,6 +26,10 @@ if [ -f ~/.ssh_startup.sh ]; then
 	source ~/.ssh_startup.sh
 fi
 
+if [ -f /etc/zsh_command_not_found ]; then
+	source /etc/zsh_command_not_found
+fi
+
 
 ####################
 # GENERAL SETTINGS #
