@@ -3,6 +3,9 @@
 #
 # Author: David Terei
 
+# clear all aliases in case any of ours override programs bash needs to load
+unalias -a
+
 # Environment variables
 if [ -f ~/.shenv ]; then
 	source ~/.shenv
@@ -45,9 +48,9 @@ xterm*|rxvt*)
 	;;
 esac
 
-# Alias definitions.
-if [ -f ~/.aliases ]; then
-	source ~/.aliases
+# enable programmable completion features
+if [ -f /etc/bash_completion ]; then
+	source /etc/bash_completion
 fi
 
 # Ssh agent
@@ -55,8 +58,8 @@ if [ -f ~/.ssh_startup.sh ]; then
 	source ~/.ssh_startup.sh
 fi
 
-# enable programmable completion features
-if [ -f /etc/bash_completion ]; then
-	. /etc/bash_completion
+# Alias definitions.
+if [ -f ~/.aliases ]; then
+	source ~/.aliases
 fi
 
