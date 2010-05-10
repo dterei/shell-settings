@@ -134,6 +134,7 @@ alias ap='sudo aptitude'
 alias api='sudo aptitude install'
 alias apu='sudo aptitude update'
 alias apg='sudo aptitude full-upgrade'
-alias aps='sudo aptitude search'
+alias apz='sudo aptitude search'
 alias apc='sudo aptitude changelog'
+alias aps='sudo aptitude show'
 
