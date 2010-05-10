@@ -71,7 +71,7 @@ function frsearch() {
 }
 
 function hsf() {
-	find * -regextype posix-extended -regex ".**.(c|h|l?hs)" |\
+	find * -regextype posix-extended -regex ".**.(c|h|cmm|l?hs)" |\
 	xargs egrep "`echo $1 | sed -e 's/ /\\\s\*/'`" |\
 	grep -v "_darcs";
 }
