@@ -181,5 +181,5 @@ PROMPT='%{$fg[blue]%}%c %(0?..${fg_bold[red]}%? )%{$reset_color%}%{${fg[red]}%}Â
 #PROMPT="%{$reset_color%}[%{$fg[green]%}âžœ %{$reset_color%}%{$fg[blue]%}%c%(0?..%{$fg_bold[red]%} %?)%{$reset_color%}] "
 
 #RPROMPT="%{$fg[yellow]%}(%D{%m-%d %H:%M})%{$reset_color%}"
-RPROMPT="%{$fg[green]%}%~%{$reset_color%}"
+#RPROMPT="%{$fg[green]%}%~%{$reset_color%}"
 
