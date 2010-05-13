@@ -107,12 +107,11 @@ function rm_bad_syms() {
 
 # Git
 alias g='git'
-alias gst='git status'
 alias gz='git status'
+alias gd='git diff | less'
 alias gl='git pull'
 alias gup='git fetch && git rebase'
 alias gp='git push'
-alias gd='git diff | less'
 alias gc='git commit -v'
 alias gca='git commit -v -a'
 alias gb='git branch'
@@ -123,6 +122,16 @@ alias gcount='git shortlog -sn'
 alias ga='git add'
 alias gai='git add -i'
 alias gsv='git svn'
+
+# Darcs
+alias z='darcs'
+alias zs='darcs whatsnew -s'
+alias zd='darcs whatsnew | less'
+alias zl='darcs pull'
+alias zla='darcs pull -a'
+alias zp='darcs push'
+alias zc='darcs record'
+alias zz='darcs changes | less'
 
 # Ghc
 alias dghc='$GHCDEVBIN'
