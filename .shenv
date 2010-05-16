@@ -87,7 +87,7 @@ if [ "$HOSTNAME" = "david-laptop" ] ; then
 fi
 
 # GHC Dev
-export GHCDEV=$HOME/Ghc/llvm_dev_reg/inplace/bin
+export GHCDEV=$HOME/Ghc/llvm_reg/inplace/bin
 export GHCDEVBIN=$GHCDEV/ghc-stage2
 export GHCDEVPKG=$GHCDEV/ghc-pkg
 
