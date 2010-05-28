@@ -26,6 +26,7 @@ alias cd..='cd ..'
 alias .='pwd'
 alias ..='cd ..'
 alias ...='cd ../..'
+alias ....='cd ../../..'
 alias ~='cd ~'
 alias -- -='cd -'
 
@@ -53,9 +54,6 @@ alias m='mutt'
 alias v='vim'
 alias vi='vim'
 alias ds='darcs'
-
-# cluster firewall alias
-alias ac3='telnet cluster.sirca.org.au'
 
 # turn on some good! regular expression by default
 alias sed='sed -r'
