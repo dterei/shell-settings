@@ -130,6 +130,9 @@ alias zla='darcs pull -a'
 alias zp='darcs push'
 alias zc='darcs record'
 alias zz='darcs changes | less'
+alias za='darcs add'
+alias ze='darcs send'
+alias zg='darcs get'
 
 # Ghc
 alias dghc='$GHCDEVBIN'
