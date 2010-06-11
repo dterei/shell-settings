@@ -137,7 +137,14 @@ alias zg='darcs get'
 # Ghc
 alias dghc='$GHCDEVBIN'
 alias dghc1='$GHCDEV/ghc-stage1'
-alias vghc='vim $TMPDIR/ghc*/*.ll -p'
+alias vghc='vim -p $TMPDIR/ghc*/*.ll(u{`whoami`})'
+
+function hsclean() {
+	rm -rf /tmp/ghc*(u{`whoami`})
+	rm $GHCDEV/../../../*.hi
+	rm $GHCDEV/../../../*.o
+	rm $GHCDEV/../../../*(*)
+}
 
 # Aptitude
 alias ap='sudo aptitude'

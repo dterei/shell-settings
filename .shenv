@@ -15,6 +15,10 @@ export VISUAL="vim"
 export VIEWER="less"
 export HOSTNAME="`hostname`"
 
+# colour grep results
+export GREP_OPTIONS='--color=auto'
+export GREP_COLOR='1;32'
+
 # Set tmpdir if not set
 if [ -z "$TMPDIR" ] ; then
 	if [ -n "$TEMPDIR" ] ; then
@@ -24,9 +28,18 @@ if [ -z "$TMPDIR" ] ; then
 	fi
 fi
 
-# colour grep results
-export GREP_OPTIONS='--color=auto'
-export GREP_COLOR='1;32'
+# set maildrop location
+MAILFOLDER=~/.Mail
+if [ -d "${MAILFOLDER}" ]; then
+	export MAILDROP="${MAILFOLDER}/incoming-mail"
+	export MAIL="${MAILFOLDER}/incoming-mail"
+fi
+
+# stulocal - Uni
+STULOCAL=/home/stulocal/bin/setup-env.sh
+if [ -d "${STULOCAL}" ] ; then
+	. ${STULOCAL}
+fi
 
 # tex
 if [ -d "$HOME/tex/" ] ; then
@@ -48,12 +61,32 @@ if [ "$HOSTNAME" = "david-laptop" ] ; then
 fi
 
 # GHC Dev
-GHCDEV=$HOME/Ghc/llvm_reg/inplace/bin
+GHCDEV=$HOME/Ghc/llvm-reg/inplace/bin
 if [ -d $GHCDEV ] ; then
 	export GHCDEV=$GHCDEV
 	export GHCDEVBIN=$GHCDEV/ghc-stage2
 	export GHCDEVPKG=$GHCDEV/ghc-pkg
 fi
+
+# MSRC
+if [ "$HOSTNAME" = "cam-04-unx.europe.corp.microsoft.com" ] ; then
+	export GHCDEV=/64playpen/t-dater/Ghc/llvm-reg/inplace/bin
+	export PATH=${PATH}:/home/simonmar/fp/bin/x86_64-unknown-linux
+	export PATH=~/bin/64:${PATH}
+	export GIT_SSH=$HOME/bin/ssh
+	export HTTP_PROXY="http://157.58.63.38:80"
+	export http_proxy="http://157.58.63.38:80"
+fi
+
+if [ "$HOSTNAME" = "cam-02-unx.europe.corp.microsoft.com" ] ; then
+	export GHCDEV=/playpen/t-dater/Ghc/llvm-reg/inplace/bin
+	export PATH=${PATH}:/home/simonmar/fp/bin/i386-unknown-linux
+	export PATH=~/bin/32:${PATH}
+	export GIT_SSH=$HOME/bin/ssh
+	export HTTP_PROXY="http://157.58.63.38:80"
+	export http_proxy="http://157.58.63.38:80"
+fi
+
 
 # set PATH so it includes user's private bin if it exists
 if [ -d ~/Development/bin ] ; then
