@@ -76,6 +76,7 @@ if [ "$HOSTNAME" = "cam-04-unx.europe.corp.microsoft.com" ] ; then
 	export GIT_SSH=$HOME/bin/ssh
 	export HTTP_PROXY="http://157.58.63.38:80"
 	export http_proxy="http://157.58.63.38:80"
+	export GHOME=/64playpen/t-dater/Ghc/
 fi
 
 if [ "$HOSTNAME" = "cam-02-unx.europe.corp.microsoft.com" ] ; then
@@ -85,6 +86,7 @@ if [ "$HOSTNAME" = "cam-02-unx.europe.corp.microsoft.com" ] ; then
 	export GIT_SSH=$HOME/bin/ssh
 	export HTTP_PROXY="http://157.58.63.38:80"
 	export http_proxy="http://157.58.63.38:80"
+	export GHOME=/playpen/t-dater/Ghc/
 fi
 
 
