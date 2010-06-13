@@ -80,6 +80,8 @@ function lmf() {
 	grep -v "_darcs";
 }
 
+alias delay=sleep
+
 # nice pause function (equivalent of DOS pause)
 function pause() { read -n1 -r -p "Press any key to continue..." key; }
 
@@ -137,6 +139,13 @@ alias zg='darcs get'
 # Ghc
 alias dghc='$GHCDEVBIN'
 alias dghc1='$GHCDEV/ghc-stage1'
+alias aghc='$AGHCDEVBIN'
+alias aghc1='$AGHCDEV/ghc-stage1'
+alias ldghc='$LGHCDEVBIN'
+alias ldghc1='$LGHCDEV/ghc-stage1'
+alias mghc='$MGHCDEVBIN'
+alias mghc1='$MGHCDEV/ghc-stage1'
+
 alias vghc='vim -p $TMPDIR/ghc*/*.ll(u{`whoami`})'
 
 function hsclean() {

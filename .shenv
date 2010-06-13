@@ -62,10 +62,22 @@ fi
 
 # GHC Dev
 GHCDEV=$HOME/Ghc/llvm-reg/inplace/bin
+LGHCDEV=$HOME/Ghc/llvm-llvm/inplace/bin
+AGHCDEV=$HOME/Ghc/orig-reg/inplace/bin
+MGHCDEV=$HOME/Ghc/llvm-freg/inplace/bin
 if [ -d $GHCDEV ] ; then
 	export GHCDEV=$GHCDEV
 	export GHCDEVBIN=$GHCDEV/ghc-stage2
 	export GHCDEVPKG=$GHCDEV/ghc-pkg
+	export LGHCDEV=$LGHCDEV
+	export LGHCDEVBIN=$LGHCDEV/ghc-stage2
+	export LGHCDEVPKG=$LGHCDEV/ghc-pkg
+	export AGHCDEV=$AGHCDEV
+	export AGHCDEVBIN=$AGHCDEV/ghc-stage2
+	export AGHCDEVPKG=$AGHCDEV/ghc-pkg
+	export MGHCDEV=$MGHCDEV
+	export MGHCDEVBIN=$MGHCDEV/ghc-stage2
+	export MGHCDEVPKG=$MGHCDEV/ghc-pkg
 fi
 
 # MSRC
