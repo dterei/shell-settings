@@ -135,7 +135,7 @@ alias zz='darcs changes | less'
 alias za='darcs add'
 alias ze='darcs send'
 alias zg='darcs get'
-aliax zo='darcs obliterate'
+alias zo='darcs obliterate'
 
 # Ghc
 alias dghc='$GHCDEVBIN'
