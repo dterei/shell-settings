@@ -107,6 +107,9 @@ if [ "$HOSTNAME" = "cam-02-unx.europe.corp.microsoft.com" ] ; then
 	export GHOME=/playpen/t-dater/Ghc/
 fi
 
+if [ "$HOSTNAME" = "msrc-1361528" ] ; then
+	export DISPLAY=127.0.0.1:0.0
+fi
 
 # set PATH so it includes user's private bin if it exists
 if [ -d ~/Development/bin ] ; then
