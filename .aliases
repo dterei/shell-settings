@@ -140,12 +140,6 @@ alias zo='darcs obliterate'
 # Ghc
 alias dghc='$GHCDEVBIN'
 alias dghc1='$GHCDEV/ghc-stage1'
-alias aghc='$AGHCDEVBIN'
-alias aghc1='$AGHCDEV/ghc-stage1'
-alias ldghc='$LGHCDEVBIN'
-alias ldghc1='$LGHCDEV/ghc-stage1'
-alias mghc='$MGHCDEVBIN'
-alias mghc1='$MGHCDEV/ghc-stage1'
 
 alias vghc='vim -p $TMPDIR/ghc*/*.ll(u{`whoami`})'
 
