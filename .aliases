@@ -145,9 +145,9 @@ alias vghc='vim -p $TMPDIR/ghc*/*.ll(u{`whoami`})'
 
 function hsclean() {
 	rm -rf /tmp/ghc*(u{`whoami`})
-	rm $GHCDEV/../../../*.hi
-	rm $GHCDEV/../../../*.o
-	rm $GHCDEV/../../../*(*)
+	rm $GHCHOME/*.hi
+	rm $GHCHOME/*.o
+	rm $GHCHOME/*(*)
 }
 
 # Aptitude

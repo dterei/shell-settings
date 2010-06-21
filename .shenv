@@ -60,17 +60,9 @@ if [ "$HOSTNAME" = "david-laptop" ] ; then
 	export ubn=/media/ubuntu/home/david
 fi
 
-# GHC Dev
-GHCDEV=$HOME/Ghc/orig-reg/inplace/bin
-if [ -d $GHCDEV ] ; then
-	export GHCDEV=$GHCDEV
-	export GHCDEVBIN=$GHCDEV/ghc-stage2
-	export GHCDEVPKG=$GHCDEV/ghc-pkg
-fi
-
 # MSRC
 if [ "$HOSTNAME" = "cam-04-unx.europe.corp.microsoft.com" ] ; then
-	export GHCDEV=/64playpen/t-dater/Ghc/llvm-reg/inplace/bin
+	export GHCHOME=/64playpen/t-dater/Ghc
 	export PATH=${PATH}:/home/simonmar/fp/bin/x86_64-unknown-linux
 	export PATH=~/bin/64:${PATH}
 	export GIT_SSH=$HOME/bin/ssh
@@ -80,7 +72,7 @@ if [ "$HOSTNAME" = "cam-04-unx.europe.corp.microsoft.com" ] ; then
 fi
 
 if [ "$HOSTNAME" = "cam-02-unx.europe.corp.microsoft.com" ] ; then
-	export GHCDEV=/playpen/t-dater/Ghc/llvm-reg/inplace/bin
+	export GHCHOME=/playpen/t-dater/Ghc
 	export PATH=${PATH}:/home/simonmar/fp/bin/i386-unknown-linux
 	export PATH=~/bin/32:${PATH}
 	export GIT_SSH=$HOME/bin/ssh
@@ -92,6 +84,33 @@ fi
 if [ "$HOSTNAME" = "msrc-1361528" ] ; then
 	export DISPLAY=127.0.0.1:0.0
 fi
+
+# GHC Dev
+GHCDEV=$GHCHOME/llvm-reg/inplace/bin
+LGHCDEV=$GHCHOME/llvm-llvm/inplace/bin
+AGHCDEV=$GHCHOME/orig-reg/inplace/bin
+MGHCDEV=$GHCHOME/llvm-freg/inplace/bin
+if [ -d $GHCDEV ] ; then
+	export GHCDEV=$GHCDEV
+	export GHCDEVBIN=$GHCDEV/ghc-stage2
+	export GHCDEVPKG=$GHCDEV/ghc-pkg
+fi
+if [ -d $LGHCDEV ] ; then
+	export LGHCDEV=$LGHCDEV
+	export LGHCDEVBIN=$LGHCDEV/ghc-stage2
+	export LGHCDEVPKG=$LGHCDEV/ghc-pkg
+fi
+if [ -d $AGHCDEV ] ; then
+	export AGHCDEV=$AGHCDEV
+	export AGHCDEVBIN=$AGHCDEV/ghc-stage2
+	export AGHCDEVPKG=$AGHCDEV/ghc-pkg
+fi
+if [ -d $MGHCDEV ] ; then
+	export MGHCDEV=$MGHCDEV
+	export MGHCDEVBIN=$MGHCDEV/ghc-stage2
+	export MGHCDEVPKG=$MGHCDEV/ghc-pkg
+fi
+
 
 # set PATH so it includes user's private bin if it exists
 if [ -d ~/Development/bin ] ; then
