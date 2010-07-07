@@ -140,11 +140,13 @@ alias zo='darcs obliterate'
 # Ghc
 alias dghc='$GHCDEVBIN'
 alias dghc1='$GHCDEV/ghc-stage1'
+alias dghcc='$GHCDEVBIN -keep-tmp-files -fllvm -fforce-recomp'
+alias dghcc1='$GHCDEV/ghc-stage1 -keep-tmp-files -fllvm -fforce-recomp'
 
 alias vghc='vim -p $TMPDIR/ghc*/*.ll(u{`whoami`})'
 
 function hsclean() {
-	rm -rf /tmp/ghc*(u{`whoami`})
+	rm -rf $TMPDIR/ghc*(u{`whoami`})
 	rm $GHCHOME/*.hi
 	rm $GHCHOME/*.o
 	rm $GHCHOME/*(*)

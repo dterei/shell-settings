@@ -23,6 +23,8 @@ export GREP_COLOR='1;32'
 if [ -z "$TMPDIR" ] ; then
 	if [ -n "$TEMPDIR" ] ; then
 		export TMPDIR=$TEMPDIR	
+	elif [ -n "$TMP" ] ; then
+		export TMPDIR=$TMP
 	else
 		export TMPDIR=/tmp
 	fi
