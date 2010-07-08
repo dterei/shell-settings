@@ -152,6 +152,10 @@ function hsclean() {
 	rm $GHCHOME/*(*)
 }
 
+alias dghc_config='runhaskell Setup configure --with-ghc=$GHCDEVBIN --with-ghc-pkg=$GHCDEVPKG'
+alias dghc_build='runhaskell Setup build'
+alias dghc_reg='runhaskell Setup register --inplace'
+
 # Aptitude
 alias ap='sudo aptitude'
 alias api='sudo aptitude install'
