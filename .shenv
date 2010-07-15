@@ -62,6 +62,12 @@ if [ "$HOSTNAME" = "david-laptop" ] ; then
 	export ubn=/media/ubuntu/home/david
 fi
 
+# bens OSX machine
+if [ "$HOSTNAME" = "desire.cse.unsw.edu.au" ] ; then
+	export HTTP_PROXY="http://www-proxy.cse.unsw.edu.au:3128"
+	export http_proxy="http://www-proxy.cse.unsw.edu.au:3128"
+fi
+
 export GHCHOME=$HOME/Ghc
 
 # MSRC
