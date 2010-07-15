@@ -65,7 +65,7 @@ fi
 export GHCHOME=$HOME/Ghc
 
 # MSRC
-if [ "$HOSTNAME" = "cam-04-unx.europe.corp.microsoft.com" ] ; then
+if [ "$HOSTNAME" = "cam-04-unx" ] ; then
 	export GHCHOME=/64playpen/t-dater/Ghc
 	export PATH=${PATH}:/home/simonmar/fp/bin/x86_64-unknown-linux
 	export PATH=~/bin/64:${PATH}
@@ -74,7 +74,7 @@ if [ "$HOSTNAME" = "cam-04-unx.europe.corp.microsoft.com" ] ; then
 	export GHOME=/64playpen/t-dater/Ghc/
 fi
 
-if [ "$HOSTNAME" = "cam-02-unx.europe.corp.microsoft.com" ] ; then
+if [ "$HOSTNAME" = "cam-02-unx" ] ; then
 	export GHCHOME=/playpen/t-dater/Ghc
 	export PATH=${PATH}:/home/simonmar/fp/bin/i386-unknown-linux
 	export PATH=~/bin/32:${PATH}
