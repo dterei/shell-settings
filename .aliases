@@ -62,9 +62,10 @@ alias sed='sed -r'
 alias grep='grep -E'
 
 # create alias thats kind of like wget using curl if wget isn't present
-if !command -v wget &>/dev/null; then
+if command -v wget &>/dev/null; then
+else
 	if command -v curl &>/dev/null; then
-		function wget1() {
+		function wget() {
 			file=`echo $1 | sed -e 's/.*\///'`
 			curl -X GET $1 > $file
 		}
