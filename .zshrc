@@ -60,6 +60,9 @@ bindkey -e
 # Make C-w use directory structure
 WORDCHARS=''
 
+# Load mime setup
+autoload -U zsh-mime-setup
+zsh-mime-setup
 
 ####################
 # HISTORY SETTINGS #

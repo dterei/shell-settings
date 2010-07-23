@@ -6,7 +6,9 @@
 # enable color support of ls and also add handy aliases
 if [ "$TERM" != "dumb" ]; then
 	export LSCOLORS="Gxfxcxdxbxegedabagacad"
-	eval "`dircolors -b`" &>/dev/null
+	if command -v dircolors &>/dev/null; then
+		eval "`dircolors -b`" &>/dev/null
+	fi
 	ls --color -d . &>/dev/null 2>&1 && \
 		alias ls='ls --color=auto' || alias ls='ls -G'
 fi
@@ -58,6 +60,16 @@ alias ds='darcs'
 # turn on some good! regular expression by default
 alias sed='sed -r'
 alias grep='grep -E'
+
+# create alias thats kind of like wget using curl if wget isn't present
+if !command -v wget &>/dev/null; then
+	if command -v curl &>/dev/null; then
+		function wget1() {
+			file=`echo $1 | sed -e 's/.*\///'`
+			curl -X GET $1 > $file
+		}
+	fi
+fi
 
 # nice function for easy text searching in files
 function fsearch() {
