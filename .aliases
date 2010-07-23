@@ -140,7 +140,8 @@ alias zo='darcs obliterate'
 # Ghc
 alias dghc='$GHCDEVBIN'
 alias dghc1='$GHCDEV/ghc-stage1'
-alias dghcc='$GHCDEVBIN -keep-tmp-files -fllvm -fforce-recomp -fglasgow-exts'
+alias dghcc='$GHCDEVBIN -keep-tmp-files -fllvm -fforce-recomp -fglasgow-exts -ddump-opt-cmm'
+alias dghccn='$GHCDEVBIN -fnew-codegen -keep-tmp-files -fllvm -fforce-recomp -fglasgow-exts -ddump-opt-cmm'
 alias dghcc1='$GHCDEV/ghc-stage1 -keep-tmp-files -fllvm -fforce-recomp -fglasgow-exts'
 
 alias vghc='vim -p $TMPDIR/ghc*/*.ll(u{`whoami`})'
