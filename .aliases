@@ -82,15 +82,14 @@ function frsearch() {
 }
 
 function hsf() {
-	find * -regextype posix-extended -regex ".**.(c|h|cmm|l?hs)" |\
-	xargs egrep "`echo $1 | sed -e 's/ /\\\s\*/'`" |\
-	grep -v "_darcs";
+	find * -regextype posix-extended -regex "[^_].*.(c|h|cmm|l?hs)" |\
+	grep -v "_darcs" |\
+	xargs egrep "`echo $1 | sed -e 's/ /\\\s\*/'`";
 }
 
 function lmf() {
-	find * -regextype posix-extended -regex ".**.(c|h|cpp|td|cxx|inc)" |\
-	xargs egrep "`echo $1 | sed -e 's/ /\\\s\*/'`" |\
-	grep -v "_darcs";
+	find * -regextype posix-extended -regex ".*.(c|h|cpp|td|cxx|inc)" |\
+	xargs egrep "`echo $1 | sed -e 's/ /\\\s\*/'`";
 }
 
 alias delay=sleep
