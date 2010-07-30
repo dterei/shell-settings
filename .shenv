@@ -91,10 +91,15 @@ fi
 
 if [ "$HOSTNAME" = "msrc-1361528" ] ; then
 	export DISPLAY=127.0.0.1:0.0
+	# export here since the cygwin/win32 stuff screws up normal way
+	export GHCHOME=C:/cygwin/home/t-dater/Ghc
+	export GHCDEV=$GHCHOME/orig-reg/inplace/bin
+	export GHCDEVBIN=$GHCDEV/ghc-stage2
+	export GHCDEVPKG=$GHCDEV/ghc-pkg
 fi
 
 # GHC Dev
-GHCDEV=$GHCHOME/ghc-current/inplace/bin
+GHCDEV=$GHCHOME/orig-reg/inplace/bin
 if [ -d $GHCDEV ] ; then
 	export GHCDEV=$GHCDEV
 	export GHCDEVBIN=$GHCDEV/ghc-stage2
