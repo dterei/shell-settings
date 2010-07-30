@@ -133,7 +133,7 @@ bindkey -M menuselect "^@"  accept-and-infer-next-history
 # Instead of just exiting the menu selection
 bindkey -M menuselect "^M" .accept-line
 # Sort files by date and follow symlinks
-zstyle ':completion:*:*:*:*' file-sort date follow
+#zstyle ':completion:*:*:*:*' file-sort date follow
 compinit -C
 # I like my Esc/ search very much, put it back
 bindkey -rM viins "\e/" 
