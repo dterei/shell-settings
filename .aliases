@@ -119,13 +119,15 @@ function rm_bad_syms() {
 
 # Git
 alias g='git'
-alias gz='git status'
+alias gz='git status -s'
 alias gd='git diff | less'
 alias gl='git pull'
 alias gup='git fetch && git rebase'
 alias gp='git push'
 alias gc='git commit -v'
 alias gca='git commit -v -a'
+alias gcm='git commit -m'
+alias gcma='git commit -a -m'
 alias gb='git branch'
 alias gcp='git cherry-pick'
 alias gg='git log'
@@ -134,6 +136,10 @@ alias gcount='git shortlog -sn'
 alias ga='git add'
 alias gai='git add -i'
 alias gsv='git svn'
+
+function gch () {
+	git clone "git@github.com:dterei/$1.git"
+}	
 
 # Darcs
 alias z='darcs'
