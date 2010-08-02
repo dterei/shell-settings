@@ -1,3 +1,9 @@
 [user]
 	name = David Terei
 	email = davidterei@gmail.com
+[giggle]
+	main-window-maximized = true
+	main-window-geometry = 483x337+857+252
+	history-view-vpane-position = 720
+	file-view-vpane-position = 778
+	main-window-view = FileView
