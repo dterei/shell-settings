@@ -99,7 +99,7 @@ if [ "$HOSTNAME" = "msrc-1361528" ] ; then
 fi
 
 # GHC Dev
-GHCDEV=$GHCHOME/orig-reg/inplace/bin
+GHCDEV=$GHCHOME/ghc-current/inplace/bin
 if [ -d $GHCDEV ] ; then
 	export GHCDEV=$GHCDEV
 	export GHCDEVBIN=$GHCDEV/ghc-stage2
