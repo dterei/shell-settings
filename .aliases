@@ -159,9 +159,9 @@ alias zo='darcs obliterate'
 # Ghc
 alias dghc='$GHCDEVBIN'
 alias dghc1='$GHCDEV/ghc-stage1'
-alias dghcc='$GHCDEVBIN -keep-tmp-files -fllvm -fforce-recomp -fglasgow-exts -ddump-opt-cmm'
-alias dghccn='$GHCDEVBIN -fnew-codegen -keep-tmp-files -fllvm -fforce-recomp -fglasgow-exts -ddump-opt-cmm'
-alias dghcc1='$GHCDEV/ghc-stage1 -keep-tmp-files -fllvm -fforce-recomp -fglasgow-exts'
+alias dghcc='$GHCDEVBIN -fllvm -fforce-recomp -fglasgow-exts -keep-tmp-files'
+alias dghccn='$GHCDEVBIN -fnew-codegen -fllvm -fforce-recomp -fglasgow-exts -keep-tmp-files'
+alias dghcc1='$GHCDEV/ghc-stage1 -fllvm -fforce-recomp -fglasgow-exts -keep-tmp-files'
 
 alias vghc='vim -p $TMPDIR/ghc*/*.ll(u{`whoami`})'
 
@@ -188,4 +188,5 @@ alias aps='sudo aptitude show'
 
 # sync all my Settings
 alias sync_all='pushd ~/Settings && gl && gp && pushd ~/Vim && gl && gp && pushd ~/Scraps && gl && gp && popd && popd && popd'
+alias check_all='pushd ~/Settings && echo "Settings" && gz && pushd ~/Vim && echo "Vim" && gz && pushd ~/Scraps && echo "Scraps" && gz && popd && popd && popd'
 
