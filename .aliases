@@ -63,6 +63,7 @@ alias grep='grep -E'
 
 # create alias thats kind of like wget using curl if wget isn't present
 if command -v wget &>/dev/null; then
+	echo h > /dev/null
 else
 	if command -v curl &>/dev/null; then
 		function wget() {

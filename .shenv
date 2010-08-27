@@ -68,34 +68,13 @@ if [ "$HOSTNAME" = "desire.cse.unsw.edu.au" ] ; then
 	export http_proxy="http://www-proxy.cse.unsw.edu.au:3128"
 fi
 
+# default GHC Home
 export GHCHOME=$HOME/Ghc
 
-# MSRC
-if [ "$HOSTNAME" = "cam-04-unx" ] ; then
-	export GHCHOME=/64playpen/t-dater/Ghc
-	export PATH=${PATH}:/home/simonmar/fp/bin/x86_64-unknown-linux
-	export PATH=~/bin/64:${PATH}
-	export HTTP_PROXY="http://157.58.63.38:80"
-	export http_proxy="http://157.58.63.38:80"
-	export GHOME=/64playpen/t-dater/Ghc/
-fi
-
-if [ "$HOSTNAME" = "cam-02-unx" ] ; then
-	export GHCHOME=/playpen/t-dater/Ghc
-	export PATH=${PATH}:/home/simonmar/fp/bin/i386-unknown-linux
-	export PATH=~/bin/32:${PATH}
-	export HTTP_PROXY="http://157.58.63.38:80"
-	export http_proxy="http://157.58.63.38:80"
-	export GHOME=/playpen/t-dater/Ghc/
-fi
-
-if [ "$HOSTNAME" = "msrc-1361528" ] ; then
+# IBM Laptop
+if [ "$HOST" = "IBM-R829FB9" ] ; then
 	export DISPLAY=127.0.0.1:0.0
-	# export here since the cygwin/win32 stuff screws up normal way
-	export GHCHOME=C:/cygwin/home/t-dater/Ghc
-	export GHCDEV=$GHCHOME/orig-reg/inplace/bin
-	export GHCDEVBIN=$GHCDEV/ghc-stage2
-	export GHCDEVPKG=$GHCDEV/ghc-pkg
+	export GHCHOME=C:/dev/cygwin/home/t-dater/Ghc
 fi
 
 # GHC Dev
@@ -111,7 +90,6 @@ if [ -d ~/Development/bin ] ; then
 	export PATH=~/Development/bin:${PATH}
 fi
 
-# user bin
 if [ -d ~/bin ] ; then
 	export PATH=~/bin:${PATH}
 fi
