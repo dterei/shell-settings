@@ -138,7 +138,7 @@ alias ga='git add'
 alias gai='git add -i'
 alias gsv='git svn'
 
-function gch () {
+function ghf () {
 	git clone "git@github.com:dterei/$1.git"
 }	
 
