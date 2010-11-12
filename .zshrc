@@ -185,4 +185,3 @@ PROMPT="%{$reset_color%}[%{$fg[green]%}➜ %{$reset_color%}%{$fg_bold[blue]%}%c%
 #RPROMPT="%{$fg[yellow]%}(%D{%m-%d %H:%M})%{$reset_color%}"
 RPROMPT="%{$fg[green]%}%~%{$reset_color%}"
 
-cd
