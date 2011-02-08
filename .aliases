@@ -138,9 +138,23 @@ alias ga='git add'
 alias gai='git add -i'
 alias gsv='git svn'
 
-function ghf () {
-	git clone "git@github.com:dterei/$1.git"
-}	
+#json pretty print
+alias jsonp='python -mjson.tool'
+
+# Github
+function hub () {
+	if [[ $1 == "clone" && $2 != "" ]]; then
+		git clone "git@github.com:dterei/$2.git" $3
+	elif [[ $1 == "repos" ]]; then
+		curl -s http://github.com/api/v2/json/repos/show/dterei | jsonp | grep name
+	elif [[ $1 == "list" ]]; then
+		curl -s http://github.com/api/v2/json/repos/show/dterei | jsonp
+	elif [[ $1 == "" || $1 == "-h" || $1 == "--help" ]]; then
+		echo "Usage: \tclone <repo>\t -- Clones the repository \
+				\n\trepos\t\t -- List my repositories \
+				\n\tlist\t\t -- List (detailed) information on all my repositories"
+	fi
+}
 
 # Darcs
 alias z='darcs'
