@@ -10,7 +10,7 @@ if [ "$TERM" != "dumb" ]; then
 		eval "`dircolors -b`" &>/dev/null
 	fi
 	ls --color -d . &>/dev/null 2>&1 && \
-		alias ls='ls --color=auto' || alias ls='ls -G'
+		alias ls='ls --color=auto' || alias ls='colorls -G'
 fi
 
 # reload profile
@@ -54,7 +54,6 @@ alias _g='gksu'
 alias g='git'
 alias m='mutt'
 alias v='vim'
-alias vi='vim'
 alias ds='darcs'
 
 # turn on some good! regular expression by default
