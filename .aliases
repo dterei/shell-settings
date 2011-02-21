@@ -56,6 +56,9 @@ alias m='mutt'
 alias v='vim'
 alias ds='darcs'
 
+# have xclip use gtk clipboard
+alias xclip='xclip -sel clip'
+
 # turn on some good! regular expression by default
 alias sed='sed -r'
 alias grep='grep -E'
