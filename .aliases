@@ -85,7 +85,7 @@ function frsearch() {
 }
 
 function hsf() {
-	find * -regextype posix-extended -regex "[^_].*.(c|h|cmm|l?hs)" |\
+	find * -regextype posix-extended -regex "[^_].*.(c|h|cmm|l?hs|x|y|pp)" |\
 	grep -v "_darcs" |\
 	xargs egrep "`echo $1 | sed -e 's/ /\\\s\*/'`";
 }
