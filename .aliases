@@ -11,12 +11,13 @@ if [ "$TERM" != "dumb" ]; then
 	fi
 
 	# try to accomodate for different ls
-	ls --color -d . &>/dev/null 2>&1 && \
-		alias ls='ls --color=auto' || \
-	colorls -G . &>/dev/null 2>&1 && \
+	if ls --color -d . &>/dev/null 2>&1; then
+		alias ls='ls --color=auto'
+	elif colorls -G . &>/dev/null 2>&1; then
 		alias ls='colorls -G' || \
-	ls -G . &>/dev/null 2>&1 && \
+	elif ls -G . &>/dev/null 2>&1; then
 		alias ls='ls -G'
+	fi
 fi
 
 # reload profile
