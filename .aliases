@@ -9,8 +9,14 @@ if [ "$TERM" != "dumb" ]; then
 	if command -v dircolors &>/dev/null; then
 		eval "`dircolors -b`" &>/dev/null
 	fi
+
+	# try to accomodate for different ls
 	ls --color -d . &>/dev/null 2>&1 && \
-		alias ls='ls --color=auto' || alias ls='colorls -G'
+		alias ls='ls --color=auto' || \
+	colorls -G . &>/dev/null 2>&1 && \
+		alias ls='colorls -G' || \
+	ls -G . &>/dev/null 2>&1 && \
+		alias ls='ls -G'
 fi
 
 # reload profile
@@ -60,7 +66,10 @@ alias ds='darcs'
 alias xclip='xclip -sel clip'
 
 # turn on some good! regular expression by default
-alias sed='sed -r'
+echo "a" | sed -r "s/a//" &>/dev/null 2>&1 && \
+	alias sed='sed -r' ||
+echo "a" | sed -E "s/a//" &>/dev/null 2>&1 && \
+	alias sed='sed -E'
 alias grep='grep -E'
 
 # create alias thats kind of like wget using curl if wget isn't present
