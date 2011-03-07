@@ -67,10 +67,12 @@ alias ds='darcs'
 alias xclip='xclip -sel clip'
 
 # turn on some good! regular expression by default
-echo "a" | sed -r "s/a//" &>/dev/null 2>&1 && \
-	alias sed='sed -r' ||
-echo "a" | sed -E "s/a//" &>/dev/null 2>&1 && \
+if echo "a" | sed -r "s/a//" &>/dev/null; then
+	alias sed='sed -r'
+elif echo "a" | sed -E "s/a//" &>/dev/null; then
 	alias sed='sed -E'
+fi
+
 alias grep='grep -E'
 
 # create alias thats kind of like wget using curl if wget isn't present
