@@ -14,7 +14,7 @@ if [ "$TERM" != "dumb" ]; then
 	if ls --color -d . &>/dev/null 2>&1; then
 		alias ls='ls --color=auto'
 	elif colorls -G . &>/dev/null 2>&1; then
-		alias ls='colorls -G' || \
+		alias ls='colorls -G'
 	elif ls -G . &>/dev/null 2>&1; then
 		alias ls='ls -G'
 	fi
@@ -99,18 +99,30 @@ function frsearch() {
 function hsf() {
 	find * -regextype posix-extended -regex "[^_].*.(c|h|cmm|l?hs|x|y|pp)" |\
 	grep -v "_darcs" |\
-	xargs egrep "`echo $1 | sed -e 's/ /\\\s\*/'`";
+	xargs egrep "`echo $1 | sed -e 's/ /\\\s\+/'`";
 }
 
 function lmf() {
 	find * -regextype posix-extended -regex ".*.(c|h|cpp|td|cxx|inc)" |\
-	xargs egrep "`echo $1 | sed -e 's/ /\\\s\*/'`";
+	xargs egrep "`echo $1 | sed -e 's/ /\\\s\+/'`";
 }
 
 alias delay=sleep
 
 # nice pause function (equivalent of DOS pause)
-function pause() { read -n1 -r -p "Press any key to continue..." key; }
+function pause() {
+	if [ -n "${BASH_VERSION}" ]; then
+		read -n1 -r -p "Press any key to continue..." key;
+		if [ -n "$key" ]; then
+			echo "";
+		fi
+	elif [ -n "${ZSH_VERSION}" ]; then
+		read -k "?Press any key to continue..." key;
+		if [[ "$key" -pcre-match ^.$ ]]; then
+			echo "";
+		fi
+	fi
+}
 
 # display broken sym links
 function find_bad_syms() {
