@@ -118,9 +118,7 @@ function pause() {
 		fi
 	elif [ -n "${ZSH_VERSION}" ]; then
 		read -k "?Press any key to continue..." key;
-		if [[ "$key" -pcre-match ^.$ ]]; then
-			echo "";
-		fi
+		echo "";
 	fi
 }
 
