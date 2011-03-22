@@ -205,10 +205,10 @@ alias dghcc1='$GHCDEV/ghc-stage1 -fllvm -fforce-recomp -fglasgow-exts -keep-tmp-
 alias vghc='vim -p $TMPDIR/ghc*/*.ll(u{`whoami`})'
 
 function hsclean() {
-	rm -rf $TMPDIR/ghc*(u{`whoami`})
+	find $TMPDIR/ghc* -user `whoami` -delete
 	rm $GHCHOME/*.hi
 	rm $GHCHOME/*.o
-	rm $GHCHOME/*(*)
+	find $GHCHOME/ -maxdepth 1 -executable -type f -delete
 }
 
 alias dghc_config='runhaskell Setup configure --with-ghc=$GHCDEVBIN --with-ghc-pkg=$GHCDEVPKG'
