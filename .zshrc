@@ -179,11 +179,14 @@ GIT_PROMPT_SUFFIX="%{$reset_color%}"
 GIT_PROMPT_DIRTY="%{$fg[green]%}) %{$fg[yellow]%}✗%{$reset_color%}"
 GIT_PROMPT_CLEAN="%{$fg[blue]%})"
 
+HOST_SHOW=""
+[[ -n $SSH_CLIENT ]] && HOST_SHOW+="%{$fg_bold[white]%}%m "
+
 #PROMPT="[%{$fg[green]%}%n%{$reset_color%}:%(0?..%{$fg_bold[red]%}%?%{$reset_color%})%{$fg[blue]%}%16<...<%~%<<%{$reset_color%}%(!.#.]) "
 #PROMPT='%{$fg[blue]%}%c $(git_prompt_info)%(0?..${fg_bold[red]}%? )%{$reset_color%}%{${fg[red]}%}»%{${reset_color}%} '
 #PROMPT="%{$reset_color%}%{$fg[blue]%}%c %(0?..%{$fg_bold[red]%}%? )%{$reset_color%}%{$fg[red]%}»%{$reset_color%} "
-PROMPT="%{$reset_color%}[%{$fg[green]%}➜ %{$reset_color%}%{$fg_bold[blue]%}%c%(0?..%{$fg_bold[red]%} %?)%{$reset_color%}] "
+PROMPT="%{$reset_color%}[$HOST_SHOW%{$fg[green]%}➜ %{$reset_color%}%{$fg_bold[blue]%}%c%(0?..%{$fg_bold[red]%} %?)%{$reset_color%}] "
 
 #RPROMPT="%{$fg[yellow]%}(%D{%m-%d %H:%M})%{$reset_color%}"
-RPROMPT="%{$fg[green]%}%~%{$reset_color%}"
+RPROMPT="%{$fg_bold[green]%}%~%{$reset_color%}"
 
