@@ -85,6 +85,11 @@ if [ -d $GHCDEV ] ; then
 	export GHCDEVPKG=$GHCDEV/ghc-pkg
 fi
 
+# Ruby RVM manager
+if [ -s ~/.rvm/scripts/rvm ] ; then
+	source ~/.rvm/scripts/rvm
+fi
+
 # set PATH so it includes user's private bin if it exists
 if [ -d ~/Development/bin ] ; then
 	export PATH=~/Development/bin:${PATH}
