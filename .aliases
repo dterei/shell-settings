@@ -161,6 +161,7 @@ alias gcount='git shortlog -sn'
 alias ga='git add'
 alias gai='git add -i'
 alias gsv='git svn'
+alias go='git checkout'
 
 #json pretty print
 alias jsonp='python -mjson.tool'
