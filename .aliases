@@ -164,6 +164,10 @@ alias gfa='git fetch --all'
 #json pretty print
 alias jsonp='python -mjson.tool'
 
+#screen alias
+alias s='screen'
+alias x='exit'
+
 # Github
 function hub () {
 	if [[ $1 == "clone" && $2 != "" ]]; then
