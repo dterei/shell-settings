@@ -214,8 +214,8 @@ function hsclean() {
 	find $GHCHOME/ -maxdepth 1 -executable -type f -delete
 }
 
-alias rmhs='rm -f *(*) *.o *.hi'
-alias rmhss='rm -f *(*) *.o *.hi *.s *.ll *.bc'
+alias rmhs='rm *(*); rm *.o; rm *.hi'
+alias rmhss='rm *(*); rm *.o; rm *.hi; rm *.s; rm *.ll; rm *.bc'
 
 alias dghc_config='runhaskell Setup configure --with-ghc=$GHCDEVBIN --with-ghc-pkg=$GHCDEVPKG'
 alias dghc_build='runhaskell Setup build'
