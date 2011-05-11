@@ -15,7 +15,8 @@ fi
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
 
-autoload zsh/pcre
+autoload -U zsh/pcre
+autoload -U zmv
 
 # Alias definitions.
 if [ -f ~/.aliases ]; then
