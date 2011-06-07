@@ -37,21 +37,9 @@ if [ -d "${MAILFOLDER}" ]; then
 	export MAIL="${MAILFOLDER}/incoming-mail"
 fi
 
-# stulocal - Uni
-STULOCAL=/home/stulocal/bin/setup-env.sh
-if [ -d "${STULOCAL}" ] ; then
-	. ${STULOCAL}
-fi
-
 # tex
 if [ -d "$HOME/tex/" ] ; then
 	export TEXINPUTS=.:$HOME/tex/:$TEXINPUTS
-fi
-
-# spark - sun - thesis
-if [ "$HOSTNAME" = "sparky" ] ; then
-	export LD_LIBRARY_PATH=/usr/sfw/lib:/opt/csw/lib:/usr/ccs/lib:$LD_LIBRARY_PATH
-	export PATH=/opt/SUNWspro/extra/bin:/opt/gcc-vanilla/4.1.2/bin:/opt/csw/bin:/usr/bin:/usr/ccs/bin:$PATH
 fi
 
 # my laptop
@@ -70,12 +58,6 @@ fi
 
 # default GHC Home
 export GHCHOME=$HOME/Ghc
-
-# IBM Laptop
-if [ "$HOST" = "IBM-R829FB9" ] ; then
-	export DISPLAY=127.0.0.1:0.0
-	export GHCHOME=C:/dev/cygwin/home/t-dater/Ghc
-fi
 
 # GHC Dev
 GHCDEV=$GHCHOME/ghc-current/inplace/bin
