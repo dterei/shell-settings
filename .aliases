@@ -207,6 +207,8 @@ alias dghcc='$GHCDEVBIN -fllvm -fforce-recomp -fglasgow-exts -keep-tmp-files'
 alias dghccn='$GHCDEVBIN -fnew-codegen -fllvm -fforce-recomp -fglasgow-exts -keep-tmp-files'
 alias dghcc1='$GHCDEV/ghc-stage1 -fllvm -fforce-recomp -fglasgow-exts -keep-tmp-files'
 
+alias dghc-pkg='$GHCDEV/ghc-pkg'
+
 alias vghc='vim -p $TMPDIR/ghc*/*.ll(u{`whoami`})'
 
 function hsclean() {
