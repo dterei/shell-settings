@@ -4,7 +4,7 @@
 # Author: David Terei
 
 # the default umask is set in /etc/profile
-umask 007
+#umask 007
 
 # get 256 color mode
 export TERM="xterm-256color"
