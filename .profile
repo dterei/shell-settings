@@ -5,9 +5,6 @@
 # setting such as umask cant
 #
 # Author: David Terei
-# Last Modified: 16/08/2011
-
-#umask 007
 
 # All else in .shenv to share between shells and get around
 # normal stupid unix bashrc/profile loading issues.
