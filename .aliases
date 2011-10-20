@@ -152,7 +152,7 @@ alias gd='git diff | less'
 alias gl='git pull'
 alias gup='git pull --rebase'
 alias gc='git commit -v'
-alias gca='git commit -v -a'
+alias gca='git commit -v -a -m'
 alias ge='git rebase'
 alias gb='git branch'
 alias go='git checkout'
@@ -207,6 +207,10 @@ alias dghccn='$GHCDEVBIN -fnew-codegen -fllvm -fforce-recomp -fglasgow-exts -kee
 alias dghcc1='$GHCDEV/ghc-stage1 -fllvm -fforce-recomp -fglasgow-exts -keep-tmp-files'
 
 alias dghc-pkg='$GHCDEV/ghc-pkg'
+
+alias ghcf='ghc -fforce-recomp'
+alias dghcf='$GHCDEVBIN -fforce-recomp'
+alias dghcf1='$GHCDEV/ghc-stage1 -fforce-recomp'
 
 alias vghc='vim -p $TMPDIR/ghc*/*.ll(u{`whoami`})'
 
@@ -269,4 +273,25 @@ alias aps='sudo aptitude show'
 # sync all my Settings
 alias sync_all='pushd ~/Settings && git pull && git push && pushd ~/Vim && git pull && git push && pushd ~/Scraps && git pull && git push && popd && popd && popd'
 alias check_all='pushd ~/Settings && echo "Settings" && gz && pushd ~/Vim && echo "Vim" && gz && pushd ~/Scraps && echo "Scraps" && gz && popd && popd && popd'
+
+# make parallel aliases
+alias make2='make -j2'
+alias make3='make -j3'
+alias make4='make -j4'
+alias make5='make -j5'
+alias make6='make -j6'
+alias make7='make -j7'
+alias make8='make -j8'
+alias make9='make -j9'
+alias make10='make -j10'
+alias make11='make -j11'
+alias make12='make -j12'
+alias make13='make -j13'
+alias make14='make -j14'
+alias make15='make -j15'
+alias make16='make -j16'
+alias make17='make -j17'
+alias make18='make -j18'
+alias make19='make -j19'
+alias make20='make -j20'
 
