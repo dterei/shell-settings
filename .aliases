@@ -275,6 +275,8 @@ alias sync_all='pushd ~/Settings && git pull && git push && pushd ~/Vim && git p
 alias check_all='pushd ~/Settings && echo "Settings" && gz && pushd ~/Vim && echo "Vim" && gz && pushd ~/Scraps && echo "Scraps" && gz && popd && popd && popd'
 
 # make parallel aliases
+alias make0='make -j16'
+alias make1='make -j1'
 alias make2='make -j2'
 alias make3='make -j3'
 alias make4='make -j4'
