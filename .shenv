@@ -70,7 +70,7 @@ if [ -s ~/.rvm/scripts/rvm ] ; then
 fi
 
 # brew
-if [ "$HOSTNAME" = "Davids-MacBook-Pro.local" ] ; then
+if [ "$OSTYPE" = "darwin11.0" ] ; then
 	if [ -d /usr/local/bin ] ; then
 		export PATH=/usr/local/bin:${PATH}
 	fi
