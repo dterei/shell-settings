@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+# find_bad_syms - display broken sym links
+
+for f in $(find $1 -type l); do
+	if [ ! -e "$f" ]; then
+		echo "$f"
+	fi
+done
+

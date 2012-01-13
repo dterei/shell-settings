@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+# frsearch - nice function for easy text searching in files
+
+if [ -n "$1" -a -n "$2" ]; then
+	find * -regextype posix-extended -regex ".*$1" | xargs egrep "$2"
+else
+	echo "Find all keywords in matching files below current directory,"
+	echo "using extended regex for file matching."
+	echo ""
+	echo "Usage: frsearch <files> <keyword>"
+fi
+

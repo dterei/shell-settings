@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # clippaste - Paste contents of clipboard to file in terminal.
 
 # Program name from it's filename

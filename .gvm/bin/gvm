@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+source $HOME/.gvm/gvm-lib
+
+if [ "$1" = "list" ]; then
+	list_ghc_versions
+elif [ "$1" = "use" ]; then
+	set_ghc_version $2
+else
+	echo "gvm usage: $ gvm [use | local | list]"
+	echo "      use: $ gvm use <ghc-version>"
+	echo "     list: $ gvm list"
+	echo
+fi
+

@@ -69,6 +69,11 @@ if [ -s ~/.rvm/scripts/rvm ] ; then
 	source ~/.rvm/scripts/rvm
 fi
 
+# GHC GVM manager
+if [ -d ~/.gvm/bin/ ] ; then
+	export PATH=~/.gvm/bin:${PATH}
+fi
+
 # brew
 if [ "$OSTYPE" = "darwin11.0" ] ; then
 	if [ -d /usr/local/bin ] ; then

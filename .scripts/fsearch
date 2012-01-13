@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+# fsearch - nice function for easy text searching in files
+
+if [ -n "$1" -a -n "$2" ]; then
+	find * -iname "$1" | xargs egrep "$2"
+else
+	echo "Find all keywords in matching files below current directory"
+	echo ""
+	echo "Usage: fsearch <files> <keyword>"
+fi
+

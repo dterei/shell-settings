@@ -20,50 +20,6 @@ if [ "$TERM" != "dumb" ]; then
 	fi
 fi
 
-# reload profile
-alias rlp='source ~/.profile'
-
-# some more ls aliases
-alias dir='ls --format=vertical'
-alias vdir='ls --format=long'
-alias ll='ls -l'
-alias la='ls -A'
-alias l='ls -CF'
-alias less='less -R'
-
-# cd aliases
-alias cd..='cd ..'
-alias .='pwd'
-alias ..='cd ..'
-alias ...='cd ../..'
-alias ....='cd ../../..'
-alias ~='cd ~'
-alias -- -='cd -'
-
-# Push and pop directories on directory stack
-alias pu='pushd'
-alias po='popd'
-alias d='dirs -v'
-
-#make,remove dir
-alias md='mkdir -p'
-alias rd=rmdir
-function take() {
-  mkdir -p $1
-  cd $1
-}
-
-# Super user
-alias _='sudo'
-alias ss='sudo su -'
-alias _g='gksu'
-
-# app aliases
-alias g='git'
-alias m='mutt'
-alias v='vim'
-alias ds='darcs'
-
 # have xclip use gtk clipboard
 alias xclip='xclip -sel clip'
 
@@ -88,60 +44,60 @@ else
 	fi
 fi
 
-# nice function for easy text searching in files
-function fsearch() {
-	find * -iname "$1" | xargs egrep "$2";
-}
-
-function frsearch() {
-	find * -regextype posix-extended -regex ".*$1" | xargs egrep "$2";
-}
-
-function hsf() {
-	find * -regextype posix-extended -regex "[^_].*.(c|h|cmm|l?hs|x|y|pp|cabal)" |\
-	grep -v "_darcs" |\
-	xargs egrep --color=always "`echo $1 | sed -e 's/ /\\\s\+/'`";
-}
-
-function lmf() {
-	find * -regextype posix-extended -regex ".*.(c|h|cpp|td|cxx|inc)" |\
-	xargs egrep --color=always "`echo $1 | sed -e 's/ /\\\s\+/'`";
-}
-
 alias delay=sleep
 
-# nice pause function (equivalent of DOS pause)
-function pause() {
-	if [ -n "${BASH_VERSION}" ]; then
-		read -n1 -r -p "Press any key to continue..." key;
-		if [ -n "$key" ]; then
-			echo "";
-		fi
-	elif [ -n "${ZSH_VERSION}" ]; then
-		read -k "?Press any key to continue..." key;
-		echo "";
-	fi
+# reload profile
+alias rlp='source ~/.profile'
+
+# some more ls aliases
+alias dir='ls --format=vertical'
+alias vdir='ls --format=long'
+alias ll='ls -l'
+alias la='ls -A'
+alias l='ls -CF'
+alias less='less -R'
+
+# cd aliases
+alias cd..='cd ..'
+alias .='pwd'
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+alias ~='cd ~'
+
+# Push and pop directories on directory stack
+alias pu='pushd'
+alias po='popd'
+alias d='dirs -v'
+
+#make,remove dir
+alias md='mkdir -p'
+alias rd=rmdir
+function take() {
+  mkdir -p $1
+  cd $1
 }
 
-# display broken sym links
-function find_bad_syms() {
-	for f in $(find $1 -type l); do
-		if [ ! -e "$f" ]; then
-			echo "$f";
-		fi;
-	done;
-}
+# Super user
+alias _='sudo'
+alias ss='sudo su -'
+alias _g='gksu'
 
-# remove broken sym links
-function rm_bad_syms() {
-	find $1 -type l |\
-		while read f; do
-			if [ ! -e "$f" ]; then
-				echo "rm $f...";
-				rm -f "$f";
-			fi;
-		done;
-}
+# vim
+alias v='vim'
+
+# Aptitude
+alias ap='sudo aptitude'
+alias api='sudo aptitude install'
+alias apu='sudo aptitude update'
+alias apg='sudo aptitude full-upgrade'
+alias apz='sudo aptitude search'
+alias apc='sudo aptitude changelog'
+alias aps='sudo aptitude show'
+
+# sync all my Settings
+alias sync_all='pushd ~/Settings && git pull && git push && pushd ~/Vim && git pull && git push && pushd ~/Scraps && git pull && git push && popd && popd && popd'
+alias check_all='pushd ~/Settings && echo "Settings" && gz && pushd ~/Vim && echo "Vim" && gz && pushd ~/Scraps && echo "Scraps" && gz && popd && popd && popd'
 
 # Git
 alias g='git'
@@ -163,16 +119,6 @@ alias gfa='git fetch --all'
 alias gr='git remote'
 alias grv='git remote -v'
 
-#json pretty print
-alias jsonp='python -mjson.tool'
-
-#simple web server at current director
-alias www='python -m SimpleHTTPServer'
-
-#screen alias
-alias s='screen'
-alias x='exit'
-
 # Github
 function hub () {
 	if [[ $1 == "clone" && $2 != "" ]]; then
@@ -188,37 +134,34 @@ function hub () {
 	fi
 }
 
-# Darcs
-alias z='darcs'
-alias zs='darcs whatsnew -s'
-alias zd='darcs whatsnew | less'
-alias zl='darcs pull'
-alias zla='darcs pull -a'
-alias zp='darcs push'
-alias zc='darcs record'
-alias zz='darcs changes | less'
-alias zzv='darcs changes --verbose | less'
-alias za='darcs add'
-alias ze='darcs send'
-alias zg='darcs get'
-alias zo='darcs obliterate'
+#json pretty print
+alias jsonp='python -mjson.tool'
 
-# Ghc
+#simple web server at current director
+alias www='python -m SimpleHTTPServer'
+
+#screen alias
+alias s='screen'
+alias x='exit'
+
+
+# =======================
+# GHC Development aliases
+# =======================
+
+alias ghcf='ghc -fforce-recomp'
 alias hc='ghc --make -O2 -fforce-recomp'
 
 alias dghc='$GHCDEVBIN'
 alias dghc1='$GHCDEV/ghc-stage1'
+
 alias dghcc='$GHCDEVBIN -fllvm -fforce-recomp -fglasgow-exts -keep-tmp-files'
-alias dghccn='$GHCDEVBIN -fnew-codegen -fllvm -fforce-recomp -fglasgow-exts -keep-tmp-files'
 alias dghcc1='$GHCDEV/ghc-stage1 -fllvm -fforce-recomp -fglasgow-exts -keep-tmp-files'
 
-alias dghc-pkg='$GHCDEV/ghc-pkg'
-
-alias ghcf='ghc -fforce-recomp'
 alias dghcf='$GHCDEVBIN -fforce-recomp'
 alias dghcf1='$GHCDEV/ghc-stage1 -fforce-recomp'
 
-alias vghc='vim -p $TMPDIR/ghc*/*.ll(u{`whoami`})'
+alias dghc-pkg='$GHCDEV/ghc-pkg'
 
 function hsclean() {
 	find $TMPDIR/ghc* -user `whoami` -delete
@@ -230,12 +173,12 @@ function hsclean() {
 alias rmhs='rm *(*); rm *.o; rm *.hi'
 alias rmhss='rm *(*); rm *.o; rm *.hi; rm *.s; rm *.ll; rm *.bc'
 
+alias dcabal='cabal install --with-ghc=$GHCDEVBIN --with-ghc-pkg=$GHCDEVPKG'
+
 alias dghc_config='runhaskell Setup configure --with-ghc=$GHCDEVBIN --with-ghc-pkg=$GHCDEVPKG'
 alias dghc_build='runhaskell Setup build'
 alias dghc_reg='runhaskell Setup register --inplace'
 alias dghc_pkg='dghc_config && dghc_build && dghc_reg'
-
-# GHC Development aliases
 
 # validate help
 function ghcval() {
@@ -266,19 +209,6 @@ function ghcval() {
 		echo "       You don't seem to be in a GHC build tree!"
 	fi
 }
-
-# Aptitude
-alias ap='sudo aptitude'
-alias api='sudo aptitude install'
-alias apu='sudo aptitude update'
-alias apg='sudo aptitude full-upgrade'
-alias apz='sudo aptitude search'
-alias apc='sudo aptitude changelog'
-alias aps='sudo aptitude show'
-
-# sync all my Settings
-alias sync_all='pushd ~/Settings && git pull && git push && pushd ~/Vim && git pull && git push && pushd ~/Scraps && git pull && git push && popd && popd && popd'
-alias check_all='pushd ~/Settings && echo "Settings" && gz && pushd ~/Vim && echo "Vim" && gz && pushd ~/Scraps && echo "Scraps" && gz && popd && popd && popd'
 
 # make parallel aliases
 alias make0='make -j16'

@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+# hsf - Haskell file search
+
+if [ -n "$1" ]; then
+	find * -regextype posix-extended -regex "[^_].*.(c|h|cmm|l?hs|x|y|pp|cabal)" |\
+	grep -v "_darcs" |\
+	xargs egrep --color=always "`echo $1 | sed -e 's/ /\\\s\+/'`"
+else
+	echo "Find all matching Haskell files containing the search term."
+	echo "Usage: hsf <keyword>"
+fi
+

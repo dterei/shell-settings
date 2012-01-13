@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+source $HOME/.gvm/gvm-lib
+
+run_ghc_program runhaskell $@
+

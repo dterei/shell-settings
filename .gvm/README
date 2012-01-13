@@ -1,0 +1,37 @@
+GVM: GHC Version Manager
+========================
+
+GVM is a version manager program for GHC.
+
+Usage:
+------
+
+'gvm'
+
+    gvm is a command line tool for querying and switching
+	 between available GHC versions.
+
+GHC=<version>
+
+    putting 'GHC=<version>' at the start of a command that relies
+	 on GHC such as 'cabal install ...' will cause the ghc version
+	 specified to be used.
+
+	 e.g $ GHC=7.2.2 cabal install dclabel
+	     $ GHC=7.4.1 ./validate
+
+TODO
+----
+
+ * Add HC_OPTS variable to allow putting flags onto GHC?
+   e.g $ GHC=7.2.2 HC_OPTS=-fllvm ./validate
+
+ * ways to add new GHC's to GVM (and remove them).
+
+ * ghc development assistant
+   * way to manager development builds? (better method than 'dghc' aliases)
+   * cabal install support (development ghc's) OR maybe more cabal-dev support?
+   * validate support (with different bootstrap compiler + options)
+	* testsuite support
+	* nofib support
+
