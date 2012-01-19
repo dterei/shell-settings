@@ -64,6 +64,11 @@ if [ -d $GHCDEV ] ; then
 	export GHCDEVPKG=$GHCDEV/ghc-pkg
 fi
 
+# Cabal bin
+if [ -d ~/.cabal/bin/ ] ; then
+	export PATH=~/.cabal/bin:${PATH}
+fi
+
 # Ruby RVM manager
 if [ -s ~/.rvm/scripts/rvm ] ; then
 	source ~/.rvm/scripts/rvm
