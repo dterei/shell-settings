@@ -1,11 +1,33 @@
 #!/usr/bin/env bash
 
+GVM_HOME=$HOME/.gvm
+GVM_CURRENT_FILE=${GVM_HOME}/ghc-current
+GVM_PATHS_FILE=${GVM_HOME}/ghc-paths
+
 GHC_DEFAULT_VERSION=system
 GHC_VERSIONS=(system)
 
+GHC_DIRS=$HOME/Software
+GHC_SYSTEM=/usr/bin
+
+get_avail_ghcs() {
+	local ghc_dirs=$( cat ${GVM_PATHS_FILE} | grep "^dir," | sed "s/^dir,//")
+	GHC_PATHS=${ghc_dirs}
+}
+
 get_ghc_versions() {
-	local soft=$(ls $HOME/Software | grep "^ghc-" | sed "s/^ghc-//")
-	GHC_VERSIONS=(system $soft)
+	get_avail_ghcs
+   local d=""
+
+	for p in ${GHC_PATHS[@]}
+	do 
+		pushd ${p} > /dev/null
+		d=$(ls */bin/ghc | sed "s/\/.*//")
+		popd > /dev/null
+	done
+
+	# local soft=$(ls ${GHC_DIRS} | grep "^ghc-" | sed "s/^ghc-//")
+	GHC_VERSIONS=(system ${d})
 }
 
 get_ghc_version() {
@@ -13,7 +35,7 @@ get_ghc_version() {
 		GHC_VERSION=${GVM}
 	elif [ -z "${GHC_VERSION}" ]; then
 		GHC_VERSION=${GHC_DEFAULT_VERSION}
-		GHC_VERSION=`cat $HOME/.gvm/current-ghc | head -1`
+		GHC_VERSION=`cat ${GVM_CURRENT_FILE} | head -1`
 	fi
 }
 
@@ -23,12 +45,12 @@ list_ghc_versions() {
 	echo "GHC Versions:"; echo
 	for v in ${GHC_VERSIONS[@]}
 	do
-		local arch=$( run_ghc_version $v ghc '--info' | grep "Target platform" | cut -d, -f3 | sed "s/[\"\)]//g")
-		local vers=$( run_ghc_version $v ghc '--info' | grep "Project version" | cut -d, -f3 | sed "s/[\"\)]//g")
-		if [ "$GHC_VERSION" = "$v" ]; then
-			printf "=> ghc-%-12s %-18s %s\n" $v "[$vers]" "[$arch]"
+		local arch=$( run_ghc_version ${v} ghc '--info' | grep "Target platform" | cut -d, -f3 | sed "s/[\"\)]//g")
+		local vers=$( run_ghc_version ${v} ghc '--info' | grep "Project version" | cut -d, -f3 | sed "s/[\"\)]//g")
+		if [ "${GHC_VERSION}" = "${v}" ]; then
+			printf "=> %-12s %-18s %s\n" ${v} "[${vers}]" "[${arch}]"
 		else
-			printf "   ghc-%-12s %-18s %s\n" $v "[$vers]" "[$arch]"
+			printf "   %-12s %-18s %s\n" ${v} "[${vers}]" "[${arch}]"
 		fi
 	done
 	echo
@@ -40,24 +62,24 @@ set_ghc_version() {
 	nov=1
 	for v in ${GHC_VERSIONS[@]}
 	do
-		if [ "$ver" = "$v" ]; then
+		if [ "${ver}" = "$v" ]; then
 			nov=0
-		elif [ "$ver" = "ghc-$v" ]; then
+		elif [ "${ver}" = "ghc-$v" ]; then
 			nov=0
-			ver=$v
+			ver=${v}
 		fi
 	done
-	if [ "$nov" = "1" ]; then
-		echo "ERROR: Not  aware of such a GHC version: $ver"
+	if [ "${nov}" = "1" ]; then
+		echo "ERROR: Not  aware of such a GHC version: ${ver}"
 	else
-		echo "$ver" > $HOME/.gvm/current-ghc
-		echo "Using ghc-$ver"
+		echo "${ver}" > ${GVM_CURRENT_FILE}
+		echo "Using ghc-${ver}"
 	fi
 }
 
 run_ghc_program() {
 	get_ghc_version
-	run_ghc_version $GHC_VERSION $@
+	run_ghc_version ${GHC_VERSION} $@
 }
 
 run_ghc_version() {
@@ -67,9 +89,9 @@ run_ghc_version() {
 	local args=$@
 	
 	if [ "$ver" = "system" ]; then
-		/usr/bin/$prog $args
+		${GHC_SYSTEM}/${prog} ${args}
 	else
-		$HOME/Software/ghc-$ver/bin/$prog $args ${GVM_OPTS}
+		${GHC_DIRS}/${ver}/bin/${prog} ${args} ${GVM_OPTS}
 	fi
 }
 

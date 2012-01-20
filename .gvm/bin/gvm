@@ -7,9 +7,15 @@ if [ "$1" = "list" ]; then
 elif [ "$1" = "use" ]; then
 	set_ghc_version $2
 else
-	echo "gvm usage: $ gvm [use | list]"
-	echo "      use: $ gvm use <ghc-version>"
-	echo "     list: $ gvm list"
-	echo
+	cat << EOF
+gvm      usage: $ gvm [use | list]
+           use: $ gvm use <ghc-version>
+          list: $ gvm list
+	    add-ghc: $ gvm add-ghc <ghc-path-to-manage>
+	    add-dir: $ gvm add-dir <dir-with-ghcs-to-manage>
+	 list-paths: $ gvm list-paths
+
+EOF
+
 fi
 
