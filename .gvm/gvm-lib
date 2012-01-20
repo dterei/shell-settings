@@ -9,8 +9,8 @@ get_ghc_versions() {
 }
 
 get_ghc_version() {
-	if [ -n "${GHC}" ]; then
-		GHC_VERSION=${GHC}
+	if [ -n "${GVM}" ]; then
+		GHC_VERSION=${GVM}
 	elif [ -z "${GHC_VERSION}" ]; then
 		GHC_VERSION=${GHC_DEFAULT_VERSION}
 		GHC_VERSION=`cat $HOME/.gvm/current-ghc | head -1`
@@ -69,7 +69,7 @@ run_ghc_version() {
 	if [ "$ver" = "system" ]; then
 		/usr/bin/$prog $args
 	else
-		$HOME/Software/ghc-$ver/bin/$prog $args
+		$HOME/Software/ghc-$ver/bin/$prog $args ${GVM_OPTS}
 	fi
 }
 

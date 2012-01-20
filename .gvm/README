@@ -11,20 +11,25 @@ Usage:
     gvm is a command line tool for querying and switching
 	 between available GHC versions.
 
-GHC=<version>
+GVM=<version>
 
     putting 'GHC=<version>' at the start of a command that relies
 	 on GHC such as 'cabal install ...' will cause the ghc version
 	 specified to be used.
 
-	 e.g $ GHC=7.2.2 cabal install dclabel
-	     $ GHC=7.4.1 ./validate
+	 e.g $ GVM=7.2.2 cabal install dclabel
+	     $ GVM=7.4.1 ./validate
+
+GVM_OPTS=<ghc options>
+    
+	 putting 'GVM_OPTS=<ghc options>' at the start of a command that
+	 relies on GHC will pass options to GHC when invoked. This allows
+	 easy overriding of configured GHC options.
+
+	 e.g $ GVM_OPTS=-fllvm make
 
 TODO
 ----
-
- * Add HC_OPTS variable to allow putting flags onto GHC?
-   e.g $ GHC=7.2.2 HC_OPTS=-fllvm ./validate
 
  * ways to add new GHC's to GVM (and remove them).
 
@@ -34,4 +39,9 @@ TODO
    * validate support (with different bootstrap compiler + options)
 	* testsuite support
 	* nofib support
+
+ * Record in .hi GHC version to stop error of different GHC versions
+   compiling parts of same program
+
+ * Does GHC sepperate between not just versions but also 32/64 bit?
 
