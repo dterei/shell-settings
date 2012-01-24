@@ -1,1 +1,2 @@
-.gvm/current-ghc
+.gvm/ghc-current
+.gvm/ghc-paths
