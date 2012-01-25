@@ -62,9 +62,12 @@ set_ghc_version() {
 	nov=1
 	for v in ${GHC_VERSIONS[@]}
 	do
-		if [ "${ver}" = "$v" ]; then
+		if [ "${ver}" = "${v}" ]; then
 			nov=0
-		elif [ "${ver}" = "ghc-$v" ]; then
+		elif [ "ghc-${ver}" = "${v}" ]; then
+			nov=0
+			ver=${v}
+		elif [ "${ver}" = "ghc-${v}" ]; then
 			nov=0
 			ver=${v}
 		fi
