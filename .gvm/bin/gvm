@@ -6,6 +6,12 @@ if [ "$1" = "list" ]; then
 	list_ghc_versions
 elif [ "$1" = "use" ]; then
 	set_ghc_version $2
+elif [ "$1" = "add-ghc" ]; then
+	add_ghc $2
+elif [ "$1" = "add-dir" ]; then
+	add_ghc_dir $2
+elif [ "$1" = "list-paths" ]; then
+	list_paths
 else
 	cat << EOF
 gvm      usage: $ gvm [use | list]

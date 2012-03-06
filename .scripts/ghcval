@@ -1,0 +1,34 @@
+#!/usr/bin/env bash
+# ghcval - GHC validate help
+
+function ghcval() {
+	if [[ -e './validate' ]]; then
+		if [[ -x './validate' ]]; then
+			N=12
+			FILE="valium"
+			if [[ -n "$1" ]]; then
+				N=$1
+			fi
+			if [[ -n "$2" ]]; then
+				FILE=$2
+			fi
+			echo "Running validate with $N threads."
+			echo "Saving log to file $FILE."
+			echo ""
+			echo "============================================================"
+			THREADS=$N ./validate 2>&1 | tee $FILE
+			echo "============================================================"
+			echo "Validate ran successfully with $N threads."
+			echo "Log saved to file $FILE"
+			echo ""
+		else
+			echo "Error: The './validate' script isn't executable!"
+		fi
+	else
+		echo "Error: The './validate' script doesn't exist"
+		echo "       You don't seem to be in a GHC build tree!"
+	fi
+}
+
+ghcval $@
+

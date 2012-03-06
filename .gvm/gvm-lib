@@ -10,24 +10,22 @@ GHC_VERSIONS=(system)
 GHC_DIRS=$HOME/Software
 GHC_SYSTEM=/usr/bin
 
-get_avail_ghcs() {
-	local ghc_dirs=$( cat ${GVM_PATHS_FILE} | grep "^dir," | sed "s/^dir,//")
-	GHC_PATHS=${ghc_dirs}
-}
-
 get_ghc_versions() {
-	get_avail_ghcs
-   local d=""
+	local ghc_dirs=$( cat ${GVM_PATHS_FILE} | grep "^dir," | sed "s/^dir,//")
+	local v=()
 
-	for p in ${GHC_PATHS[@]}
+	for p in ${ghc_dirs[@]}
 	do 
 		pushd ${p} > /dev/null
-		d=$(ls */bin/ghc | sed "s/\/.*//")
+		local x=$(ls */bin/ghc | sed "s/\/.*//")
+		v=( ${v[@]} ${x[@]} )
 		popd > /dev/null
 	done
 
-	# local soft=$(ls ${GHC_DIRS} | grep "^ghc-" | sed "s/^ghc-//")
-	GHC_VERSIONS=(system ${d})
+	local ghcs=$( cat ${GVM_PATHS_FILE} | grep "^ghc," | sed "s/^ghc,//")
+	GHC_VERSIONS=( system ${v[@]} ${ghcs[@]} )
+	echo "${GHC_VERSIONS[@]}"
+	echo "."
 }
 
 get_ghc_version() {
@@ -96,5 +94,19 @@ run_ghc_version() {
 	else
 		${GHC_DIRS}/${ver}/bin/${prog} ${args} ${GVM_OPTS}
 	fi
+}
+
+list_paths() {
+	cat ${GVM_PATHS_FILE} | sed 's/\([^,]*\),/    \1:    /'
+}
+
+add_ghc() {
+	local path=`cd "${1}"; pwd`
+	echo "ghc,${path}" >> ${GVM_PATHS_FILE}
+}
+
+add_ghc_dir() {
+	local path=`cd "${1}"; pwd`
+	echo "dir,${path}" >> ${GVM_PATHS_FILE}
 }
 

@@ -77,7 +77,7 @@ if [ "$OSTYPE" = "darwin11.0" ] ; then
 fi
 
 # Load RVM into a shell session *as a function*
-[[ -s "/Users/david/.rvm/scripts/rvm" ]] && source "/Users/david/.rvm/scripts/rvm"
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 
 # GHC GVM manager
 if [ -d ~/.gvm/bin/ ] ; then

@@ -31,6 +31,7 @@ elif echo "a" | sed -E "s/a//" &>/dev/null; then
 fi
 
 alias grep='grep -E'
+alias gre='grep -E --color=always'
 
 # create alias thats kind of like wget using curl if wget isn't present
 if command -v wget &>/dev/null; then
@@ -119,21 +120,6 @@ alias gfa='git fetch --all'
 alias gr='git remote'
 alias grv='git remote -v'
 
-# Github
-function hub () {
-	if [[ $1 == "clone" && $2 != "" ]]; then
-		git clone "git@github.com:dterei/$2.git" $3
-	elif [[ $1 == "repos" ]]; then
-		curl -s http://github.com/api/v2/json/repos/show/dterei | python -mjson.tool | grep name
-	elif [[ $1 == "list" ]]; then
-		curl -s http://github.com/api/v2/json/repos/show/dterei | python -mjson.tool
-	elif [[ $1 == "" || $1 == "-h" || $1 == "--help" ]]; then
-		echo "Usage: \tclone <repo>\t -- Clones the repository \
-				\n\trepos\t\t -- List my repositories \
-				\n\tlist\t\t -- List (detailed) information on all my repositories"
-	fi
-}
-
 #json pretty print
 alias jsonp='python -mjson.tool'
 
@@ -143,7 +129,6 @@ alias www='python -m SimpleHTTPServer'
 #screen alias
 alias s='screen'
 alias x='exit'
-
 
 # =======================
 # GHC Development aliases
@@ -180,36 +165,6 @@ alias dghc_config='runhaskell Setup configure --with-ghc=$GHCDEVBIN --with-ghc-p
 alias dghc_build='runhaskell Setup build'
 alias dghc_reg='runhaskell Setup register --inplace'
 alias dghc_pkg='dghc_config && dghc_build && dghc_reg'
-
-# validate help
-function ghcval() {
-	if [[ -e './validate' ]]; then
-		if [[ -x './validate' ]]; then
-			N=12
-			FILE="valium"
-			if [[ -n "$1" ]]; then
-				N=$1
-			fi
-			if [[ -n "$2" ]]; then
-				FILE=$2
-			fi
-			echo "Running validate with $N threads."
-			echo "Saving log to file $FILE."
-			echo ""
-			echo "============================================================"
-			THREADS=$N ./validate 2>&1 | tee $FILE
-			echo "============================================================"
-			echo "Validate ran successfully with $N threads."
-			echo "Log saved to file $FILE"
-			echo ""
-		else
-			echo "Error: The './validate' script isn't executable!"
-		fi
-	else
-		echo "Error: The './validate' script doesn't exist"
-		echo "       You don't seem to be in a GHC build tree!"
-	fi
-}
 
 # make parallel aliases
 alias make0='make -j16'
