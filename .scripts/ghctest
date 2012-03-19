@@ -3,23 +3,24 @@
 
 function ghctest() {
 	if [[ -e './Makefile' ]]; then
+		T=fast
 		N=12
-		W=fast
-		FILE="fast-log"
 		if [[ -n "$1" ]]; then
-			N=$1
+			T=$1
 		fi
 		if [[ -n "$2" ]]; then
-			W=$2
+			N=$2
 		fi
 		if [[ -n "$3" ]]; then
-			FILE=$2
+			FILE=$3
+		else
+			FILE="$T-log"
 		fi
 		echo "Running testsuite ($W) with $N threads."
 		echo "Saving log to file $FILE."
 		echo ""
 		echo "============================================================"
-		make $W THREADS=$N 2>&1 | tee $FILE
+		make $T THREADS=$N 2>&1 | tee $FILE
 		echo "============================================================"
 		echo "Testing ran successfully with $N threads."
 		echo "Log saved to file $FILE"
