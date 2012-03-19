@@ -7,3 +7,5 @@
 	history-view-vpane-position = 720
 	file-view-vpane-position = 778
 	main-window-view = FileView
+[push]
+	default = upstream
