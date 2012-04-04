@@ -104,6 +104,7 @@ alias check_all='pushd ~/Settings && echo "Settings" && gz && pushd ~/Vim && ech
 alias g='git'
 alias gg='git log'
 alias ggp='git log -p'
+alias ggz='git cherry -v'
 alias gcount='git shortlog -sn'
 alias gz='git status -s'
 alias gd='git diff | less'

@@ -24,8 +24,6 @@ get_ghc_versions() {
 
 	local ghcs=$( cat ${GVM_PATHS_FILE} | grep "^ghc," | sed "s/^ghc,//")
 	GHC_VERSIONS=( system ${v[@]} ${ghcs[@]} )
-	echo "${GHC_VERSIONS[@]}"
-	echo "."
 }
 
 get_ghc_version() {
