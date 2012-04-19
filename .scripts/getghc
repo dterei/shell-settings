@@ -1,0 +1,15 @@
+#!/usr/bin/env zsh
+# getghc - download a ghc version (binary)
+
+if [[ $1 == "-s" && -n "$2" ]]; then
+	wget -O- \
+	http://www.haskell.org/ghc/dist/$2/ghc-$2-src.tar.bz2 | \
+	tar xjf -
+elif [[ $1 == "-s" || -z "$1" ]]; then
+	echo "Usage: getghc [-n] <version>"
+else
+	wget -O- \
+	http://www.haskell.org/ghc/dist/$1/ghc-$1-x86_64-unknown-linux.tar.bz2 | \
+	tar xjf -
+fi
+
