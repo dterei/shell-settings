@@ -1,0 +1,12 @@
+# Compiled Source
+*.class
+*.o
+*.hi
+*.exe
+*.dll
+*.so
+*.a
+
+# OS Generated Files
+.DS_Store*
+Thumbs.db
