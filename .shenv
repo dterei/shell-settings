@@ -72,7 +72,7 @@ fi
 # Brew
 if [ "$OSTYPE" = "darwin11.0" ] ; then
 	if [ -d /usr/local/bin ] ; then
-		export PATH=/usr/local/bin:${PATH}
+		export PATH=/usr/local/bin:/usr/local/sbin:${PATH}
 	fi
 fi
 

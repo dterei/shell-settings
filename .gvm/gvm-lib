@@ -5,10 +5,11 @@ GVM_CURRENT_FILE=${GVM_HOME}/ghc-current
 GVM_PATHS_FILE=${GVM_HOME}/ghc-paths
 
 GHC_DEFAULT_VERSION=system
-GHC_VERSIONS=(system)
+GHC_VERSIONS=(system system2)
 
 GHC_DIRS=$HOME/Software
 GHC_SYSTEM=/usr/bin
+GHC_SYSTEM2=/usr/local/bin
 
 get_ghc_versions() {
 	local ghc_dirs=$( cat ${GVM_PATHS_FILE} | grep "^dir," | sed "s/^dir,//")
@@ -23,7 +24,7 @@ get_ghc_versions() {
 	done
 
 	local ghcs=$( cat ${GVM_PATHS_FILE} | grep "^ghc," | sed "s/^ghc,//")
-	GHC_VERSIONS=( system ${v[@]} ${ghcs[@]} )
+	GHC_VERSIONS=( system system2 ${v[@]} ${ghcs[@]} )
 }
 
 get_ghc_version() {
@@ -89,6 +90,8 @@ run_ghc_version() {
 	
 	if [ "$ver" = "system" ]; then
 		${GHC_SYSTEM}/${prog} ${args}
+	elif [ "$ver" = "system2" ]; then
+		${GHC_SYSTEM2}/${prog} ${args}
 	else
 		${GHC_DIRS}/${ver}/bin/${prog} ${args} ${GVM_OPTS}
 	fi
