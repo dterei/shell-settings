@@ -127,10 +127,6 @@ alias jsonp='python -mjson.tool'
 #simple web server at current director
 alias www='python -m SimpleHTTPServer'
 
-#screen alias
-alias s='screen'
-alias x='exit'
-
 # =======================
 # GHC Development aliases
 # =======================
