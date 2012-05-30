@@ -14,3 +14,6 @@
 	excludefile = /home/david/.gitignore_global
 	excludefile = /home/davidt/.gitignore_global
 	excludefile = /home/dterei/.gitignore_global
+
+[color]
+	ui = true
