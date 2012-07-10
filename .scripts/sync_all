@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+# sync_all - Update my Vim and Shell repos to latest.
+
+pushd ~
+cd Settings && git pull && git push
+cd Vim && git pull && git push
+cd Scraps && git pull && git push
+popd
+

@@ -96,10 +96,6 @@ alias apz='sudo aptitude search'
 alias apc='sudo aptitude changelog'
 alias aps='sudo aptitude show'
 
-# sync all my Settings
-alias sync_all='pushd ~/Settings && git pull && git push && pushd ~/Vim && git pull && git push && pushd ~/Scraps && git pull && git push && popd && popd && popd'
-alias check_all='pushd ~/Settings && echo "Settings" && gz && pushd ~/Vim && echo "Vim" && gz && pushd ~/Scraps && echo "Scraps" && gz && popd && popd && popd'
-
 # Git
 alias g='git'
 alias gg='git log'

@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+# check_all - Check my Vim & Shell repos are up-to-date.
+
+pushd ~
+cd Settings && echo "Settings" && git status
+cd Vim && echo "Vim" && git status
+cd Scraps && echo "Scraps" && git status
+popd
+
