@@ -78,6 +78,9 @@ fi
 
 # Load RVM into a shell session *as a function*
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
+if [ -d "$HOME/.rvm/bin" ] ; then
+	export PATH=$PATH:$HOME/.rvm/bin
+fi
 
 # GHC GVM manager
 if [ -d ~/.gvm/bin/ ] ; then
