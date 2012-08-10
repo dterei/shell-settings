@@ -87,6 +87,19 @@ if [ -d ~/.gvm/bin/ ] ; then
 	export PATH=~/.gvm/bin:${PATH}
 fi
 
+# AWS Tools
+if [ -d ~/Software/ec2-api-tools-1.6.1.2/ ] ; then
+	export EC2_HOME=~/Software/ec2-api-tools-1.6.1.2
+	export PATH=${EC2_HOME}/bin:${PATH}
+fi
+if [ -f ~/.aws_credentials ] ; then
+	source ~/.aws_credentials
+fi
+
+if [ -z "${JAVA_HOME}" ] ; then
+	export JAVA_HOME=/usr
+fi
+
 # set PATH so it includes user's private bin if it exists
 if [ -d ~/Development/bin ] ; then
 	export PATH=~/Development/bin:${PATH}

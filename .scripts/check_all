@@ -2,7 +2,7 @@
 # check_all - Check my Vim & Shell repos are up-to-date.
 
 pushd ~
-cd ~/Settings && echo "Settings" && git status
-cd ~/Vim && echo "Vim" && git status
+cd ~/Settings && echo "Settings" && git status -s
+cd ~/Vim && echo "Vim" && git status -s
 popd
 
