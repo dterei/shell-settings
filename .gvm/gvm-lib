@@ -5,26 +5,44 @@ GVM_CURRENT_FILE=${GVM_HOME}/ghc-current
 GVM_PATHS_FILE=${GVM_HOME}/ghc-paths
 
 GHC_DEFAULT_VERSION=system
-GHC_VERSIONS=(system system2)
-
-GHC_DIRS=$HOME/Software
-GHC_SYSTEM=/usr/bin
-GHC_SYSTEM2=/usr/local/bin
+# we don't really need this, the config file could handle but value of having
+# it built in so a no-config file setup works...
+GHC_EXTERNAL=(system,/usr/bin)
 
 get_ghc_versions() {
-	local ghc_dirs=$( cat ${GVM_PATHS_FILE} | grep "^dir," | sed "s/^dir,//")
-	local v=()
+	local ghc_dirs=$( cat ${GVM_PATHS_FILE} | grep "^dir:" | sed "s/^dir://")
+	local ghcp=()
 
 	for p in ${ghc_dirs[@]}
 	do 
-		pushd ${p} > /dev/null
-		local x=$(ls */bin/ghc | sed "s/\/.*//")
-		v=( ${v[@]} ${x[@]} )
-		popd > /dev/null
+		if [ -d ${p} ]; then
+			pushd ${p} > /dev/null
+			for x in `ls */bin/ghc | sed "s/\/.*//"`
+			do
+				# store as tuple of (description, path)
+				ghcp+=(${x},${p}/${x}/bin)
+			done
+			popd > /dev/null
+		else
+			echo "WARN: Non-existent directory present in config file"
+			echo "    => ${p}"
+		fi
 	done
 
-	local ghcs=$( cat ${GVM_PATHS_FILE} | grep "^ghc," | sed "s/^ghc,//")
-	GHC_VERSIONS=( system system2 ${v[@]} ${ghcs[@]} )
+	local ghc_ind=$( cat ${GVM_PATHS_FILE} | grep "^ghc:" | sed "s/^ghc://")
+	local ghci=()
+
+	for p in ${ghc_ind[@]}
+	do
+		IFS=","; set $p # (name,path)
+		if [ -x ${2}/ghc ]; then
+			ghci+=("${1},${2}")
+		fi
+	done
+
+	unset IFS
+
+	GHC_VERSIONS=( ${GHC_EXTERNAL} ${ghcp[@]} ${ghci[@]} )
 }
 
 get_ghc_version() {
@@ -39,18 +57,38 @@ get_ghc_version() {
 list_ghc_versions() {
 	get_ghc_versions
 	get_ghc_version
-	echo "GHC Versions:"; echo
+	echo "GHC Versions:"
+	echo
 	for v in ${GHC_VERSIONS[@]}
 	do
-		local arch=$( run_ghc_version ${v} ghc '--info' | grep "Target platform" | cut -d, -f3 | sed "s/[\"\)]//g")
-		local vers=$( run_ghc_version ${v} ghc '--info' | grep "Project version" | cut -d, -f3 | sed "s/[\"\)]//g")
-		if [ "${GHC_VERSION}" = "${v}" ]; then
-			printf "=> %-12s %-18s %s\n" ${v} "[${vers}]" "[${arch}]"
-		else
-			printf "   %-12s %-18s %s\n" ${v} "[${vers}]" "[${arch}]"
+		IFS=","; set $v # (name,path)
+		local arch=$( run_ghc_version ${2} ghc '--info' | grep "Target platform" | cut -d, -f3 | sed "s/[\"\)]//g")
+		local vers=$( run_ghc_version ${2} ghc '--info' | grep "Project version" | cut -d, -f3 | sed "s/[\"\)]//g")
+		if [ -n "${vers}" ]; then
+			if [ "${GHC_VERSION}" = "${1}" ]; then
+				printf "=> %-12s %-18s %s\n" ${1} "[${vers}]" "[${arch}]"
+			else
+				printf "   %-12s %-18s %s\n" ${1} "[${vers}]" "[${arch}]"
+			fi
 		fi
 	done
+	unset IFS
 	echo
+}
+
+get_ghc_path() {
+	get_ghc_versions
+	get_ghc_version
+	for v in ${GHC_VERSIONS[@]}
+	do
+		IFS=","; set $v # (name,path)
+		if [ "${GHC_VERSION}" = "${1}" ]; then
+			GHC_PATH=${2}
+			unset IFS
+			return
+		fi
+	done
+	unset IFS
 }
 
 set_ghc_version() {
@@ -59,55 +97,54 @@ set_ghc_version() {
 	nov=1
 	for v in ${GHC_VERSIONS[@]}
 	do
-		if [ "${ver}" = "${v}" ]; then
+		IFS=","; set $v # (name,path)
+		if [ "${ver}" = "${1}" ]; then
 			nov=0
-		elif [ "ghc-${ver}" = "${v}" ]; then
+		elif [ "ghc-${ver}" = "${1}" ]; then
 			nov=0
-			ver=${v}
+			ver=${1}
 		elif [ "${ver}" = "ghc-${v}" ]; then
 			nov=0
-			ver=${v}
+			ver=${1}
 		fi
 	done
 	if [ "${nov}" = "1" ]; then
 		echo "ERROR: Not  aware of such a GHC version: ${ver}"
 	else
 		echo "${ver}" > ${GVM_CURRENT_FILE}
-		echo "Using ghc-${ver}"
+		echo "Using ${ver}"
 	fi
 }
 
 run_ghc_program() {
-	get_ghc_version
-	run_ghc_version ${GHC_VERSION} $@
+	get_ghc_path
+	run_ghc_version ${GHC_PATH} $@
 }
 
 run_ghc_version() {
-	local ver=$1
+	local where=$1
 	local prog=$2
 	shift 2
 	local args=$@
 	
-	if [ "$ver" = "system" ]; then
-		${GHC_SYSTEM}/${prog} ${args}
-	elif [ "$ver" = "system2" ]; then
-		${GHC_SYSTEM2}/${prog} ${args}
+	if [ -x "${where}/${prog}" ]; then
+		${where}/${prog} ${args} ${GVM_OPTS}
 	else
-		${GHC_DIRS}/${ver}/bin/${prog} ${args} ${GVM_OPTS}
+		echo "${where} is not present on this machine..."
 	fi
 }
 
 list_paths() {
-	cat ${GVM_PATHS_FILE} | sed 's/\([^,]*\),/    \1:    /'
+	cat ${GVM_PATHS_FILE} | sed 's/\([^,]*\):/    \1:    /'
 }
 
 add_ghc() {
 	local path=`cd "${1}"; pwd`
-	echo "ghc,${path}" >> ${GVM_PATHS_FILE}
+	echo "ghc:${path}" >> ${GVM_PATHS_FILE}
 }
 
 add_ghc_dir() {
-	local path=`cd "${1}"; pwd`
-	echo "dir,${path}" >> ${GVM_PATHS_FILE}
+	local path=`cd "${2}"; pwd`
+	echo "dir:${1},${path}" >> ${GVM_PATHS_FILE}
 }
 
