@@ -7,11 +7,6 @@
 # LOAD OTHER FILES #
 ####################
 
-# Environment variables
-if [ -f ~/.shenv ]; then
-	source ~/.shenv
-fi
-
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
 
