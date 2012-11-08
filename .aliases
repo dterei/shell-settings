@@ -20,6 +20,11 @@ if [ "$TERM" != "dumb" ]; then
 	fi
 fi
 
+if [ "$OSTYPE" = "darwin12.0" ] ; then
+	name=`echo $SHELL | sed -e 's/\/[^/]+\///'`
+	alias tmux='tmux new-session -n $name "reattach-to-user-namespace -l $SHELL"'
+fi
+
 # have xclip use gtk clipboard
 alias xclip='xclip -sel clip'
 
