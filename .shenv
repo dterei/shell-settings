@@ -35,25 +35,6 @@ if [ -d "${MAILFOLDER}" ]; then
 	export MAIL="${MAILFOLDER}/incoming-mail"
 fi
 
-# tex
-if [ -d "$HOME/tex/" ] ; then
-	export TEXINPUTS=.:$HOME/tex/:$TEXINPUTS
-fi
-
-# my laptop
-if [ "$HOSTNAME" = "david-laptop" ] ; then
-	export WIN=/media/windows/Users/david/
-	export win=/media/windows/Users/david/
-	export UBN=/media/ubuntu/home/david
-	export ubn=/media/ubuntu/home/david
-fi
-
-# bens OSX machine
-if [ "$HOSTNAME" = "desire.cse.unsw.edu.au" ] ; then
-	export HTTP_PROXY="http://www-proxy.cse.unsw.edu.au:3128"
-	export http_proxy="http://www-proxy.cse.unsw.edu.au:3128"
-fi
-
 # default GHC Home
 export GHCHOME=$HOME/Ghc
 
