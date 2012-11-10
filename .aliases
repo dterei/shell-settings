@@ -92,7 +92,12 @@ alias _g='gksu'
 # vim
 alias v='vim'
 
-alias xopen='xdg-open'
+# xopen
+if [ "$OSTYPE" = "darwin12.0" ] ; then
+	alias xopen='open'
+else
+	alias xopen='xdg-open'
+fi
 
 # Aptitude
 alias ap='sudo aptitude'
