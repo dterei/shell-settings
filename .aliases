@@ -92,6 +92,8 @@ alias _g='gksu'
 # vim
 alias v='vim'
 
+alias xopen='xdg-open'
+
 # Aptitude
 alias ap='sudo aptitude'
 alias api='sudo aptitude install'
