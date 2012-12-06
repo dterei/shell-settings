@@ -35,17 +35,6 @@ if [ -d "${MAILFOLDER}" ]; then
 	export MAIL="${MAILFOLDER}/incoming-mail"
 fi
 
-# default GHC Home
-export GHCHOME=$HOME/Ghc
-
-# GHC Dev
-GHCDEV=$GHCHOME/ghc-current/inplace/bin
-if [ -d $GHCDEV ] ; then
-	export GHCDEV=$GHCDEV
-	export GHCDEVBIN=$GHCDEV/ghc-stage2
-	export GHCDEVPKG=$GHCDEV/ghc-pkg
-fi
-
 # Cabal bin
 if [ -d ~/.cabal/bin/ ] ; then
 	export PATH=~/.cabal/bin:${PATH}
@@ -83,19 +72,12 @@ if [ -d /usr/local/heroku/bin/ ] ; then
 	export PATH=/usr/local/heroku/bin:${PATH}
 fi
 
-if [ -z "${JAVA_HOME}" ] ; then
-	export JAVA_HOME=/usr
-fi
-
-# set PATH so it includes user's private bin if it exists
-if [ -d ~/Development/bin ] ; then
-	export PATH=~/Development/bin:${PATH}
-fi
-
+# Private scripts
 if [ -d ~/.scripts ] ; then
 	export PATH=~/.scripts:${PATH}
 fi
 
+# Private executables
 if [ -d ~/bin ] ; then
 	export PATH=~/bin:${PATH}
 fi

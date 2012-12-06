@@ -18,11 +18,6 @@ if [ -f ~/.aliases ]; then
 	source ~/.aliases
 fi
 
-# Ssh agent
-if [ -f ~/.ssh_startup.sh ]; then
-	source ~/.ssh_startup.sh
-fi
-
 if [ -f /etc/zsh_command_not_found ]; then
 	source /etc/zsh_command_not_found
 fi
@@ -156,33 +151,10 @@ promptinit
 # APPEARANCE SETTINGS #
 #######################
 
-# Git display
-function git_prompt_info() {
-  ref=$(git symbolic-ref HEAD 2> /dev/null) || return
-  echo "$GIT_PROMPT_PREFIX${ref#refs/heads/}$(_parse_git_dirty)$GIT_PROMPT_SUFFIX "
-}
-
-function _parse_git_dirty () {
-  if [[ $( (git status 2> /dev/null) | tail -n1 ) != "nothing to commit (working directory clean)" ]]; then
-    echo "$GIT_PROMPT_DIRTY"
-  else
-    echo "$GIT_PROMPT_CLEAN"
-  fi
-}
-
-GIT_PROMPT_PREFIX="%{$fg[green]%}git:(%{$fg[red]%}"
-GIT_PROMPT_SUFFIX="%{$reset_color%}"
-GIT_PROMPT_DIRTY="%{$fg[green]%}) %{$fg[yellow]%}✗%{$reset_color%}"
-GIT_PROMPT_CLEAN="%{$fg[blue]%})"
-
 HOST_SHOW=""
 [[ -n $SSH_CLIENT ]] && HOST_SHOW+="%{$fg_bold[white]%}%m "
 
-#PROMPT="[%{$fg[green]%}%n%{$reset_color%}:%(0?..%{$fg_bold[red]%}%?%{$reset_color%})%{$fg[blue]%}%16<...<%~%<<%{$reset_color%}%(!.#.]) "
-#PROMPT='%{$fg[blue]%}%c $(git_prompt_info)%(0?..${fg_bold[red]}%? )%{$reset_color%}%{${fg[red]}%}»%{${reset_color}%} '
-#PROMPT="%{$reset_color%}%{$fg[blue]%}%c %(0?..%{$fg_bold[red]%}%? )%{$reset_color%}%{$fg[red]%}»%{$reset_color%} "
 PROMPT="%{$reset_color%}[$HOST_SHOW%{$fg[green]%}➜ %{$reset_color%}%{$fg_bold[blue]%}%c%(0?..%{$fg_bold[red]%} %?)%{$reset_color%}] "
 
-#RPROMPT="%{$fg[yellow]%}(%D{%m-%d %H:%M})%{$reset_color%}"
 RPROMPT="%{$fg_bold[green]%}%~%{$reset_color%}"
 

@@ -53,11 +53,6 @@ if [ -f /etc/bash_completion ]; then
 	source /etc/bash_completion
 fi
 
-# Ssh agent
-if [ -f ~/.ssh_startup.sh ]; then
-	source ~/.ssh_startup.sh
-fi
-
 # Alias definitions.
 if [ -f ~/.aliases ]; then
 	source ~/.aliases

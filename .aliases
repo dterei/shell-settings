@@ -38,26 +38,10 @@ fi
 alias grep='grep -E'
 alias gre='grep -E --color=always'
 
-# create alias thats kind of like wget using curl if wget isn't present
-if command -v wget &>/dev/null; then
-	echo h > /dev/null
-else
-	if command -v curl &>/dev/null; then
-		function wget() {
-			file=`echo $1 | sed -e 's/.*\///'`
-			curl -X GET $1 > $file
-		}
-	fi
-fi
-
-alias delay=sleep
-
 # reload profile
 alias rlp='source ~/.profile'
 
 # some more ls aliases
-alias dir='ls --format=vertical'
-alias vdir='ls --format=long'
 alias ll='ls -l'
 alias la='ls -A'
 alias l='ls -CF'
@@ -76,9 +60,7 @@ alias pu='pushd'
 alias po='popd'
 alias d='dirs -v'
 
-#make,remove dir
-alias md='mkdir -p'
-alias rd=rmdir
+# make and change to a directory
 function take() {
   mkdir -p $1
   cd $1
@@ -86,11 +68,6 @@ function take() {
 
 # Super user
 alias _='sudo'
-alias ss='sudo su -'
-alias _g='gksu'
-
-# vim
-alias v='vim'
 
 # xopen
 if [ "$OSTYPE" = "darwin12.0" ] ; then
@@ -129,47 +106,8 @@ alias gfa='git fetch --all'
 alias gr='git remote'
 alias grv='git remote -v'
 
-#json pretty print
-alias jsonp='python -mjson.tool'
-
 #simple web server at current director
 alias www='python -m SimpleHTTPServer'
-
-# =======================
-# GHC Development aliases
-# =======================
-
-alias ghcf='ghc -fforce-recomp'
-alias hc='ghc --make -O2 -fforce-recomp'
-
-alias dghc='$GHCDEVBIN'
-alias dghci='$GHCDEVBIN --interactive'
-alias dghc1='$GHCDEV/ghc-stage1'
-
-alias dghcc='$GHCDEVBIN -fllvm -fforce-recomp -fglasgow-exts -keep-tmp-files'
-alias dghcc1='$GHCDEV/ghc-stage1 -fllvm -fforce-recomp -fglasgow-exts -keep-tmp-files'
-
-alias dghcf='$GHCDEVBIN -fforce-recomp'
-alias dghcf1='$GHCDEV/ghc-stage1 -fforce-recomp'
-
-alias dghc-pkg='$GHCDEV/ghc-pkg'
-
-function hsclean() {
-	find $TMPDIR/ghc* -user `whoami` -delete
-	rm $GHCHOME/*.hi
-	rm $GHCHOME/*.o
-	find $GHCHOME/ -maxdepth 1 -executable -type f -delete
-}
-
-alias rmhs='rm *(*); rm *.o; rm *.hi'
-alias rmhss='rm *(*); rm *.o; rm *.hi; rm *.s; rm *.ll; rm *.bc'
-
-alias dcabal='cabal install --with-ghc=$GHCDEVBIN --with-ghc-pkg=$GHCDEVPKG'
-
-alias dghc_config='runhaskell Setup configure --with-ghc=$GHCDEVBIN --with-ghc-pkg=$GHCDEVPKG'
-alias dghc_build='runhaskell Setup build'
-alias dghc_reg='runhaskell Setup register --inplace'
-alias dghc_pkg='dghc_config && dghc_build && dghc_reg'
 
 # make parallel aliases
 alias make0='make -j16'
