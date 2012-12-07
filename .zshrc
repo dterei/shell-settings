@@ -147,6 +147,14 @@ setopt prompt_subst
 promptinit
 
 
+################
+# KEY SETTINGS #
+################
+
+bindkey '^p' up-line-or-search
+bindkey '^n' down-line-or-search
+
+
 #######################
 # APPEARANCE SETTINGS #
 #######################
