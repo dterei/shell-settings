@@ -4,7 +4,7 @@
 # Author: David Terei
 
 if [ -z "$TMUX" ] ; then
-	export TERM=xterm-256color
+	export TERM="xterm-256color"
 fi
 
 export EDITOR="vim"
@@ -18,13 +18,13 @@ export GREP_OPTIONS='--color=auto'
 export GREP_COLOR='1;32'
 
 # Set tmpdir if not set
-if [ -z "$TMPDIR" ] ; then
-	if [ -n "$TEMPDIR" ] ; then
-		export TMPDIR=$TEMPDIR	
-	elif [ -n "$TMP" ] ; then
-		export TMPDIR=$TMP
+if [ -z "${TMPDIR}" ] ; then
+	if [ -n "${TEMPDIR}" ] ; then
+		export TMPDIR="${TEMPDIR}"
+	elif [ -n "${TMP}" ] ; then
+		export TMPDIR="${TMP}"
 	else
-		export TMPDIR=/tmp
+		export TMPDIR="/tmp"
 	fi
 fi
 
@@ -37,48 +37,47 @@ fi
 
 # Cabal bin
 if [ -d ~/.cabal/bin/ ] ; then
-	export PATH=~/.cabal/bin:${PATH}
+	export PATH="~/.cabal/bin:${PATH}"
 fi
 
-# Brew
 if [ "$OSTYPE" = "darwin12.0" ] ; then
+   # Brew
 	if [ -d /usr/local/bin ] ; then
-		export PATH=/usr/local/bin:/usr/local/sbin:${PATH}
+		export PATH="/usr/local/bin:/usr/local/sbin:${PATH}"
+	fi
+
+   # Postgres.app
+	if [ -d /Applications/Postgres.app/Contents/MacOS/bin/ ] ; then
+		export PATH="/Applications/Postgres.app/Contents/MacOS/bin:${PATH}"
 	fi
 fi
 
-# Load RVM into a shell session *as a function*
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
-if [ -d "$HOME/.rvm/bin" ] ; then
-	export PATH=$PATH:$HOME/.rvm/bin
+# Load rbenv
+if which rbenv > /dev/null; then
+	eval "$(rbenv init -)"
 fi
 
 # GHC GVM manager
 if [ -d ~/.gvm/bin/ ] ; then
-	export PATH=~/.gvm/bin:${PATH}
+	export PATH="~/.gvm/bin:${PATH}"
 fi
 
 # AWS Tools
 if [ -d ~/Software/ec2-api-tools-1.6.1.2/ ] ; then
-	export EC2_HOME=~/Software/ec2-api-tools-1.6.1.2
-	export PATH=${EC2_HOME}/bin:${PATH}
+	export EC2_HOME="~/Software/ec2-api-tools-1.6.1.2"
+	export PATH="${EC2_HOME}/bin:${PATH}"
 fi
 if [ -f ~/.aws_credentials ] ; then
 	source ~/.aws_credentials
 fi
 
-# Heroku
-if [ -d /usr/local/heroku/bin/ ] ; then
-	export PATH=/usr/local/heroku/bin:${PATH}
-fi
-
 # Private scripts
 if [ -d ~/.scripts ] ; then
-	export PATH=~/.scripts:${PATH}
+	export PATH="${HOME}/.scripts:${PATH}"
 fi
 
 # Private executables
 if [ -d ~/bin ] ; then
-	export PATH=~/bin:${PATH}
+	export PATH="${HOME}/bin:${PATH}"
 fi
 
