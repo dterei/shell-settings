@@ -20,8 +20,15 @@ if [ "$TERM" != "dumb" ]; then
 	fi
 fi
 
+# fix tmux on OS X.
 if [ "$OSTYPE" = "darwin12.0" ] ; then
-	alias tm='tmux new-session -n `echo $SHELL | sed -e "s/\/[^/]+\///"` "reattach-to-user-namespace -l $SHELL"'
+	function tmux() {
+		if [ $# -ne 0 ]; then
+			/usr/local/bin/tmux $@
+		else
+			/usr/local/bin/tmux new-session -n `echo $SHELL | sed -e "s/\/[^/]+\///"` "reattach-to-user-namespace -l $SHELL"
+		fi
+	}
 fi
 
 # have xclip use gtk clipboard
