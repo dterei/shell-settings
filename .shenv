@@ -37,7 +37,7 @@ fi
 
 # Cabal bin
 if [ -d ~/.cabal/bin/ ] ; then
-	export PATH="~/.cabal/bin:${PATH}"
+	export PATH="${HOME}/.cabal/bin:${PATH}"
 fi
 
 if [ "$OSTYPE" = "darwin12.0" ] ; then
@@ -59,13 +59,14 @@ fi
 
 # GHC GVM manager
 if [ -d ~/.gvm/bin/ ] ; then
-	export PATH="~/.gvm/bin:${PATH}"
+	export PATH="${HOME}/.gvm/bin:${PATH}"
 fi
 
 # AWS Tools
-if [ -d ~/Software/ec2-api-tools-1.6.1.2/ ] ; then
-	export EC2_HOME="~/Software/ec2-api-tools-1.6.1.2"
+if [ -d ~/Software/ec2-api-tools/ ] ; then
+	export EC2_HOME="${HOME}/Software/ec2-api-tools"
 	export PATH="${EC2_HOME}/bin:${PATH}"
+	export JAVA_HOME="/usr"
 fi
 if [ -f ~/.aws_credentials ] ; then
 	source ~/.aws_credentials
