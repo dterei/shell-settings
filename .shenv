@@ -72,6 +72,11 @@ if [ -f ~/.aws_credentials ] ; then
 	source ~/.aws_credentials
 fi
 
+if [ -d ~/Software/go-1.0.3/ ] ; then
+	export GOROOT=$HOME/Software/go-1.0.3
+	export PATH="${GOROOT}/bin:${PATH}"
+fi
+
 # Private scripts
 if [ -d ~/.scripts ] ; then
 	export PATH="${HOME}/.scripts:${PATH}"
