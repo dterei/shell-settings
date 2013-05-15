@@ -9,5 +9,5 @@ This library is BSD-licensed.
 
 ## Authors
 
-This library is written and maintained by David Terei,
-<code@davidterei.com>.
+This library is written and maintained by [David
+Terei](mailto:code@davidterei.com).
