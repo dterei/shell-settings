@@ -2,9 +2,16 @@
 # hsf - Haskell file search
 
 if [ -n "$1" ]; then
-	find * -regextype posix-extended -regex "[^_].*.(c|h|cmm|l?hs|x|y|pp|cabal)" |\
-	grep -v "_darcs" |\
-	xargs egrep --color=always "`echo $1 | sed -e 's/ /\\\s\+/'`"
+	if [ "$OSTYPE" = "darwin12.0" ] ; then
+		find * -regextype posix-extended -regex "[^_].*.(c|h|cmm|l?hs|x|y|pp|cabal)" |\
+		find -E * -regex "[^_].*.(cc|c|h|cmm|l?hs|x|y|pp|cabal)" |\
+		grep -v "_darcs" |\
+		xargs egrep --color=always "`echo $1 | sed -e 's/ /\\\s\+/'`"
+	else
+		find -E * -regex "[^_].*.(cc|c|h|cmm|l?hs|x|y|pp|cabal)" |\
+		grep -v "_darcs" |\
+		xargs egrep --color=always "`echo $1 | sed -e 's/ /\\\s\+/'`"
+	fi
 else
 	echo "Find all matching Haskell files containing the search term."
 	echo "Usage: hsf <keyword>"
