@@ -4,7 +4,7 @@
 # Author: David Terei
 
 if [ -z "$TMUX" ] ; then
-	export TERM="xterm-256color"
+#	export TERM="xterm-256color"
 fi
 
 export EDITOR="vim"
