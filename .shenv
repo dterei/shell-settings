@@ -3,9 +3,9 @@
 #
 # Author: David Terei
 
-if [ -z "$TMUX" ] ; then
+# if [ -z "$TMUX" ] ; then
 #	export TERM="xterm-256color"
-fi
+# fi
 
 export EDITOR="vim"
 export SVN_EDITOR="vim"
