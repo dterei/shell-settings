@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# sum_cl - Add all lines of input assuming they're numbers
+
+awk '{s+=$1} END {print s}'
+
