@@ -72,9 +72,16 @@ if [ -f ~/.aws_credentials ] ; then
 	source ~/.aws_credentials
 fi
 
-if [ -d ~/Software/go-1.0.3/ ] ; then
-	export GOROOT=$HOME/Software/go-1.0.3
+# Golang
+if [ -d ~/Software/go-1.1.1/ ] ; then
+	export GOROOT=$HOME/Software/go-1.1.1
 	export PATH="${GOROOT}/bin:${PATH}"
+fi
+
+# Scala
+if [ -d ~/Software/scala-2.9.3/ ] ; then
+	export SCALA_HOME="${HOME}/Software/scala-2.9.3"
+	export PATH="${SCALA_HOME}/bin:${PATH}"
 fi
 
 # Private scripts
