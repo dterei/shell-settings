@@ -50,6 +50,16 @@ if [ "$OSTYPE" = "darwin12.0" ] ; then
 	if [ -d /Applications/Postgres.app/Contents/MacOS/bin/ ] ; then
 		export PATH="/Applications/Postgres.app/Contents/MacOS/bin:${PATH}"
 	fi
+
+   # Java
+	export JAVA_HOME="$(/usr/libexec/java_home)"
+fi
+
+# Scala
+#if [ -d ~/Software/scala-2.8.2.final/ ] ; then
+if [ -d ~/Software/scala-2.9.3/ ] ; then
+	export SCALA_HOME="${HOME}/Software/scala-2.9.3"
+	export PATH="${SCALA_HOME}/bin:${PATH}"
 fi
 
 # Load rbenv
@@ -69,8 +79,8 @@ fi
 if [ -d ~/Software/ec2-api-tools/ ] ; then
 	export EC2_HOME="${HOME}/Software/ec2-api-tools"
 	export PATH="${EC2_HOME}/bin:${PATH}"
-	export JAVA_HOME="/usr"
 fi
+
 if [ -f ~/.aws_credentials ] ; then
 	source ~/.aws_credentials
 fi
