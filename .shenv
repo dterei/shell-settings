@@ -65,6 +65,10 @@ fi
 # Load rbenv
 if [ -d ~/.rbenv/bin/ ] ; then
 	export PATH="${HOME}/.rbenv/bin:${PATH}"
+	# manually do this as otherwise tmux doesn't work since it reloads the path
+	# (duplicating entries) but rbenv checks the path and doesn't duplicate...
+	# leading the the system ruby at the front.
+	export PATH="${HOME}/.rbenv/shims:${PATH}"
 fi
 if which rbenv > /dev/null; then
 	eval "$(rbenv init -)"
