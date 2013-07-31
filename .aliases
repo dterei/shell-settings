@@ -91,6 +91,17 @@ alias apz='sudo aptitude search'
 alias apc='sudo aptitude changelog'
 alias aps='sudo aptitude show'
 
+# Pacman
+alias pm='sudo pacman'
+
+# Cabal
+alias cb='cabal'
+alias cbd='cabal install --only-dependencies'
+alias cbi='cabal install '
+alias cbc='cabal configure --enable-tests'
+alias cbb='cabal build'
+alias cbt='cabal test'
+
 # Git
 alias g='git'
 alias gg='git log'
