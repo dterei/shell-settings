@@ -160,7 +160,7 @@ bindkey '^n' down-line-or-search
 #######################
 
 HOST_SHOW=""
-[[ -n $SSH_CLIENT ]] && HOST_SHOW+="%{$fg_bold[white]%}%m "
+[[ -n $SSH_CLIENT ]] && HOST_SHOW+="%{$fg_bold[white]%}%m: "
 
 PROMPT="%{$reset_color%}[$HOST_SHOW%{$fg[green]%}➜ %{$reset_color%}%{$fg_bold[blue]%}%c%(0?..%{$fg_bold[red]%} %?)%{$reset_color%}] "
 
