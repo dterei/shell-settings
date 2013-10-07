@@ -1,6 +1,6 @@
 [user]
 	name = David Terei
-	email = davidterei@gmail.com
+	email = code@davidterei.com
 [giggle]
 	main-window-maximized = true
 	main-window-geometry = 483x337+857+252
@@ -14,7 +14,6 @@
 	excludefile = /home/david/.gitignore_global
 	excludefile = /home/davidt/.gitignore_global
 	excludefile = /home/dterei/.gitignore_global
-
 [color]
 	ui = true
 [diff]
