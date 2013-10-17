@@ -90,8 +90,8 @@ if [ -f ~/.aws_credentials ] ; then
 fi
 
 # Golang
-if [ -d ~/Software/go-1.1.1/ ] ; then
-	export GOROOT=$HOME/Software/go-1.1.1
+if [ -d ~/Software/go-1.1.2/ ] ; then
+	export GOROOT=$HOME/Software/go-1.1.2
 	export PATH="${GOROOT}/bin:${PATH}"
 fi
 
