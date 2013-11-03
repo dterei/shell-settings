@@ -40,7 +40,7 @@ if [ -d ~/.cabal/bin/ ] ; then
 	export PATH="${HOME}/.cabal/bin:${PATH}"
 fi
 
-if [ "$OSTYPE" = "darwin12.0" ] ; then
+if [ "$OSTYPE" = "darwin13.0" ] ; then
    # Brew
 	if [ -d /usr/local/bin ] ; then
 		export PATH="/usr/local/bin:/usr/local/sbin:${PATH}"
