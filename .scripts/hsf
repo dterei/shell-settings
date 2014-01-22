@@ -8,7 +8,7 @@ if [ -n "$1" ]; then
 		grep -v "_darcs" |\
 		xargs egrep --color=always "`echo $1 | sed -e 's/ /\\\s\+/'`"
 	else
-		find -E * -regex "[^_].*.(cc|c|h|cmm|l?hs|x|y|pp|cabal)" |\
+		find -regextype posix-extended -regex "[^_].*\.(cc|c|h|cmm|l?hs|x|y|pp|cabal)" |\
 		grep -v "_darcs" |\
 		xargs egrep --color=always "`echo $1 | sed -e 's/ /\\\s\+/'`"
 	fi
