@@ -101,6 +101,11 @@ if [ -d ~/Software/scala-2.9.3/ ] ; then
 	export PATH="${SCALA_HOME}/bin:${PATH}"
 fi
 
+# Heroku
+if [ -d /usr/local/heroku/bin/ ] ; then
+  export PATH="/usr/local/heroku/bin:$PATH"
+fi
+
 # Private scripts
 if [ -d ~/.scripts ] ; then
 	export PATH="${HOME}/.scripts:${PATH}"
