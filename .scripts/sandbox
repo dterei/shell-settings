@@ -12,7 +12,7 @@ while :; do
 	dir=${dir%/*}
 done
 
-db=$(sed -ne '/^package-db: */{s///p;q}' "$conf")
+db=$(sed -ne '/^package-db: */{s///p;}' "$conf")
 if [[ ! -d $db ]]; then
 	echo "$db: does not exist"
 	return 1

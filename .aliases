@@ -150,3 +150,6 @@ alias make18='make -j18'
 alias make19='make -j19'
 alias make20='make -j20'
 
+# memcachier
+alias dbpovo='heroku pg:psql HEROKU_POSTGRESQL_CHARCOAL_URL --app povo-db'
+alias dbdero='heroku pg:psql --app dero-db'
