@@ -96,7 +96,7 @@ alias pm='sudo pacman'
 
 # Cabal
 alias cb='cabal'
-alias cbd='cabal install --only-dependencies'
+alias cbd='cabal install --only-dependencies --enable-tests'
 alias cbi='cabal install '
 alias cbc='cabal configure --enable-tests'
 alias cbb='cabal build'
