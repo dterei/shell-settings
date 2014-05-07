@@ -35,11 +35,6 @@ if [ -d "${MAILFOLDER}" ]; then
 	export MAIL="${MAILFOLDER}/incoming-mail"
 fi
 
-# Cabal bin
-if [ -d ~/.cabal/bin/ ] ; then
-	export PATH="${HOME}/.cabal/bin:${PATH}"
-fi
-
 if [ "$OSTYPE" = "darwin13.0" ] ; then
    # Brew
 	if [ -d /usr/local/bin ] ; then
@@ -55,13 +50,17 @@ if [ "$OSTYPE" = "darwin13.0" ] ; then
 	export JAVA_HOME="$(/usr/libexec/java_home)"
 fi
 
+# Cabal bin
+if [ -d ~/.cabal/bin/ ] ; then
+	export PATH="${HOME}/.cabal/bin:${PATH}"
+fi
+
 # Heroku
 if [ -d /usr/local/heroku/bin/ ] ; then
   export PATH="${PATH}:/usr/local/heroku/bin"
 fi
 
 # Scala
-#if [ -d ~/Software/scala-2.8.2.final/ ] ; then
 if [ -d ~/Software/scala-2.9.3/ ] ; then
 	export SCALA_HOME="${HOME}/Software/scala-2.9.3"
 	export PATH="${SCALA_HOME}/bin:${PATH}"
@@ -100,17 +99,6 @@ if [ -d ~/Software/go-1.1.2/ ] ; then
 	export PATH="${GOROOT}/bin:${PATH}"
 fi
 
-# Scala
-if [ -d ~/Software/scala-2.9.3/ ] ; then
-	export SCALA_HOME="${HOME}/Software/scala-2.9.3"
-	export PATH="${SCALA_HOME}/bin:${PATH}"
-fi
-
-# Heroku
-if [ -d /usr/local/heroku/bin/ ] ; then
-  export PATH="/usr/local/heroku/bin:$PATH"
-fi
-
 # Private scripts
 if [ -d ~/.scripts ] ; then
 	export PATH="${HOME}/.scripts:${PATH}"
@@ -121,39 +109,3 @@ if [ -d ~/bin ] ; then
 	export PATH="${HOME}/bin:${PATH}"
 fi
 
-# Cabal sandbox command
-cabal() {
-  if [[ $1 == "exec" ]]
-  then
-    shift
-    local dir=$PWD conf db
-    while :; do
-        conf=$dir/cabal.sandbox.config
-        [[ ! -f $conf ]] || break
-        if [[ -z $dir ]]; then
-            echo "Cannot find cabal.sandbox.config" >&2
-            return 1
-        fi
-        dir=${dir%/*}
-    done
-
-    db=$(sed -ne '/^package-db: */{s///p;q;}' "$conf")
-    if [[ ! -d $db ]]; then
-        echo "$db: does not exist"
-        return 1
-    fi
-
-    if which tac > /dev/null; then
-      pkg_path=$(command cabal sandbox hc-pkg list 2> /dev/null | grep \: | tac | sed 's/://' | paste -d: - -)
-    else
-      pkg_path=$(command cabal sandbox hc-pkg list 2> /dev/null | grep \: | tail -r | sed 's/://' | paste -d: - -)
-    fi
-    if [[ $# == 0 ]]; then
-        echo GHC_PACKAGE_PATH=${pkg_path}:
-    else
-        GHC_PACKAGE_PATH=${pkg_path} PATH=$(dirname $db)/bin:$PATH "$@"
-    fi
-  else
-    command cabal $@
-  fi
-}
