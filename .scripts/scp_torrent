@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+# scp_torrent - Copy torrent to stanford machine for seeding
+
+if [ -n "$1" ]; then
+  scp $1 davidt@davidt.scs.stanford.edu:~/Torrents/
+else
+	echo "Copy torrent to stanford machine for seeding"
+	echo "Usage: scp_torrent <file>"
+fi
+
