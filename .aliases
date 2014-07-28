@@ -125,7 +125,7 @@ alias gr='git remote'
 alias grv='git remote -v'
 
 #simple web server at current director
-alias www='python -m SimpleHTTPServer'
+alias www='python -m http.server'
 
 # make parallel aliases
 alias make0='make -j16'
@@ -151,5 +151,6 @@ alias make19='make -j19'
 alias make20='make -j20'
 
 # memcachier
-alias dbpovo='heroku pg:psql HEROKU_POSTGRESQL_GRAY_URL --app povo-db'
+alias dbpovo='heroku pg:psql DATABASE_URL --app povo-db'
+alias dbpovo-stag='heroku pg:psql DATABASE_URL --app povo-db-staging'
 alias dbdero='heroku pg:psql --app dero-db'
