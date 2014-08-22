@@ -18,3 +18,5 @@
 	ui = true
 [diff]
 	ignoreSubmodules = dirty
+[url "ssh://git@git.haskell.org/"]
+	pushInsteadOf = git://git.haskell.org/
