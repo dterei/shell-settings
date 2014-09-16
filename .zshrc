@@ -168,6 +168,9 @@ PROMPT="%{$reset_color%}[$HOST_SHOW%{$reset_color%}%c%(0?..%{$fg_bold[red]%} %?)
 
 RPROMPT="%{$fg_bold[green]%}%~%{$reset_color%}"
 
+if [[ -f ~/Settings/zsh-completes/aws_zsh_completer.sh ]]; then
+  source ~/Settings/zsh-completes/aws_zsh_completer.sh
+fi
 
 ###############
 # GO COMPLETE #
