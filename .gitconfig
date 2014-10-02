@@ -10,10 +10,7 @@
 [push]
 	default = upstream
 [core]
-	excludefile = /Users/david/.gitignore_global
-	excludefile = /home/david/.gitignore_global
-	excludefile = /home/davidt/.gitignore_global
-	excludefile = /home/dterei/.gitignore_global
+	excludesfile = ~/.gitignore_global
 [color]
 	ui = true
 [diff]

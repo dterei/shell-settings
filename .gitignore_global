@@ -6,6 +6,7 @@
 *.dll
 *.so
 *.a
+.vimrc_local.vim
 
 # OS Generated Files
 .DS_Store*
