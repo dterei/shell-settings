@@ -35,7 +35,12 @@ if [ -d "${MAILFOLDER}" ]; then
 	export MAIL="${MAILFOLDER}/incoming-mail"
 fi
 
-if [ "$OSTYPE" = "darwin13.0" ] ; then
+if [ "$OSTYPE" = "darwin14.0" ] ; then
+  # XCode Tools
+  if [ -d /Library/Developer/CommandLineTools/usr/bin ] ; then
+    export PATH="/Library/Developer/CommandLineTools/usr/bin:${PATH}"
+  fi
+
    # Brew
 	if [ -d /usr/local/bin ] ; then
 		export PATH="/usr/local/bin:/usr/local/sbin:${PATH}"

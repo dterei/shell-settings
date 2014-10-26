@@ -3,7 +3,7 @@
 
 unset cfg
 
-if [ "$OSTYPE" = "darwin13" ] ; then
+if [ "$OSTYPE" = "darwin14" ] ; then
 	cfg=$HOME/.tmux-osx.conf
 	path=/usr/local/bin/tmux
 else
