@@ -14,6 +14,13 @@ fi
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
 
+# Use zsh instead if it exists
+if [ -x /usr/bin/zsh ]; then
+	echo "switching from bash to zsh..."
+	zsh
+	exit 0
+fi
+
 # don't put duplicate lines in the history. See bash(1) for more options
 # ... and ignore same sucessive entries.
 #export HISTCONTROL=ignoredups

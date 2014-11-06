@@ -52,6 +52,9 @@ bindkey -e
 # Make C-w use directory structure
 WORDCHARS=''
 
+# Short delay on waiting for <ESC> to mean escape a char
+KEYTIMEOUT=1
+
 # Load mime setup
 autoload -U zsh-mime-setup
 zsh-mime-setup
