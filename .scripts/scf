@@ -7,7 +7,7 @@ FILE_REGEX="[^_].*\.${FILE_TYPES}"
 me=`basename $0`
 
 if [ -n "$1" ]; then
-	if [ "$OSTYPE" = "darwin12.0" ] ; then
+	if [ "$OSTYPE" = "darwin14" ] ; then
 		find -E * -regex "${FILE_REGEX}" |\
 		grep -v "_darcs" |\
 		grep -v "gopath" |\
