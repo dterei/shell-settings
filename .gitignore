@@ -1,3 +1,5 @@
 .gvm/ghc-current
 .gvm/ghc-paths
 .DS_Store*
+.ghc/ghci_history
+.ghc/x86_64-*
