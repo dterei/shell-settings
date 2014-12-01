@@ -51,6 +51,11 @@ if [ "$OSTYPE" = "darwin14.0" ] ; then
 		export PATH="/Applications/Postgres.app/Contents/Versions/9.3/bin:${PATH}"
 	fi
 
+  # Setting PATH for Python 2.7
+	if [ -d /Library/Frameworks/Python.framework/Versions/2.7/bin/ ] ; then
+    export PATH="/Library/Frameworks/Python.framework/Versions/2.7/bin:${PATH}"
+  fi
+
    # Java
 	export JAVA_HOME="$(/usr/libexec/java_home)"
 fi
