@@ -329,3 +329,8 @@ __go_tool_complete() {
 
 compdef __go_tool_complete go
 
+# The next line updates PATH for the Google Cloud SDK.
+if [ -d ${HOME}/Software/google-cloud-sdk/ ]; then
+  source '/Users/davidt/Software/google-cloud-sdk/completion.zsh.inc'
+fi
+
