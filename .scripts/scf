@@ -7,19 +7,22 @@ FILE_REGEX="[^_].*\.${FILE_TYPES}"
 me=`basename $0`
 
 if [ -n "$1" ]; then
-	if [ "$OSTYPE" = "darwin14" ] ; then
-		find -E * -regex "${FILE_REGEX}" |\
-		grep -v "_darcs" |\
-		grep -v "gopath" |\
-		xargs egrep --color=always "`echo $1 | sed -e 's/ /\\\s\+/'`"
-	else
-		find * -regextype posix-extended -regex "${FILE_REGEX}" |\
-		grep -v "_darcs" |\
-		grep -v "gopath" |\
-		xargs egrep --color=always "`echo $1 | sed -e 's/ /\\\s\+/'`"
-	fi
+  if hash ag 2>/dev/null; then
+    ag $@
+  else
+    if [ "$OSTYPE" = "darwin14" ] ; then
+      find -E * -regex "${FILE_REGEX}" |\
+      grep -v "_darcs" |\
+      grep -v "gopath" |\
+      xargs egrep --color=always "`echo $1 | sed -e 's/ /\\\s\+/'`"
+    else
+      find * -regextype posix-extended -regex "${FILE_REGEX}" |\
+      grep -v "_darcs" |\
+      grep -v "gopath" |\
+      xargs egrep --color=always "`echo $1 | sed -e 's/ /\\\s\+/'`"
+    fi
+  fi
 else
   echo "Find all matching source code files containing the search term."
-	echo "Usage: $me <keyword>"
+  echo "Usage: $me <keyword>"
 fi
-
