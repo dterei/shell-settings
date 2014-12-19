@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# sum_space - Replace all whitespace with a single space
+
+sed 's/	/ /g' | sed 's/  */ /g' | sed 's/^ *//' | sed 's/ *$//'
+

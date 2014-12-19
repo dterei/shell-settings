@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 # sum_cl - Trim line.
 
-sed -r 's/^\s+//' | sed -r 's/\s+$//'
+# remove tabs
+sed 's/^	//' | sed 's/	$//' |\
+  # remove spaces
+  sed 's/^ *//' | sed 's/ *$//'
 
