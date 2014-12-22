@@ -9,6 +9,10 @@
 
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
+[[ $- != *i* ]] && return
+
+# launch tmux!
+[[ -z "$TMUX" ]] && exec tmux
 
 autoload -U zsh/pcre
 autoload -U zmv
