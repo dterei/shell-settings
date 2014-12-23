@@ -41,7 +41,7 @@ elif echo "a" | sed -E "s/a//" &>/dev/null; then
 	alias sed='sed -E'
 fi
 
-alias grep='grep -E'
+alias grep='grep -E --color=auto'
 alias gre='grep -E --color=always'
 
 # reload profile
