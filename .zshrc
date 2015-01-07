@@ -12,7 +12,7 @@
 [[ $- != *i* ]] && return
 
 # launch tmux!
-[[ -z "$TMUX" ]] && tmux
+# [[ -z "$TMUX" ]] && tmux
 
 autoload -U zsh/pcre
 autoload -U zmv
