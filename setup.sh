@@ -1,30 +1,34 @@
 #!/bin/sh
 
+# settings location
 #DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd  )
-DIR="$HOME/Settings"
+DIR=`pwd`
 
-ln -sf "${DIR}/.aliases" ~/.aliases
-ln -sf "${DIR}/.bashrc" ~/.bashrc
-ln -sf "${DIR}/.gdbinit" ~/.gdbinit
-ln -sf "${DIR}/.fluxbox" ~/.fluxbox
-ln -sf "${DIR}/.fonts" ~/.fonts
-ln -sf "${DIR}/.fonts.conf" ~/.fonts.conf
-ln -sf "${DIR}/.ghc" ~/.ghc
-ln -sf "${DIR}/.gitconfig" ~/.gitconfig
-ln -sf "${DIR}/.gitignore_global" ~/.gitignore_global
-ln -sf "${DIR}/.irbrc" ~/.irbrc
-ln -sf "${DIR}/.mailrc" ~/.mailrc
-ln -sf "${DIR}/.muttrc" ~/.muttrc
-ln -sf "${DIR}/.profile" ~/.profile
-ln -sf "${DIR}/.screenrc" ~/.screenrc
-ln -sf "${DIR}/.scripts/" ~/.scripts
-ln -sf "${DIR}/.shenv" ~/.shenv
-ln -sf "${DIR}/.tmux.conf" ~/.tmux.conf
-ln -sf "${DIR}/.zprofile" ~/.zprofile
-ln -sf "${DIR}/.zshrc" ~/.zshrc
+# files to ignore processing
+IGNORE=". .. .gitignore"
+ignore() {
+  b=`basename $1`
+  for f in $IGNORE
+  do
+    if [ "$f" == "$b" ]; then
+      return 1
+    fi
+  done
+  return 0
+}
 
-ln -sf "${DIR}/.Xresources" ~/.Xresources
-ln -sf "${DIR}/.Xmodmap" ~/.Xmodmap
+# process all . files
+for x in $DIR/.*
+do
+  ignore $x
+  if [ $? -eq 1 ]; then
+    continue
+  fi
+  # echo Processing $x
+  ln -sfF "${x}" ~/
+done
 
+# process any other files
+# echo Processing $DIR/.ssh/config
 ln -sf "${DIR}/config" ~/.ssh/config
 
