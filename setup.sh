@@ -5,7 +5,7 @@
 DIR=`pwd`
 
 # files to ignore processing
-IGNORE=". .. .gitignore"
+IGNORE=". .. .gitignore .git"
 ignore() {
   b=`basename $1`
   for f in $IGNORE
