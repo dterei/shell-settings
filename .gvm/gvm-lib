@@ -17,7 +17,7 @@ get_ghc_versions() {
 	do 
 		if [ -d ${p} ]; then
 			pushd ${p} > /dev/null
-			for x in `ls */bin/ghc | sed "s/\/.*//"`
+			for x in `ls */bin/ghc 2> /dev/null | sed "s/\/.*//"`
 			do
 				# store as tuple of (description, path)
 				ghcp+=(${x},${p}/${x}/bin)
@@ -135,7 +135,7 @@ run_ghc_version() {
 }
 
 list_paths() {
-	cat ${GVM_PATHS_FILE} | sed 's/\([^,]*\):/    \1:    /'
+	cat ${GVM_PATHS_FILE} | sed 's/\(^[^#][^,]*\):/    \1:    /'
 }
 
 add_ghc() {
