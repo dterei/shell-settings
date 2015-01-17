@@ -157,3 +157,14 @@ alias make20='make -j20'
 alias dbpovo='heroku pg:psql DATABASE_URL --app povo-db'
 alias dbpovo-stag='heroku pg:psql DATABASE_URL --app povo-db-staging'
 alias dbdero='heroku pg:psql --app dero-db'
+
+if [ -n "${ZSH_VERSION}" ]; then
+  # global aliases
+  alias -g L="| less"
+  alias -g T="| tail"
+  alias -g H="| head"
+  alias -g LL="2>&1 | less"
+  alias -g NE="2> /dev/null"
+  alias -g NUL="> /dev/null 2>&1"
+fi
+
