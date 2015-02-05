@@ -192,3 +192,10 @@ if [ -d ${HOME}/Software/google-cloud-sdk/ ]; then
   source '/Users/davidt/Software/google-cloud-sdk/completion.zsh.inc'
 fi
 
+##################
+# PROMPT_COMMAND #
+##################
+
+# emulate Bash's PROMPT_COMMAND feature
+precmd() { eval "$PROMPT_COMMAND" }
+
