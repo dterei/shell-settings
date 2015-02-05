@@ -16,6 +16,8 @@
 
 autoload -U zsh/pcre
 autoload -U zmv
+autoload -U zcalc
+autoload -U zargs
 
 # Alias definitions.
 if [ -f ~/.aliases ]; then
