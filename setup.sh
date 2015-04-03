@@ -32,3 +32,6 @@ done
 # echo Processing $DIR/.ssh/config
 ln -sf "${DIR}/config" ~/.ssh/config
 
+# setup zsh
+mkdir -p $HOME/.zsh
+
