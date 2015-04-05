@@ -76,10 +76,12 @@ function take() {
 alias _='sudo'
 
 # xopen
-if [ "$OSTYPE" = "darwin12.0" ] ; then
+if [[ "$OSTYPE" =~ "darwin" ]]; then
 	alias xopen='open'
+  alias openvpn-start='sudo openvpn --config /usr/local/etc/openvpn/client.conf'
 else
 	alias xopen='xdg-open'
+  alias openvpn-start='sudo openvpn --config /etc/openvpn/client.conf'
 fi
 
 # Aptitude
