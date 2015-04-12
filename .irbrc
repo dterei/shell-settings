@@ -10,3 +10,14 @@ def mem(host,user,pass)
   return Dalli::Client.new(host, :username => user, :password => pass)
 end
 
+def pp_stats(stats)
+  stats.sort.map do |k,v|
+    puts "## #{k}"
+    v.sort.map do |k2, v2|
+      puts "#{k2} => #{v2}"
+    end
+  end
+
+  return nil
+end
+
