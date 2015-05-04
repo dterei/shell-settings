@@ -106,6 +106,16 @@ if [ -d ${HOME}/Software/google-cloud-sdk/ ]; then
   fi
 fi
 
+# GHC
+if [ -d /opt/ghc/7.10.1/ ]; then
+  export PATH=/opt/ghc/7.10.1/bin:${PATH}
+fi
+
+# Cabal
+if [ -d /opt/cabal/1.22/ ]; then
+  export PATH=/opt/cabal/1.22/bin:${PATH}
+fi
+
 # mahimahi
 if [ -d ${HOME}/Software/mahimahi/bin ]; then
   export PATH="${HOME}/Software/mahimahi/bin:${PATH}"
