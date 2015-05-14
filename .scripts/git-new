@@ -1,0 +1,37 @@
+#!/bin/bash
+
+who=davidt
+remote=market.scs.stanford.edu
+location=repos
+
+function usage() {
+  echo "Usage: [-p] <repo name>"
+  echo ""
+  echo "    -p     Push current repo to new remote"
+  echo ""
+  echo "Sets up a new repo on market to push to."
+  exit 1
+}
+
+if [ $# -gt 2 -o $# -eq 0 ]; then
+  usage
+fi
+
+if [ $# -eq 2 ]; then
+  if [ $1 = "-p" ]; then
+    push=y
+    repo=$2
+  else
+    usage
+  fi
+else
+  repo=$1
+fi
+
+ssh $who@$remote "git init --bare $location/${repo}.git"
+
+if [ $push = "y" ]; then
+  git remote add origin $who@$remote:$location/${repo}.git
+  git push origin master:master
+fi
+
