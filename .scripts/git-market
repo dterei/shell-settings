@@ -1,0 +1,21 @@
+#!/bin/bash
+
+who=davidt
+remote=market.scs.stanford.edu
+location=repos
+
+function usage() {
+  echo "Usage: <repo name>"
+  echo ""
+  echo "Clones a repo from market of the name given."
+  exit 1
+}
+
+if [ $# -ne 1 ]; then
+  usage
+fi
+
+repo=$1
+
+git clone $who@$remote:$location/${repo}.git
+
