@@ -76,11 +76,6 @@ if which rbenv > /dev/null; then
 	eval "$(rbenv init -)"
 fi
 
-# GHC GVM manager
-if [ -d ~/.gvm/bin/ ] ; then
-	export PATH="${HOME}/.gvm/bin:${PATH}"
-fi
-
 # AWS Tools
 if [ -d ~/Software/ec2-api-tools/ ] ; then
 	export EC2_HOME="${HOME}/Software/ec2-api-tools"
@@ -103,6 +98,13 @@ GOROOT=${HOME}/Software/go-1.4/
 if [ -d ${GOROOT} ]; then
   export GOROOT=${GOROOT}
   export PATH=${GOROOT}/bin:${PATH}
+fi
+
+# Perf-tools
+PERFTOOLS=${HOME}/Software/perf-tools
+if [ -d ${PERFTOOLS} ]; then
+  export PATH=${PERFTOOLS}/bin:${PATH}
+  export MANPATH=${PERFTOOLS}/man:${MANPATH}
 fi
 
 # Google Cloud SDK
