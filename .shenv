@@ -98,6 +98,13 @@ if [ -d ${GOPATH} ]; then
   export PATH="${GOPATH}/bin:${PATH}"
 fi
 
+# Golang
+GOROOT=${HOME}/Software/go-1.4/
+if [ -d ${GOROOT} ]; then
+  export GOROOT=${GOROOT}
+  export PATH=${GOROOT}/bin:${PATH}
+fi
+
 # Google Cloud SDK
 if [ -d ${HOME}/Software/google-cloud-sdk/ ]; then
   if [ -n $ZSH_VERSION ]; then
