@@ -5,7 +5,7 @@
 DIR=`pwd`
 
 # files to ignore processing
-IGNORE=". .. .gitignore .git"
+IGNORE=". .. .mailrc .gitignore .git"
 ignore() {
   b=`basename $1`
   for f in $IGNORE
@@ -27,6 +27,13 @@ do
   # echo Processing $x
   ln -sfF "${x}" ~/
 done
+
+# setup mailrc
+if [[ "$OSTYPE" =~ "darwin" ]]; then
+  ln -sf "${DIR}/mailrc-osx" ~/.mailrc
+else
+  ln -sf "${DIR}/mailrc" ~/.mailrc
+fi
 
 # process any other files
 # echo Processing $DIR/.ssh/config
