@@ -27,6 +27,11 @@ if [ -z "${TMPDIR}" ] ; then
 	fi
 fi
 
+# run ssh-agent if logged in via SSH (otherwise we rely on gnome).
+if [ -n "$SSH_CLIENT"  ] || [ -n "$SSH_TTY"  ]; then
+  . ~/.ssh_startup.sh
+fi
+
 # set maildrop location
 MAILFOLDER=~/.Mail
 if [ -d "${MAILFOLDER}" ]; then
