@@ -1,9 +1,9 @@
-#!/bin/sh
+#!/usr/bin/env bash
 # tmux wrapper to conditionally load tmux-osx.conf on osx.
 
 unset cfg
 
-if [ "$OSTYPE" = "darwin14" ] ; then
+if [[ "$OSTYPE" =~ "darwin" ]]; then
 	cfg=$HOME/.tmux-osx.conf
 	path=/usr/local/bin/tmux
 else

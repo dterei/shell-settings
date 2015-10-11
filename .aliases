@@ -20,17 +20,6 @@ if [ "$TERM" != "dumb" ]; then
 	fi
 fi
 
-# fix tmux on OS X.
-if [ "$OSTYPE" = "darwin12.0" ] ; then
-	function tmux() {
-		if [ $# -ne 0 ]; then
-			/usr/local/bin/tmux $@
-		else
-			/usr/local/bin/tmux new-session -n `echo $SHELL | sed -e "s/\/[^/]+\///"` "reattach-to-user-namespace -l $SHELL"
-		fi
-	}
-fi
-
 # have xclip use gtk clipboard
 alias xclip='xclip -sel clip'
 
@@ -78,7 +67,7 @@ alias _='sudo'
 # xopen
 if [[ "$OSTYPE" =~ "darwin" ]]; then
 	alias xopen='open'
-  alias openvpn-start='sudo openvpn --config /usr/local/etc/openvpn/client.conf'
+  alias openvpn-start='sudo /usr/local/sbin/openvpn --config /usr/local/etc/openvpn/client.conf'
 else
 	alias xopen='xdg-open'
   alias openvpn-start='sudo openvpn --config /etc/openvpn/client.conf'
