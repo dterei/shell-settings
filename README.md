@@ -1,7 +1,6 @@
 # Shell Settings
 
-My personal shell settings, heavily customised and refined over the
-years.
+My personal shell settings, heavily customised and refined over the years.
 
 ## Licensing
 
