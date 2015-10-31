@@ -7,7 +7,10 @@
 #	export TERM="xterm-256color"
 # fi
 
-umask 007
+# Stricter permissions just ends up causing issues, mostly as then sudo creates
+# root files with broken permissions. This can be fixed by editing sudodoers,
+# but fuck it... urgh.
+# umask 007
 
 export EDITOR="vim"
 export SVN_EDITOR="vim"
