@@ -31,8 +31,10 @@ if [ -z "${TMPDIR}" ] ; then
 fi
 
 # run ssh-agent if logged in via SSH (otherwise we rely on gnome).
-if [ -n "$SSH_CLIENT"  ] || [ -n "$SSH_TTY"  ]; then
-  . ~/.ssh_startup.sh
+if [ -n "$PS1" ]; then
+  if [ -n "$SSH_CLIENT"  ] || [ -n "$SSH_TTY"  ]; then
+    . ~/.ssh_startup.sh
+  fi
 fi
 
 # set maildrop location
