@@ -121,8 +121,8 @@ if [ -d ${HOME}/Software/google-cloud-sdk/ ]; then
 fi
 
 # GHC
-if [ -d /opt/ghc/7.10.1/ ]; then
-  export PATH=/opt/ghc/7.10.1/bin:${PATH}
+if [ -d /opt/ghc/7.10.2/ ]; then
+  export PATH=/opt/ghc/7.10.2/bin:${PATH}
 fi
 
 # Cabal
