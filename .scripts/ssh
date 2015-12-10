@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+# ssh - wrapper around SSH to add lazy ssh-add support
+
+# Run ssh-add if no keys loaded
+ssh-add -l > /dev/null
+if [[ $? != 0 ]]; then
+  ssh-add
+fi
+
+# Run ssh as normal
+/usr/bin/ssh $@
