@@ -30,7 +30,7 @@ fi
 
 ssh $who@$remote "git init --bare $location/${repo}.git"
 
-if [ $push = "y" ]; then
+if [ "$push" = "y" ]; then
   git remote add origin $who@$remote:$location/${repo}.git
   git push origin master:master
 fi
