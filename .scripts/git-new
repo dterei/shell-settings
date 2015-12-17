@@ -5,33 +5,48 @@ remote=market.scs.stanford.edu
 location=repos
 
 function usage() {
-  echo "Usage: [-p] <repo name>"
+  echo "Usage: [-p] [-a NAME] <repo name>"
   echo ""
-  echo "    -p     Push current repo to new remote"
+  echo "    -p       Push current repo to new remote"
+  echo "    -a NAME  Add new repo as remote using NAME"
   echo ""
   echo "Sets up a new repo on market to push to."
   exit 1
 }
 
-if [ $# -gt 2 -o $# -eq 0 ]; then
+if [ $# -gt 4 -o $# -eq 0 ]; then
   usage
 fi
 
-if [ $# -eq 2 ]; then
-  if [ $1 = "-p" ]; then
+while (( "$#" )); do
+  if [ $# -eq 1 ]; then
+    repo=$1
+  elif [ $1 = "-p" ]; then
     push=y
-    repo=$2
+  elif [ $1 = "-a" ]; then
+    if [ $# -lt 2 ]; then
+      usage
+    fi
+    addr=y
+    rname=$2
+    shift
   else
     usage
   fi
-else
-  repo=$1
+  shift
+done
+
+if [ -z "$repo" ]; then
+  usage
 fi
 
 ssh $who@$remote "git init --bare $location/${repo}.git"
 
 if [ "$push" = "y" ]; then
-  git remote add origin $who@$remote:$location/${repo}.git
-  git push origin master:master
+  git push "$who@$remote:$location/${repo}.git" master:master
+fi
+
+if [ "$addr" = "y" ]; then
+  git remote add "$rname" $who@$remote:$location/${repo}.git
 fi
 
