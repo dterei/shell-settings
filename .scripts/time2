@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 # time2 - time a program with some nicer defaults for data
 
-/usr/bin/time -f "Time: %U user, %S kernel, %E wall\nCPU: %P\nMemory (Kb): %M" $@
+exec /usr/bin/time -f "Time: %U user, %S kernel, %E wall\nCPU: %P\nMemory (Kb): %M" "$@"
 
