@@ -1,0 +1,6 @@
+#!/bin/sh
+
+if [ "$HOSTNAME" = "silver.davidterei.com" ]; then
+  rsync -rtu --del --progress --exclude=.DS_Store --exclude=iTunes --delete-excluded /Users/davidt/Music blk:/home/davidt/
+fi
+
