@@ -1,6 +1,26 @@
 #!/bin/sh
 
 if [ "$HOSTNAME" = "silver.davidterei.com" ]; then
-  rsync -rtu --del --progress --exclude=.DS_Store --exclude=iTunes --delete-excluded /Users/davidt/Music blk:/home/davidt/
+  rsync \
+    -rtu \
+    --del \
+    --progress \
+    --exclude=.DS_Store \
+    --exclude=iTunes \
+    --delete-excluded \
+    /Users/davidt/Music \
+    blk:/home/davidt/
+elif [ "$HOSTNAME" = "black.davidterei.com" ]; then
+  rsync \
+    -rtu \
+    --del \
+    --progress \
+    --exclude=.DS_Store \
+    --exclude=iTunes \
+    /home/davidt/Music \
+    slv:/Users/davidt/
+else
+  echo "Can only be run from silver.davidterei.com or black.davidterei.com"
+  exit 1
 fi
 
