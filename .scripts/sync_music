@@ -1,6 +1,7 @@
 #!/bin/sh
 
 if [ "$HOSTNAME" = "silver.davidterei.com" ]; then
+  echo "Syncing with black.davidterei.com"
   rsync \
     -rtu \
     --progress \
@@ -8,7 +9,17 @@ if [ "$HOSTNAME" = "silver.davidterei.com" ]; then
     --exclude=iTunes \
     blk:/home/davidt/Music \
     /Users/davidt/
-elif [ "$HOSTNAME" = "black.davidterei.com" ]; then
+
+  echo "Syncing with davidt.scs.stanford.edu"
+  rsync \
+    -rtu \
+    --progress \
+    --exclude=.DS_Store \
+    --exclude=iTunes \
+    blk:/home/davidt/Music \
+    /Users/davidt/
+elif [ "$HOSTNAME" = "black.davidterei.com" -o "$HOSTNAME" = "davidt.scs.stanford.edu" ]; then
+  echo "Syncing with silver.davidterei.com"
   rsync \
     -rtu \
     --progress \
