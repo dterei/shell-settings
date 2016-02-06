@@ -6,6 +6,8 @@ unset cfg
 if [[ "$OSTYPE" =~ "darwin" ]]; then
 	cfg=$HOME/.tmux-osx.conf
 	path=/usr/local/bin/tmux
+elif [[ "$OSTYPE" =~ "freebsd" ]]; then
+	path=/usr/local/bin/tmux
 else
 	path=/usr/bin/tmux
 fi
