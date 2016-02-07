@@ -1,8 +1,29 @@
 #!/usr/bin/env bash
 # sync_all - Update my Vim and Shell repos to latest.
 
-pushd ~
-cd ~/Settings && git pull && git push
-cd ~/Vim && git pull && git push
-popd
+function sync() {
+  name=$1
+  dir=$2
+  cd $dir
+  echo "$name:"
+  out=$(git status --porcelain | wc -l 2>&1)
+  if [[ $out -ge 1 ]]; then
+    echo "	[status] Modified"
+  else
+    echo "	[status] OK"
+  fi
+  out=$(git pull 2>&1)
+  echo "	[pull] $out"
+  out=$(git push 2>&1)
+  echo "	[push] $out"
+}
+
+pushd ~ &> /dev/null
+
+echo "=> $HOSTNAME"
+sync "Settings" ~/Settings
+sync "Vim" ~/Vim
+sync "Scraps" ~/Projects/scraps/
+
+popd &> /dev/null
 
