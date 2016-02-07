@@ -4,18 +4,24 @@
 function sync() {
   name=$1
   dir=$2
-  cd $dir
-  echo "$name:"
-  out=$(git status --porcelain | wc -l 2>&1)
-  if [[ $out -ge 1 ]]; then
-    echo "	[status] Modified"
+
+  if [[ -d $dir ]]; then
+    cd $dir
+    echo "$name:"
+    out=$(git status --porcelain | wc -l 2>&1)
+    if [[ $out -ge 1 ]]; then
+      echo "	[status] Modified"
+    else
+      echo "	[status] OK"
+    fi
+    out=$(git pull 2>&1)
+    echo "	[pull] $out"
+    out=$(git push 2>&1)
+    echo "	[push] $out"
   else
-    echo "	[status] OK"
+    echo "$name:"
+    echo "	Not present on this machine"
   fi
-  out=$(git pull 2>&1)
-  echo "	[pull] $out"
-  out=$(git push 2>&1)
-  echo "	[push] $out"
 }
 
 pushd ~ &> /dev/null
