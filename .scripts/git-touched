@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+function usage() {
+  echo "Usage: <revision> <path>"
+  echo ""
+  echo "List files touched in path since revision."
+  exit 1
+}
+
+if [ $# -ne 2 ]; then
+  usage
+fi
+
+SINCE=$1
+FOLDER=$2
+
+git diff --name-only ${SINCE} HEAD -- ${FOLDER}
