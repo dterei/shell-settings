@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # scf - Source file search
 
-FILE_TYPES="(cc|c|h|cmm|l?hs|x|y|pp|cabal|go|goc|rb|php)"
+FILE_TYPES="(s|cc|c|h|cmm|l?hs|x|y|pp|cabal|go|goc|rb|php)"
 FILE_REGEX="[^_].*\.${FILE_TYPES}"
 
 me=`basename $0`
@@ -10,7 +10,7 @@ if [ -n "$1" ]; then
   if hash ag 2>/dev/null; then
     ag "$@"
   else
-    if [ "$OSTYPE" = "darwin14" ] ; then
+    if [[ "$OSTYPE" =~ "darwin" || "$OSTYPE" =~ "freebsd" ]]; then
       find -E * -regex "${FILE_REGEX}" |\
       grep -v "_darcs" |\
       grep -v "gopath" |\
