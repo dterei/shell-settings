@@ -7,7 +7,7 @@ if [ "$HOSTNAME" = "silver.davidterei.com" ]; then
     --progress \
     --exclude=.DS_Store \
     --exclude=iTunes \
-    blk:/home/davidt/Music \
+    davidt@black.davidterei.com:/home/davidt/Music \
     /Users/davidt/
 
   echo "Syncing with davidt.scs.stanford.edu"
@@ -16,7 +16,7 @@ if [ "$HOSTNAME" = "silver.davidterei.com" ]; then
     --progress \
     --exclude=.DS_Store \
     --exclude=iTunes \
-    blk:/home/davidt/Music \
+    davidt@davidt.scs.stanford.edu:/home/davidt/Music \
     /Users/davidt/
 elif [ "$HOSTNAME" = "black.davidterei.com" -o "$HOSTNAME" = "davidt.scs.stanford.edu" ]; then
   echo "Syncing with silver.davidterei.com"
@@ -25,7 +25,7 @@ elif [ "$HOSTNAME" = "black.davidterei.com" -o "$HOSTNAME" = "davidt.scs.stanfor
     --progress \
     --exclude=.DS_Store \
     --exclude=iTunes \
-    slv:/Users/davidt/Music \
+    davidt@silver.davidterei.com:/Users/davidt/Music \
     /home/davidt/
 else
   echo "Can only be run from silver.davidterei.com or black.davidterei.com"
