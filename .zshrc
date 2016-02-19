@@ -14,10 +14,11 @@
 # launch tmux!
 # [[ -z "$TMUX" ]] && tmux
 
-autoload -U zsh/pcre
-autoload -U zmv
-autoload -U zcalc
-autoload -U zargs
+autoload -U  zsh/pcre
+autoload -U  zmv
+autoload -U  zcalc
+autoload -U  zargs
+autoload -Uz insert-composed-char
 
 # Alias definitions.
 if [ -f ~/.aliases ]; then
@@ -162,6 +163,15 @@ promptinit
 
 bindkey '^p' up-line-or-search
 bindkey '^n' down-line-or-search
+
+
+#################
+# UNICODE INPUT #
+#################
+
+# bindy to F5
+zle -N insert-composed-char
+bindkey '\e[15~' insert-composed-char
 
 
 #######################
