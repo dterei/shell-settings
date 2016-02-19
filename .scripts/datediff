@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+# datediff - calculate days between two dates
+
+usage() {
+  echo "Usage: datediff <later date> <earlier date>"
+  exit 1
+}
+
+datediff() {
+  d1=$(date -d "$1" +%s)
+  d2=$(date -d "$2" +%s)
+  echo $(( (d1 - d2) / 86400 )) days
+}
+
+if [ -n "$1" -a -n "$2" ]; then
+  datediff $1 $2
+else
+  usage
+fi
