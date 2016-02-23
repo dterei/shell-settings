@@ -97,6 +97,13 @@ if [ -f ~/.aws_credentials ] ; then
 	source ~/.aws_credentials
 fi
 
+# Go 1.6
+GOROOT=${HOME}/Software/go-1.6
+if [ -d ${GOROOT} ]; then
+  export GOROOT=${GOROOT}
+  export PATH=${GOROOT}/bin:${PATH}
+fi
+
 # Gopath
 export GOPATH="${HOME}/.go"
 if [ -d ${GOPATH} ]; then
