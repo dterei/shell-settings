@@ -98,9 +98,9 @@ if [ -f ~/.aws_credentials ] ; then
 fi
 
 # Go 1.6
-GOROOT=${HOME}/Software/go-1.6
-if [ -d ${GOROOT} ]; then
-  export GOROOT=${GOROOT}
+_GOROOT=${HOME}/Software/go-1.6
+if [ -d ${_GOROOT} ]; then
+  export GOROOT=${_GOROOT}
   export PATH=${GOROOT}/bin:${PATH}
 fi
 
@@ -111,10 +111,10 @@ if [ -d ${GOPATH} ]; then
 fi
 
 # Perf-tools
-PERFTOOLS=${HOME}/Software/perf-tools
-if [ -d ${PERFTOOLS} ]; then
-  export PATH=${PERFTOOLS}/bin:${PATH}
-  export MANPATH=${PERFTOOLS}/man:${MANPATH}
+_PERFTOOLS=${HOME}/Software/perf-tools
+if [ -d ${_PERFTOOLS} ]; then
+  export PATH=${_PERFTOOLS}/bin:${PATH}
+  export MANPATH=${_PERFTOOLS}/man:${MANPATH}
 fi
 
 # Google Cloud SDK
