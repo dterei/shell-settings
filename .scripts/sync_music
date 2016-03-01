@@ -30,7 +30,7 @@ elif [ "$HOSTNAME" = "black.davidterei.com" ]; then
     --exclude=.DS_Store \
     --exclude=iTunes \
     davidt@davidt.scs.stanford.edu:/mnt/b/Music \
-    /Users/davidt/
+    /home/davidt/
 
 elif [ "$HOSTNAME" = "davidt.scs.stanford.edu" ]; then
   echo "Syncing with silver.davidterei.com"
