@@ -1,5 +1,8 @@
 #!/bin/sh
 
+# For black.davidterei.com, sync (pull-in) from all other machines.
+# For all other machines, sync (pull-in) from black.davidterei.com.
+
 if [ "$HOSTNAME" = "silver.davidterei.com" ]; then
   echo "Syncing with black.davidterei.com"
   rsync \
@@ -8,15 +11,6 @@ if [ "$HOSTNAME" = "silver.davidterei.com" ]; then
     --exclude=.DS_Store \
     --exclude=iTunes \
     davidt@black.davidterei.com:/home/davidt/Music \
-    /Users/davidt/
-
-  echo "Syncing with davidt.scs.stanford.edu"
-  rsync \
-    -rtu \
-    --progress \
-    --exclude=.DS_Store \
-    --exclude=iTunes \
-    davidt@davidt.scs.stanford.edu:/mnt/b/Music \
     /Users/davidt/
 
 elif [ "$HOSTNAME" = "black.davidterei.com" ]; then
@@ -29,6 +23,15 @@ elif [ "$HOSTNAME" = "black.davidterei.com" ]; then
     davidt@silver.davidterei.com:/Users/davidt/Music \
     /home/davidt/
 
+  echo "Syncing with davidt.scs.stanford.edu"
+  rsync \
+    -rtu \
+    --progress \
+    --exclude=.DS_Store \
+    --exclude=iTunes \
+    davidt@davidt.scs.stanford.edu:/mnt/b/Music \
+    /Users/davidt/
+
 elif [ "$HOSTNAME" = "davidt.scs.stanford.edu" ]; then
   echo "Syncing with silver.davidterei.com"
   rsync \
@@ -36,7 +39,7 @@ elif [ "$HOSTNAME" = "davidt.scs.stanford.edu" ]; then
     --progress \
     --exclude=.DS_Store \
     --exclude=iTunes \
-    davidt@silver.davidterei.com:/Users/davidt/Music \
+    davidt@black.davidterei.com:/home/davidt/Music \
     /mnt/b/
 
 else
