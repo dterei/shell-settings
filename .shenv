@@ -17,6 +17,7 @@ export SVN_EDITOR="vim"
 export VISUAL="vim"
 export VIEWER="less"
 export PAGER="less"
+export LESS="-X"
 export HOSTNAME="`hostname`"
 
 # Set tmpdir if not set
