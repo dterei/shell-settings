@@ -33,7 +33,7 @@ elif [ "$HOSTNAME" = "black.davidterei.com" ]; then
     /home/davidt/
 
 elif [ "$HOSTNAME" = "davidt.scs.stanford.edu" ]; then
-  echo "Syncing with silver.davidterei.com"
+  echo "Syncing with black.davidterei.com"
   rsync \
     -rtu \
     --progress \
