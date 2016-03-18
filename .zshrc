@@ -163,7 +163,7 @@ promptinit
 
 bindkey '^p' up-line-or-search
 bindkey '^n' down-line-or-search
-bindkey '^s' accept-and-hold
+bindkey '^t' accept-and-hold
 
 
 #################
