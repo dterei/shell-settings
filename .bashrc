@@ -3,6 +3,10 @@
 #
 # Author: David Terei
 
+####################
+# LOAD OTHER FILES #
+####################
+
 # clear all aliases in case any of ours override programs bash needs to load
 unalias -a
 
@@ -13,13 +17,27 @@ fi
 
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
+[[ $- != *i* ]] && return
 
-# Use zsh instead if it exists
-# if [ -x /usr/bin/zsh ]; then
-# 	echo "switching from bash to zsh..."
-# 	zsh
-# 	exit 0
-# fi
+
+####################
+# GENERAL SETTINGS #
+####################
+
+# check the window size after each command and, if necessary,
+# update the values of LINES and COLUMNS.
+shopt -s checkwinsize
+
+# make less more friendly for non-text input files, see lesspipe(1)
+[ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
+
+# change directory without cd
+shopt -s autocd
+
+
+####################
+# HISTORY SETTINGS #
+####################
 
 # don't put duplicate lines in the history. See bash(1) for more options
 # ... and ignore same sucessive entries.
@@ -29,17 +47,15 @@ export HISTCONTROL=ignoreboth
 # append to the history file, don't overwrite it
 shopt -s histappend
 
-# check the window size after each command and, if necessary,
-# update the values of LINES and COLUMNS.
-shopt -s checkwinsize
 
-# make less more friendly for non-text input files, see lesspipe(1)
-[ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
+#######################
+# APPEARANCE SETTINGS #
+#######################
 
 # set a fancy prompt (non-color, unless we know we "want" color)
 case "$TERM" in
-xterm-color|xterm-256color)
-	PS1='[\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]] '
+xterm-color|xterm-256color|screen-256color)
+	PS1='[\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]] '
 	;;
 *)
 	PS1='\u@\h:\w\$ '
@@ -55,12 +71,17 @@ xterm*|rxvt*)
 	;;
 esac
 
+
+#######################
+# COMPLETION SETTINGS #
+#######################
+
 # enable programmable completion features
 if [ -f /etc/bash_completion ]; then
 	source /etc/bash_completion
 fi
 
-# Alias definitions.
+# Alias definitions
 if [ -f ~/.aliases ]; then
 	source ~/.aliases
 fi
