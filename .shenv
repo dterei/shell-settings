@@ -45,6 +45,7 @@ if [ -d "${MAILFOLDER}" ]; then
 	export MAIL="${MAILFOLDER}/incoming-mail"
 fi
 
+# Mac/OS X specifics
 if [[ "$OSTYPE" =~ "darwin" ]]; then
   # XCode Tools
   if [ -d /Library/Developer/CommandLineTools/usr/bin ] ; then
@@ -63,6 +64,11 @@ if [[ "$OSTYPE" =~ "darwin" ]]; then
 
    # Java
 	export JAVA_HOME="$(/usr/libexec/java_home)"
+
+  # Fix GPG Tools passphrase entry
+  if [ -n "$SSH_CONNECTION" ]; then
+    export PINENTRY_USER_DATA="USE_CURSES=1"
+  fi
 fi
 
 # Cabal bin
