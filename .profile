@@ -6,6 +6,8 @@
 #
 # Author: David Terei
 
+echo "> profile"
+
 # All else in .shenv to share between shells and get around
 # normal stupid unix bashrc/profile loading issues.
 if [ -n "${BASH_VERSION}" ]; then

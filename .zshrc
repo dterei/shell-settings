@@ -3,6 +3,8 @@
 #
 # Author: David Terei
 
+echo "> zshrc 1"
+
 ####################
 # LOAD OTHER FILES #
 ####################
@@ -10,6 +12,8 @@
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
 [[ $- != *i* ]] && return
+
+echo "> zshrc 2"
 
 # launch tmux!
 # [[ -z "$TMUX" ]] && tmux

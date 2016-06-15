@@ -3,6 +3,8 @@
 #
 # Author: David Terei
 
+echo "> aliases"
+
 # enable color support of ls and also add handy aliases
 if [ "$TERM" != "dumb" ]; then
 	export LSCOLORS="Gxfxcxdxbxegedabagacad"

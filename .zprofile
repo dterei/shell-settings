@@ -4,6 +4,8 @@
 #
 # Author: David Terei
 
+echo "> zprofile"
+
 if [ -f ~/.shenv ]; then
 	source ~/.shenv
 fi
