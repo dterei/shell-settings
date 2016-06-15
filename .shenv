@@ -1,9 +1,8 @@
 # Common Environmental Variables File
+#
 # Designed to be shared among different shells and computers
 #
 # Author: David Terei
-
-echo "> shenv"
 
 # TMUX term settings... leave as setting in '.tmux.conf'
 # if [ -z "$TMUX" ] ; then
@@ -154,7 +153,6 @@ fi
 
 # Private scripts
 if [ -d ~/.scripts ] ; then
-  echo "YES"
 	export PATH="${HOME}/.scripts:${PATH}"
 fi
 

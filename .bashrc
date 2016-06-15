@@ -1,9 +1,8 @@
 # Bash Shell Config
+#
 # Designed to be shared among different shells and computers
 #
 # Author: David Terei
-
-echo "> bashrc 1"
 
 ####################
 # LOAD OTHER FILES #
@@ -20,8 +19,6 @@ fi
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
 [[ $- != *i* ]] && return
-
-echo "> bashrc 2"
 
 
 ####################

@@ -1,9 +1,8 @@
 # Common Alias defenition file.
+#
 # Designed so it can be shared among different computers and shells
 #
 # Author: David Terei
-
-echo "> aliases"
 
 # enable color support of ls and also add handy aliases
 if [ "$TERM" != "dumb" ]; then

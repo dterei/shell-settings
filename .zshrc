@@ -1,19 +1,19 @@
 # Zsh Shell Config
+#
+# Loaded: interactive shell
+#
 # Designed to be shared among different shells and computers
 #
 # Author: David Terei
-
-echo "> zshrc 1"
 
 ####################
 # LOAD OTHER FILES #
 ####################
 
-# If not running interactively, don't do anything
+# If not running interactively, don't do anything - shouldn't be needed, as
+# zshrc isn't loaded when non-interactive, but just be safe
 [ -z "$PS1" ] && return
 [[ $- != *i* ]] && return
-
-echo "> zshrc 2"
 
 # launch tmux!
 # [[ -z "$TMUX" ]] && tmux
