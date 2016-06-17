@@ -22,7 +22,6 @@
 
 if [[ ! -o login  ]]; then
   if [ -f ~/.shenv ]; then
-    echo "yes"
     source ~/.shenv
   fi
 fi
