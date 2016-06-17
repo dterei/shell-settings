@@ -26,6 +26,13 @@ Login + Interactive:
 * ssh <cmd>: none
 * ./script: none
 
+## Arch & Zsh
+
+Arch in a very annoying decision resets your `PATH` after sourcing `.zshenv`,
+forcing you to set your `PATH` in `.zprofile` or `.zshrc`. We work around this
+by sourcing `.shenv` to set the `PATH` from both `.zshenv` and `.zprofile`, but
+observing if this isn't a login shell to ensure only one of them fires.
+
 ## Licensing
 
 This library is BSD-licensed.
