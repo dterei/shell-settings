@@ -6,7 +6,7 @@ if [ "$HOSTNAME" = "silver.davidterei.com" ]; then
     -rtu \
     --progress \
     --exclude=.DS_Store \
-    --exclude=Photos Library.photoslibrary \
+    --exclude="Photos Library.photoslibrary" \
     davidt@black.davidterei.com:/home/davidt/Pictures \
     /Users/davidt/
 
@@ -16,7 +16,7 @@ elif [ "$HOSTNAME" = "black.davidterei.com" ]; then
     -rtu \
     --progress \
     --exclude=.DS_Store \
-    --exclude=Photos Library.photoslibrary \
+    --exclude="Photos Library.photoslibrary" \
     davidt@silver.davidterei.com:/Users/davidt/Pictures \
     /home/davidt/
 
