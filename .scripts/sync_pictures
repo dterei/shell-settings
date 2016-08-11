@@ -1,0 +1,27 @@
+#!/bin/sh
+
+if [ "$HOSTNAME" = "silver.davidterei.com" ]; then
+  echo "Syncing with black.davidterei.com"
+  rsync \
+    -rtu \
+    --progress \
+    --exclude=.DS_Store \
+    --exclude=Photos Library.photoslibrary \
+    davidt@black.davidterei.com:/home/davidt/Pictures \
+    /Users/davidt/
+
+elif [ "$HOSTNAME" = "black.davidterei.com" ]; then
+  echo "Syncing with silver.davidterei.com"
+  rsync \
+    -rtu \
+    --progress \
+    --exclude=.DS_Store \
+    --exclude=Photos Library.photoslibrary \
+    davidt@silver.davidterei.com:/Users/davidt/Pictures \
+    /home/davidt/
+
+else
+  echo "Can only be run from silver.davidterei.com or black.davidterei.com"
+  exit 1
+fi
+
