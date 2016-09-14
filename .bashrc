@@ -20,6 +20,15 @@ fi
 [ -z "$PS1" ] && return
 [[ $- != *i* ]] && return
 
+####################
+# MAVERICK CLUSTER #
+####################
+
+# Just get me to ZSH!
+if [[ "$HOSTNAME" =~ "maverick" ]]; then
+  exec zsh
+fi
+
 
 ####################
 # GENERAL SETTINGS #
