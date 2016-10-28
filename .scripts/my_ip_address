@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# my_ip_address - print out public ip address
+
+curl ifconfig.me/all
+
