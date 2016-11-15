@@ -63,7 +63,7 @@ function take() {
 }
 
 # Super user
-alias _='sudo'
+alias _='sudo -E'
 
 # xopen
 if [[ "$OSTYPE" =~ "darwin" ]]; then
