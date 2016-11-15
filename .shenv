@@ -141,6 +141,11 @@ if [ -d ${HOME}/.npm-global/bin ]; then
   export PATH=${HOME}/.npm-global/bin:${PATH}
 fi
 
+# Rustup
+if [ -d ${HOME}/.cargo/bin ]; then
+  export PATH="$HOME/.cargo/bin:$PATH"
+fi
+
 # GHC
 if [ -d /opt/ghc/7.10.2/ ]; then
   export PATH=/opt/ghc/7.10.2/bin:${PATH}
@@ -165,4 +170,3 @@ fi
 if [ -d ~/bin ] ; then
 	export PATH="${HOME}/bin:${PATH}"
 fi
-
