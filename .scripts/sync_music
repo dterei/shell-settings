@@ -23,28 +23,7 @@ elif [ "$HOSTNAME" = "black.davidterei.com" ]; then
     davidt@silver.davidterei.com:/Users/davidt/Music \
     /home/davidt/
 
-  echo "Syncing with davidt.scs.stanford.edu"
-  rsync \
-    -rtu \
-    --progress \
-    --exclude=.DS_Store \
-    --exclude=iTunes \
-    davidt@davidt.scs.stanford.edu:/mnt/b/Music \
-    /home/davidt/
-
-elif [ "$HOSTNAME" = "davidt.scs.stanford.edu" ]; then
-  echo "Syncing with black.davidterei.com"
-  rsync \
-    -rtu \
-    --progress \
-    --exclude=.DS_Store \
-    --exclude=iTunes \
-    davidt@black.davidterei.com:/home/davidt/Music \
-    /mnt/b/
-
 else
-  echo "Can only be run from silver.davidterei.com, black.davidterei.com or"
-  echo "davidt.scs.stanford.edu"
+  echo "Can only be run from silver.davidterei.com or black.davidterei.com"
   exit 1
 fi
-

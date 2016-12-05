@@ -24,4 +24,3 @@ else
   echo "Can only be run from silver.davidterei.com or black.davidterei.com"
   exit 1
 fi
-
