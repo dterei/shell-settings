@@ -7,8 +7,8 @@ if [ "$HOSTNAME" = "silver.davidterei.com" ]; then
     --progress \
     --exclude=.DS_Store \
     --exclude="Photos Library.photoslibrary" \
-    davidt@black.davidterei.com:/home/davidt/Pictures \
-    /Users/davidt/
+    /Users/davidt/Pictures \
+    davidt@black.davidterei.com:/home/davidt/
 
 elif [ "$HOSTNAME" = "black.davidterei.com" ]; then
   echo "Syncing with silver.davidterei.com"
