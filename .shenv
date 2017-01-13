@@ -21,6 +21,7 @@ export VIEWER="less"
 export PAGER="less"
 export LESS="-XFR"
 export HOSTNAME="`hostname`"
+export GPG_TTY=`tty`
 
 # Set tmpdir if not set
 if [ -z "${TMPDIR}" ] ; then
