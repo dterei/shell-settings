@@ -74,15 +74,6 @@ else
   alias openvpn-start='sudo openvpn --config /etc/openvpn/client.conf'
 fi
 
-# Aptitude
-alias ap='sudo aptitude'
-alias api='sudo aptitude install'
-alias apu='sudo aptitude update'
-alias apg='sudo aptitude full-upgrade'
-alias apz='sudo aptitude search'
-alias apc='sudo aptitude changelog'
-alias aps='sudo aptitude show'
-
 # Pacman
 alias pm='sudo pacman'
 
