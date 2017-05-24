@@ -74,6 +74,11 @@ else
   alias openvpn-start='sudo openvpn --config /etc/openvpn/client.conf'
 fi
 
+# apt-get
+alias au='sudo apt-get update'
+alias ai='sudo apt-get install'
+alias az='apt-cache search'
+
 # Pacman
 alias pm='sudo pacman'
 
