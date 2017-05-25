@@ -95,18 +95,37 @@ alias cbt='cabal test'
 
 # Git
 alias g='git'
+
+## log commands
 alias gg='git log'
 alias ggp='git log -p'
 alias ggg='git log --graph --oneline'
-alias ggz='git cherry -v'
+
+# who's an author
 alias gcount='git shortlog -sn'
+
+## patches not upstream
+alias ggz='git cherry -v'
+
+# current changed files
 alias gz='git status -s'
 alias gd='git diff | less'
+
+# files changed since a commit
 alias gdd='git diff --name-only'
+
+# files changed in a single commit
+alias gdt='git diff-tree --name-only --no-commit-id -r'
+
+# pull in upstream
 alias gl='git pull --ff-only'
 alias gup='git pull --rebase'
+
+# git commit
 alias gc='git commit -v'
 alias gca='git commit -v -a -m'
+
+# shortcuts for common commands
 alias ge='git rebase'
 alias gb='git branch'
 alias gco='git checkout'
