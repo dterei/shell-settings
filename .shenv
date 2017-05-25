@@ -171,3 +171,8 @@ fi
 if [ -d ~/bin ] ; then
 	export PATH="${HOME}/bin:${PATH}"
 fi
+
+# Ubuntu make installation of Ubuntu Make binary symlink
+if [ -d ~/.local/share/umake/bin ] ; then
+  PATH="${HOME}/.local/share/umake/bin:$PATH"
+fi
