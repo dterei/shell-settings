@@ -41,6 +41,14 @@ if [ -n "$PS1" ]; then
   fi
 fi
 
+# load rubrik exports
+if [ -f /etc/profile.d/sd_deps_exports.sh ]; then
+  source /etc/profile.d/sd_deps_exports.sh
+fi
+if [ -f /etc/profile.d/sd_exports.sh ]; then
+  source /etc/profile.d/sd_exports.sh
+fi
+
 # set maildrop location
 MAILFOLDER=~/.Mail
 if [ -d "${MAILFOLDER}" ]; then
