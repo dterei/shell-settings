@@ -127,7 +127,7 @@ alias gca='git commit -v -a -m'
 
 # shortcuts for common commands
 alias ge='git rebase'
-alias gb='git branch'
+alias gb='git branch -vv'
 alias gco='git checkout'
 alias ga='git add'
 alias gf='git fetch'
