@@ -13,7 +13,7 @@ Login Only:
 * zshenv -> zprofile -> zlogin
 
 Interactive Only:
-* zshenv -> zshrc 
+* zshenv -> zshrc
 
 Login + Interactive:
 * zshenv -> zprofile -> zshrc -> zlogin
