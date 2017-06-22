@@ -35,6 +35,11 @@ if [ -z "${TMPDIR}" ] ; then
 	fi
 fi
 
+# Dircolors
+if [ -f ~/.dir_colors/dircolors ]
+  then eval `dircolors ~/.dir_colors/dircolors`
+fi
+
 # run ssh-agent if logged in via SSH (otherwise we rely on gnome).
 if [ -n "$PS1" ]; then
   if [ -n "$SSH_CLIENT"  ] || [ -n "$SSH_TTY"  ]; then
