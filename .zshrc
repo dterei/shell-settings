@@ -203,8 +203,9 @@ if [[ -d ~/Settings/zsh-completes/ ]]; then
   done
 fi
 
-if [ -d ${HOME}/Software/google-cloud-sdk/ ]; then
-  source '/Users/davidt/Software/google-cloud-sdk/completion.zsh.inc'
+if [ -d /opt/google-cloud-sdk/ ]; then
+  source '/opt/google-cloud-sdk/path.zsh.inc'
+  source '/opt/google-cloud-sdk/completion.zsh.inc'
 fi
 
 ##################

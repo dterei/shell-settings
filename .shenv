@@ -141,19 +141,14 @@ if [ -d ${_PERFTOOLS} ]; then
   export MANPATH=${_PERFTOOLS}/man:${MANPATH}
 fi
 
-# Google Cloud SDK
-if [ -d ${HOME}/Software/google-cloud-sdk/ ]; then
-  if [ -n $ZSH_VERSION ]; then
-    source '/Users/davidt/Software/google-cloud-sdk/path.zsh.inc'
-  else
-    source '/Users/davidt/Software/google-cloud-sdk/path.bash.inc'
-    source '/Users/davidt/Software/google-cloud-sdk/completion.bash.inc'
-  fi
-fi
-
 # NPM Global
 if [ -d ${HOME}/.npm-global/bin ]; then
   export PATH=${HOME}/.npm-global/bin:${PATH}
+fi
+
+# NVM 
+if [ -f /usr/share/nvm/init-nvm.sh ]; then
+  source /usr/share/nvm/init-nvm.sh 2> /dev/null
 fi
 
 # Rustup
@@ -171,11 +166,6 @@ if [ -d /opt/cabal/1.22/ ]; then
   export PATH=/opt/cabal/1.22/bin:${PATH}
 fi
 
-# mahimahi
-if [ -d ${HOME}/Software/mahimahi/bin ]; then
-  export PATH="${HOME}/Software/mahimahi/bin:${PATH}"
-fi
-
 # Private scripts
 if [ -d ~/.scripts ] ; then
 	export PATH="${HOME}/.scripts:${PATH}"
@@ -184,9 +174,4 @@ fi
 # Private executables
 if [ -d ~/bin ] ; then
 	export PATH="${HOME}/bin:${PATH}"
-fi
-
-# Ubuntu make installation of Ubuntu Make binary symlink
-if [ -d ~/.local/share/umake/bin ] ; then
-  PATH="${HOME}/.local/share/umake/bin:$PATH"
 fi

@@ -91,6 +91,12 @@ if [ -f /etc/bash_completion ]; then
 	source /etc/bash_completion
 fi
 
+# Google Cloud SDK
+if [ -d /opt/google-cloud-sdk/ ]; then
+  source '/opt/google-cloud-sdk/path.bash.inc'
+  source '/opt/google-cloud-sdk/completion.bash.inc'
+fi
+
 # Alias definitions
 if [ -f ~/.aliases ]; then
 	source ~/.aliases
