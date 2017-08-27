@@ -181,3 +181,8 @@ if [ -n "${ZSH_VERSION}" ]; then
   alias -g NUL="> /dev/null 2>&1"
 fi
 
+# rubrik - spark
+alias spl='source ~/Projects/spark/.buildenv/bin/activate'
+alias sp='spark'
+alias spe='spark env'
+alias spm='spark minikube'
