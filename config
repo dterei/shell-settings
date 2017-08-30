@@ -538,3 +538,7 @@ host rd2
 host rcolo
   Hostname 10.0.48.180
   User davidt
+
+host rosx
+  Hostname 192.168.7.89
+  User spark
