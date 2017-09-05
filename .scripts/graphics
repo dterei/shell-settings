@@ -1,0 +1,14 @@
+#!/bin/env bash
+
+echo "# Display Server"
+echo $XDG_SESSION_TYPE
+echo ""
+echo "# Display Driver"
+glxinfo | grep vendor
+echo ""
+echo "# xrandr --listproviders"
+xrandr --listproviders
+echo ""
+echo "# Devices"
+lspci | grep VGA
+lspci | grep 3D
