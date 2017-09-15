@@ -533,12 +533,3 @@ host rd1
 host rd2
   Hostname mc2.c1.dallas.rackspace.memcachier.com
   User ubuntu
-
-# Rubrik
-host rcolo
-  Hostname 10.0.48.180
-  User davidt
-
-host rosx
-  Hostname 192.168.7.89
-  User spark
