@@ -189,7 +189,8 @@ alias adc='arc diff --create'
 alias al='arc land'
 
 # rubrik - spark
-alias spl='source $(spark-env)'
 alias sp='spark'
+alias spl='source $(spark-env)'
 alias spe='spark env'
+alias spb='spark build'
 alias spm='spark minikube'
