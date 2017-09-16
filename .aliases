@@ -181,6 +181,13 @@ if [ -n "${ZSH_VERSION}" ]; then
   alias -g NUL="> /dev/null 2>&1"
 fi
 
+# arcarnist
+alias af='arc feature'
+alias ad='arc diff'
+alias ade='arc diff --edit'
+alias adc='arc diff --create'
+alias al='arc land'
+
 # rubrik - spark
 alias spl='source ~/Projects/spark/.buildenv/bin/activate'
 alias sp='spark'
