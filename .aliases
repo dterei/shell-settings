@@ -26,12 +26,12 @@ alias virshz='virsh -c qemu:///system'
 # have xclip use gtk clipboard
 alias xclip='xclip -sel clip'
 
-# turn on some good! regular expression by default
-if echo "a" | sed -r "s/a//" &>/dev/null; then
-	alias sed='sed -r'
-elif echo "a" | sed -E "s/a//" &>/dev/null; then
-	alias sed='sed -E'
-fi
+# # turn on some good! regular expression by default
+# if echo "a" | sed -r "s/a//" &>/dev/null; then
+# 	alias sed='sed -r'
+# elif echo "a" | sed -E "s/a//" &>/dev/null; then
+# 	alias sed='sed -E'
+# fi
 
 alias grep='grep -E --color=auto'
 alias gre='grep -E --color=always'
@@ -180,6 +180,9 @@ if [ -n "${ZSH_VERSION}" ]; then
   alias -g NE="2> /dev/null"
   alias -g NUL="> /dev/null 2>&1"
 fi
+
+# minikube
+alias mk='minikube'
 
 # arcarnist
 alias af='arc feature'
