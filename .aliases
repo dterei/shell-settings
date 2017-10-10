@@ -138,6 +138,10 @@ alias gfa='git fetch --all'
 alias gr='git remote'
 alias grv='git remote -v'
 
+# git submodule
+alias gsm='git submodule'
+alias gsu='git submodule update --init'
+
 #simple web server at current director
 alias www='python -m http.server'
 
