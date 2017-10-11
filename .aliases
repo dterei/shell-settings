@@ -188,6 +188,10 @@ fi
 # minikube
 alias mk='minikube'
 
+# kubernetes
+alias km='kubectl --context=minikube'
+alias kg='kubectl --context=gcp-spark-me'
+
 # arcarnist
 alias af='arc feature'
 alias ad='arc diff'
