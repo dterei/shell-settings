@@ -121,6 +121,7 @@ alias gdt='git diff-tree --name-only --no-commit-id -r'
 
 # pull in upstream
 alias gl='git pull --ff-only'
+alias glr='git pull --recurse-submodules'
 alias gup='git pull --rebase'
 
 # git commit
