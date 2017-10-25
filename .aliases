@@ -127,6 +127,8 @@ alias gup='git pull --rebase'
 # git commit
 alias gc='git commit -v'
 alias gca='git commit -v -a -m'
+alias gcfix='git add --all . && git commit -m fix'
+alias gcwip='git add --all . && git commit -m wip'
 
 # shortcuts for common commands
 alias ge='git rebase'
