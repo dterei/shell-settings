@@ -194,6 +194,7 @@ alias mk='minikube'
 # kubernetes
 alias km='kubectl --context=minikube'
 alias kg='kubectl --context=gcp-spark-me'
+alias kp='kubectl --context=gcp-spark-prod'
 
 # arcarnist
 alias af='arc feature'
