@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# turn-off-gpu - Turn of discrete GPU
+
+/usr/share/acpi_call/examples/turn_off_gpu.sh

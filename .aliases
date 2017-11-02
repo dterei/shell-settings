@@ -196,6 +196,11 @@ alias km='kubectl --context=minikube'
 alias kg='kubectl --context=gcp-spark-me'
 alias kp='kubectl --context=gcp-spark-prod'
 
+# gcloud
+alias gcl='gcloud'
+alias gclp='gcloud --project spark-prod-177204'
+alias gcld='gcloud --project spark-dev-004'
+
 # arcarnist
 alias af='arc feature'
 alias ad='arc diff'
