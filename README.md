@@ -2,6 +2,11 @@
 
 My personal shell settings, heavily customised and refined over the years.
 
+## TODO
+
+* https://github.com/skwp/dotfiles
+* https://github.com/junegunn/fzf
+
 ## Zsh Load Order
 
 Global: zshenv -> zprofile -> zshrc -> zlogin
