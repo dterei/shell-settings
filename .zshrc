@@ -213,6 +213,10 @@ if [ -d /usr/share/fzf/ ]; then
   source '/usr/share/fzf/completion.zsh'
 fi
 
+if [ $commands[kubectl]  ]; then
+  source <(kubectl completion zsh)
+fi
+
 ##################
 # PROMPT_COMMAND #
 ##################
