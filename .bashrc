@@ -97,6 +97,11 @@ if [ -d /opt/google-cloud-sdk/ ]; then
   source '/opt/google-cloud-sdk/completion.bash.inc'
 fi
 
+if [ -d /usr/share/fzf/ ]; then
+  source '/usr/share/fzf/key-bindings.bash'
+  source '/usr/share/fzf/completion.bash'
+fi
+
 # Alias definitions
 if [ -f ~/.aliases ]; then
 	source ~/.aliases
