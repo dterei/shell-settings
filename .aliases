@@ -216,3 +216,6 @@ alias spe='spark env'
 alias spb='spark build'
 alias spm='spark minikube'
 alias spg='spark dev-004'
+
+# fzf
+alias fz='fzf-tmux'
