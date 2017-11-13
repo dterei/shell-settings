@@ -208,6 +208,11 @@ if [ -d /opt/google-cloud-sdk/ ]; then
   source '/opt/google-cloud-sdk/completion.zsh.inc'
 fi
 
+if [ -d /usr/share/fzf/ ]; then
+  source '/usr/share/fzf/key-bindings.zsh'
+  source '/usr/share/fzf/completion.zsh'
+fi
+
 ##################
 # PROMPT_COMMAND #
 ##################
