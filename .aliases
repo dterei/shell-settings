@@ -219,3 +219,6 @@ alias spg='spark dev-004'
 
 # fzf
 alias fz='fzf-tmux'
+
+# vim
+alias vi='vim'
