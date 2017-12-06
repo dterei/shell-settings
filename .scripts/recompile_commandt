@@ -1,6 +1,0 @@
-#!/usr/bin/env bash
-# recompile_commandt - Recompiles the vim Commandt C plugin.
-
-cd ~/.vim/bundle/command-t/ruby/command-t/ext/command-t/
-ruby ./extconf.rb
-make
