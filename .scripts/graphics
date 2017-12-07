@@ -10,5 +10,5 @@ echo "# xrandr --listproviders"
 xrandr --listproviders
 echo ""
 echo "# Devices"
-lspci | grep VGA
-lspci | grep 3D
+lspci | grep VGA || true
+lspci | grep 3D || true
