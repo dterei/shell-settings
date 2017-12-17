@@ -198,6 +198,7 @@ alias mk='minikube'
 alias km='kubectl --context=minikube --namespace=rubrik-spark'
 alias kg='kubectl --context=gcp-spark-me --namespace=rubrik-spark'
 alias kp='kubectl --context=gcp-spark-prod --namespace=rubrik-spark'
+alias kb='kubectl --context=gcp-benchmark --namespace=rubrik-spark'
 
 # gcloud
 alias gcl='gcloud'
