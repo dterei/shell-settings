@@ -208,10 +208,16 @@ if [ -d /opt/google-cloud-sdk/ ]; then
   source '/opt/google-cloud-sdk/completion.zsh.inc'
 fi
 
+if [ -f '/home/davidt/Projects/google-cloud-sdk/completion.zsh.inc' ]; then
+  source '/home/davidt/Projects/google-cloud-sdk/completion.zsh.inc'
+fi
+
 if [ -d /usr/share/fzf/ ]; then
   source '/usr/share/fzf/key-bindings.zsh'
   source '/usr/share/fzf/completion.zsh'
 fi
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 if [ $commands[kubectl]  ]; then
   source <(kubectl completion zsh)
@@ -223,4 +229,3 @@ fi
 
 # emulate Bash's PROMPT_COMMAND feature
 precmd() { eval "$PROMPT_COMMAND" }
-
