@@ -20,15 +20,6 @@ fi
 [ -z "$PS1" ] && return
 [[ $- != *i* ]] && return
 
-####################
-# MAVERICK CLUSTER #
-####################
-
-# Just get me to ZSH!
-if [[ "$HOSTNAME" =~ "maverick" ]]; then
-  exec zsh
-fi
-
 
 ####################
 # GENERAL SETTINGS #
@@ -102,8 +93,9 @@ if [ -d /usr/share/fzf/ ]; then
   source '/usr/share/fzf/completion.bash'
 fi
 
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
 # Alias definitions
 if [ -f ~/.aliases ]; then
 	source ~/.aliases
 fi
-
