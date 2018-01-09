@@ -195,10 +195,12 @@ fi
 alias mk='minikube'
 
 # kubernetes
+alias kk='kubectl'
 alias km='kubectl --context=minikube --namespace=rubrik-spark'
 alias kg='kubectl --context=gcp-spark-me --namespace=rubrik-spark'
 alias kp='kubectl --context=gcp-spark-prod --namespace=rubrik-spark'
 alias kb='kubectl --context=gcp-benchmark --namespace=rubrik-spark'
+alias kj='kubectl --context=jenkins --namespace=jenkins'
 
 # gcloud
 alias gcl='gcloud'
