@@ -7,8 +7,10 @@ FILE_REGEX="[^_].*\.${FILE_TYPES}"
 me=`basename $0`
 
 if [ -n "$1" ]; then
-  if hash ag 2>/dev/null; then
-    ag "$@"
+  if hash rg 2>/dev/null; then
+    ag -g '!vendor/**' "$@"
+  elif hash ag 2>/dev/null; then
+    ag --ignore-dir vendor "$@"
   else
     if [[ "$OSTYPE" =~ "darwin" || "$OSTYPE" =~ "freebsd" ]]; then
       find -E * -regex "${FILE_REGEX}" |\
