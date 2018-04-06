@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# scf - Source file search
+# sf - Source file search
 
 FILE_TYPES="(s|cc|c|h|cmm|l?hs|x|y|pp|cabal|go|goc|rb|php|java|scala|json|xml|yml|py|js)"
 FILE_REGEX="[^_].*\.${FILE_TYPES}"
