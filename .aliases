@@ -35,6 +35,7 @@ alias xclip='xclip -sel clip'
 
 alias grep='grep -E --color=auto'
 alias gre='grep -E --color=always'
+alias rg='rg --smart-case'
 
 # reload profile
 alias rlp='source ~/.profile'
@@ -102,9 +103,10 @@ alias cbt='cabal test'
 alias g='git'
 
 ## log commands
-alias gg='git log'
+alias gg='git log --graph --abbrev-commit --pretty=short'
+alias ggg='git log'
 alias ggp='git log -p'
-alias ggg='git log --graph --oneline'
+alias ggs='git log --graph --oneline'
 
 # who's an author
 alias gcount='git shortlog -sn'
