@@ -222,7 +222,6 @@ alias al='arc land'
 # rubrik - spark
 alias sp='spark'
 alias spl='source $(spark-env)'
-alias spll='source ~/Projects/spark/.buildenv/bin/activate'
 alias spe='spark env'
 alias spb='spark build'
 alias spm='spark minikube'
