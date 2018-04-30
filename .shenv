@@ -11,7 +11,7 @@ if [ -z "$TMUX" ] ; then
 fi
 
 # Disable archaic terminal features
-stty -ixon
+#stty -ixon
 
 # Stricter permissions just ends up causing issues, mostly as then sudo creates
 # root files with broken permissions. This can be fixed by editing sudodoers,
