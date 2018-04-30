@@ -192,6 +192,11 @@ PROMPT="%{$reset_color%}[$HOST_SHOW%{$reset_color%}%c%(0?..%{$fg_bold[red]%} %?)
 
 RPROMPT="%{$fg_bold[green]%}%~%{$reset_color%}"
 
+# Dircolors
+if [ -f ~/.dir_colors/dircolors ]
+  then eval `dircolors ~/.dir_colors/dircolors`
+fi
+
 
 ##################
 # ZSH COMPLETERS #
