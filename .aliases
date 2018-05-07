@@ -110,6 +110,7 @@ alias ggs='git log --graph --oneline'
 
 # who's an author
 alias gcount='git shortlog -sn'
+alias greviewed='git log | rg "Reviewed By" | cut -d":" -f2 | sed "s/,/\n/g" | sort | uniq -c | sort -nr'
 
 ## patches not upstream
 alias ggz='git cherry -v'
