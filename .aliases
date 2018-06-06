@@ -207,6 +207,10 @@ alias kp0='kubectl --context=prod-000 --namespace=rubrik-spark'
 alias kp1='kubectl --context=prod-001 --namespace=rubrik-spark'
 alias kp2='kubectl --context=prod-002 --namespace=rubrik-spark'
 
+# aws
+alias awsm='aws --profile memcachier'
+alias awsr='aws --profile rubrikt'
+
 # gcloud
 alias gcl='gcloud'
 alias gclp='gcloud --project spark-prod-177204'
