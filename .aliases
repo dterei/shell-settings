@@ -210,6 +210,7 @@ alias kp2='kubectl --context=prod-002 --namespace=rubrik-spark'
 # aws
 alias awsm='aws --profile memcachier'
 alias awsr='aws --profile rubrikt'
+alias awso='aws --profile rubriko'
 
 # gcloud
 alias gcl='gcloud'
