@@ -68,6 +68,7 @@ function take() {
 # nice shorter commands
 alias _='sudo -E'
 alias fz='fzf-tmux'
+alias v='vim'
 alias vi='vim'
 alias sctl='sudo systemctl'
 
