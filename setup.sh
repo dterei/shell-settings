@@ -36,8 +36,9 @@ else
 fi
 
 # process any other files
-# echo Processing $DIR/.ssh/config
 ln -sf "${DIR}/config" ~/.ssh/config
+mkdir -p $HOME/.config/alacritty
+ln -sf "${DIR}/alacritty.yml" $HOME/.config/alacritty/alacritty.yml
 
 # setup zsh
 mkdir -p $HOME/.zsh
