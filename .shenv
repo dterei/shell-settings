@@ -50,12 +50,10 @@ if [ -n "$PS1" ]; then
   fi
 fi
 
-# load rubrik exports
-if [ -f /etc/profile.d/sd_deps_exports.sh ]; then
-  source /etc/profile.d/sd_deps_exports.sh
-fi
-if [ -f /etc/profile.d/sd_exports.sh ]; then
-  source /etc/profile.d/sd_exports.sh
+# use fd for fzf, supports .gitignore
+if which fd > /dev/null; then
+  export FZF_DEFAULT_COMMAND='fd --type f'
+  export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 fi
 
 # set maildrop location
