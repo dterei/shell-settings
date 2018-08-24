@@ -81,24 +81,8 @@ else
   alias openvpn-start='sudo openvpn --config /etc/openvpn/client.conf'
 fi
 
-# apt-get
-alias au='sudo apt-get update'
-alias ai='sudo apt-get install'
-alias az='apt-cache search'
-
-# Pacman
-alias pm='sudo pacman'
-
 # Tmux
 alias tm='tmux'
-
-# Cabal
-alias cb='cabal'
-alias cbd='cabal install --only-dependencies --enable-tests'
-alias cbi='cabal install '
-alias cbc='cabal configure --enable-tests'
-alias cbb='cabal build'
-alias cbt='cabal test'
 
 # Git
 alias g='git'
