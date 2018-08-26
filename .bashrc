@@ -93,6 +93,10 @@ if [ -d /opt/google-cloud-sdk/ ]; then
   source '/opt/google-cloud-sdk/completion.bash.inc'
 fi
 
+# Azure CLI
+source '/home/davidt/lib/azure-cli/az.completion'
+
+# FZF
 if [ -d /usr/share/fzf/ ]; then
   source '/usr/share/fzf/key-bindings.bash'
   source '/usr/share/fzf/completion.bash'
@@ -104,3 +108,4 @@ fi
 if [ -f ~/.aliases ]; then
 	source ~/.aliases
 fi
+
