@@ -202,12 +202,14 @@ fi
 # ZSH COMPLETERS #
 ##################
 
+# General completions
 if [[ -d ~/Settings/zsh-completes/ ]]; then
   for f in `ls ~/Settings/zsh-completes/`; do
     source ~/Settings/zsh-completes/$f
   done
 fi
 
+# Google Cloud
 if [ -d /opt/google-cloud-sdk/ ]; then
   source '/opt/google-cloud-sdk/path.zsh.inc'
   source '/opt/google-cloud-sdk/completion.zsh.inc'
@@ -217,6 +219,10 @@ if [ -f '/home/davidt/Projects/google-cloud-sdk/completion.zsh.inc' ]; then
   source '/home/davidt/Projects/google-cloud-sdk/completion.zsh.inc'
 fi
 
+# Azure CLI
+source '/home/davidt/lib/azure-cli/az.completion'
+
+# FZF
 if [ -d /usr/share/fzf/ ]; then
   source '/usr/share/fzf/key-bindings.zsh'
   source '/usr/share/fzf/completion.zsh'
@@ -224,6 +230,7 @@ fi
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
+# Kubectl
 if [ $commands[kubectl]  ]; then
   source <(kubectl completion zsh)
 fi
