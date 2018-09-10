@@ -220,7 +220,9 @@ if [ -f '/home/davidt/Projects/google-cloud-sdk/completion.zsh.inc' ]; then
 fi
 
 # Azure CLI
-source '/home/davidt/lib/azure-cli/az.completion'
+if [ -f /home/davidt/lib/azure-cli/az.completion ]; then
+  source '/home/davidt/lib/azure-cli/az.completion'
+fi
 
 # FZF
 if [ -d /usr/share/fzf/ ]; then
