@@ -222,6 +222,8 @@ fi
 # Azure CLI
 if [ -f /home/davidt/lib/azure-cli/az.completion ]; then
   source '/home/davidt/lib/azure-cli/az.completion'
+elif [ -f /opt/az/bin/az.completion.sh ]; then
+  source '/opt/az/bin/az.completion.sh' 1> /dev/null;
 fi
 
 # FZF
