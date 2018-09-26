@@ -235,8 +235,16 @@ fi
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # Kubectl
-if [ $commands[kubectl]  ]; then
+if [ $commands[kubectl] ]; then
   source <(kubectl completion zsh)
+fi
+
+###########
+# DIRENEV #
+###########
+
+if [ $commands[direnv] ]; then
+  eval "$(direnv hook zsh)"
 fi
 
 ##################
