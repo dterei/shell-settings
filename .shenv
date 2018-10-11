@@ -123,15 +123,21 @@ if [ -f ~/.aws_credentials ] ; then
 fi
 
 # Go
-_GOROOT=${HOME}/Software/go
-if [ -d ${_GOROOT} ]; then
-  export GOROOT=${_GOROOT}
+if [ -z "${GOROOT}" ]; then
+  _GOROOT=${HOME}/Software/go
+  if [ -d "${_GOROOT}" ]; then
+    export GOROOT=${_GOROOT}
+  fi
+fi
+if [ -d "${GOROOT}/bin" ]; then
   export PATH=${GOROOT}/bin:${PATH}
 fi
 
 # Gopath
-export GOPATH="${HOME}/.go"
-if [ -d ${GOPATH} ]; then
+if [ -z "${GOPATH}" ]; then
+  export GOPATH="${HOME}/.go"
+fi
+if [ -d "${GOPATH}/bin" ]; then
   export PATH="${GOPATH}/bin:${PATH}"
 fi
 
