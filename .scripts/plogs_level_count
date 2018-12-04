@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# Count log levels in a log
+
+
+jq -cR '. as $line | try fromjson catch {level: "unknown"} | {level: .level}' | jq -c -s 'group_by(.level) | .[] | {level: .[0].level, count: . | length} | [.level, .count]'
