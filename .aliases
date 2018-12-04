@@ -194,6 +194,7 @@ alias kgx='kubectl --context=dev-004 --namespace=rubrik-exocompute'
 alias kd='kubectl --context=dev --namespace=rubrik-spark'
 alias kb='kubectl --context=benchmark --namespace=rubrik-spark'
 alias kx='kubectl --context=Testing-Azure-Simple --namespace=rubrik-exocompute'
+alias k9='kubectl --context=prod-900 --namespace=rubrik-spark'
 
 # aws
 alias awsm='aws --profile memcachier'

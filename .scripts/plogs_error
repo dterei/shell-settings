@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# Filter for warning or higher level logs
+
+jq -c 'select(.level == "unknown" or .level == "error")'
