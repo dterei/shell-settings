@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 # Simplify spark logs
 
-jq -cR '. as $line | try fromjson catch {ts: 0, level: "unknown", msg: $line} | {ts: .ts | todate, level: .level, msg: .msg, caller: .caller}'
+jq -cR '. as $line | try fromjson catch {ts: 0, level: "unknown", msg: $line} | {ts: .ts | todate, level: .level, msg: .msg, caller: .caller} + ((select(.stacktrace) | {bt: .stacktrace | split("\n") | map(ltrimstr("\t"))}) // null)'
 
