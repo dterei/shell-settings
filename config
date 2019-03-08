@@ -1,20 +1,13 @@
 ServerAliveInterval 20
 
-# Home Machines
 host blk
   Hostname black.davidterei.com
   User davidt
 
-host jump
-  Hostname 104.198.5.157
-  User davidt
-
-# GHC
 Host ghc
   HostName darcs.haskell.org
   User dterei
 
-# MemCachier
 host povo
   Hostname provisioner.memcachier.com
   User ubuntu
@@ -22,3 +15,7 @@ host povo
 host povo-stag
   Hostname povo.staging.memcachier.com
   User ubuntu
+
+host msft
+  Hostname 104.42.55.241
+  User dterei
