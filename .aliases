@@ -209,9 +209,10 @@ alias gcld='gcloud --project spark-dev-004'
 # arcarnist
 alias af='arc feature'
 alias ad='arc diff'
-alias adn='arc diff --nounit --nolint'
+alias adn='arc diff --nounit --nolint --excuse "na"'
 alias ade='arc diff --edit'
 alias adc='arc diff --create'
+alias adnc='arc diff --nounit --nolint --excuse "na" --create'
 alias al='arc land'
 
 # rubrik - spark
