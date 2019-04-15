@@ -27,6 +27,9 @@ export LESS="-XFR"
 export HOSTNAME="`hostname`"
 export GPG_TTY=`tty`
 
+# fix alacritty to a single DPI
+export WINIT_HIDPI_FACTOR=1.0
+
 # Set tmpdir if not set
 if [ -z "${TMPDIR}" ] ; then
 	if [ -n "${TEMPDIR}" ] ; then
