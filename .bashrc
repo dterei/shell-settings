@@ -94,7 +94,9 @@ if [ -d /opt/google-cloud-sdk/ ]; then
 fi
 
 # Azure CLI
-source '/home/davidt/lib/azure-cli/az.completion'
+if [ -f '${HOME}/lib/azure-cli/az.completion']; then
+  source '${HOME}/lib/azure-cli/az.completion'
+fi
 
 # FZF
 if [ -d /usr/share/fzf/ ]; then
