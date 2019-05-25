@@ -73,8 +73,8 @@ xterm*|rxvt*)
 esac
 
 # Dircolors
-if [ -f ~/.dir_colors/dircolors ]
-  then eval `dircolors ~/.dir_colors/dircolors`
+if [ -f ~/.dir_colors/dircolors ]; then
+  eval `dircolors ~/.dir_colors/dircolors`
 fi
 
 
@@ -94,7 +94,7 @@ if [ -d /opt/google-cloud-sdk/ ]; then
 fi
 
 # Azure CLI
-if [ -f '${HOME}/lib/azure-cli/az.completion']; then
+if [ -f '${HOME}/lib/azure-cli/az.completion' ]; then
   source '${HOME}/lib/azure-cli/az.completion'
 fi
 
