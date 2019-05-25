@@ -39,7 +39,7 @@ fi
 ln -sf "${DIR}/config" ~/.ssh/config
 mkdir -p $HOME/.config/alacritty
 ln -sf "${DIR}/alacritty.yml" $HOME/.config/alacritty/alacritty.yml
-ln -sf "${HOME}/Droppox/Sensitive/2fa" $HOME/.config/ga
+ln -sf "${HOME}/Dropbox/Sensitive/2fa" $HOME/.config/ga
 
 # setup zsh
 mkdir -p $HOME/.zsh
