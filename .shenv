@@ -6,9 +6,9 @@
 
 # Enable 256 colors. Ideally should confiugre your terminal emulator to do
 # this, but dumb Gnome doesn't have an option.
-if [ -z "$TMUX" ] ; then
-	export TERM="xterm-256color"
-fi
+# if [ -z "$TMUX" ] ; then
+# 	export TERM="xterm-256color"
+# fi
 
 # Disable archaic terminal features
 #stty -ixon
