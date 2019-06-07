@@ -1,0 +1,97 @@
+#!/usr/bin/env bash
+# connect to Rubrik HQ VPN
+
+PIDFILE="/tmp/rubrik-vpn.pid"
+ENDPOINT="vpn-colo.rubrik.com"
+USERNAME="david.terei"
+PASSWORD="CC2t3Pf9LOOq"
+
+function usage() {
+  echo "Usage: $(basename $0) <command>"
+  echo ""
+  echo "    start    Connect to Rubrik HQ VPN"
+  echo "    status   Status of the VPN connection"
+  echo "    stop     Disconnect from the Rubrik HQ VPN"
+  echo ""
+}
+
+if [ $# -gt 1 ]; then
+  usage
+  exit 0
+fi
+
+
+mode="connect"
+if [ $# -eq 1 ]; then
+  mode="$1"
+fi
+
+
+function vpn_start() {
+  echo -n "Connecting to Rubrik HQ VPN... "
+  if [ -f $PIDFILE ]; then
+    PID=$(cat $PIDFILE)
+    if ps -p $PID > /dev/null; then
+      echo "ALREADY RUNNING"
+      return
+    fi
+  fi
+
+  echo ""
+  echo "$PASSWORD" | \
+    openconnect \
+      --protocol=gp $ENDPOINT \
+      --user=$USERNAME \
+      -b \
+      --passwd-on-stdin \
+      --pid-file=$PIDFILE
+}
+
+function vpn_status() {
+  echo -n "Rubrik HQ VPN Status... "
+  if [ ! -f $PIDFILE ]; then
+    echo "OFF"
+  fi
+  PID=$(cat $PIDFILE)
+  if ps -p $PID > /dev/null; then
+    echo "RUNNING ($PID)"
+  else
+    echo "OFF"
+  fi
+}
+
+function vpn_stop() {
+  echo -n "Stopping Rubrik HQ VPN... "
+  if [ ! -f $PIDFILE ]; then
+    echo "NOT RUNNING"
+    return
+  fi
+
+  PID=$(cat $PIDFILE)
+  if ps -p $PID > /dev/null; then
+    if kill $PID; then
+      echo "DONE"
+      rm $PIDFILE
+    else
+      echo "FAILED"
+    fi
+  else
+    echo "NOT RUNNING"
+  fi
+}
+
+case "$mode" in
+  "start")
+    vpn_start
+    ;;
+  "status")
+    vpn_status
+    ;;
+  "stop")
+    vpn_stop
+    ;;
+  *)
+    usage
+    exit 1
+    ;;
+esac

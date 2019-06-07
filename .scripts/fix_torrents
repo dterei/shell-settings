@@ -1,5 +1,0 @@
-#!/usr/bin/env bash
-# fix_torrents - Fix up torrent permissions on sfu machine
-
-ssh -t davidt@davidt.scs.stanford.edu /mnt/b/fix_torrents.sh
-
