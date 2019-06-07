@@ -1,4 +1,0 @@
-#!/usr/bin/env bash
-# sp_logs - Check my Vim & Shell repos are up-to-date.
-
-sed 's/\\n/\n\t/g' | sed 's/\\t/\t/g'
