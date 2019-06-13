@@ -4,7 +4,7 @@
 PIDFILE="/tmp/rubrik-vpn.pid"
 ENDPOINT="vpn-colo.rubrik.com"
 USERNAME="david.terei"
-PASSWORD="CC2t3Pf9LOOq"
+PASSWORD_FILE="$HOME/.config/rubrikvpn/password"
 
 function usage() {
   echo "Usage: $(basename $0) <command>"
@@ -38,7 +38,7 @@ function vpn_start() {
   fi
 
   echo ""
-  echo "$PASSWORD" | \
+  cat $PASSWORD_FILE | \
     openconnect \
       --protocol=gp $ENDPOINT \
       --user=$USERNAME \
