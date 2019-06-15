@@ -137,6 +137,23 @@ alias grv='git remote -v'
 alias gsm='git submodule'
 alias gsu='git submodule update --init'
 
+# o365 alias
+alias go365="git log \
+  --author=Terei \
+  --author=Alok \
+  --author=Jal \
+  --author=Sagar \
+  --author=Joshua \
+  --author='Vikas Goel' \
+  --author='Kaixuan Gao' \
+  --author=Hoang \
+  --author=Cary \
+  --author=Prateek  \
+  --author=Harish \
+  --author=Mohammad \
+  --author=Atul \
+"
+
 #simple web server at current director
 alias www='python -m http.server'
 
