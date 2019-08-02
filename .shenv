@@ -178,6 +178,10 @@ if [ -d /opt/cabal/1.22/ ]; then
   export PATH=/opt/cabal/1.22/bin:${PATH}
 fi
 
+if command -v pyenv 1>/dev/null 2>&1; then
+  eval "$(pyenv init -)"
+fi
+
 # Private scripts
 if [ -d ~/.scripts ] ; then
 	export PATH="${HOME}/.scripts:${PATH}"
