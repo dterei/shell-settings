@@ -95,7 +95,7 @@ alias ggs='git log --graph --oneline'
 
 # who's an author
 alias gcount='git shortlog -sn'
-alias greviewed='git log | rg "Reviewed By" | cut -d":" -f2 | sed "s/,/\n/g" | sort | uniq -c | sort -nr'
+alias greviewed='git log | rg "Reviewed By" | cut -d":" -f2 | tr , "\n" | sort | uniq -c | sort -nr'
 
 ## patches not upstream
 alias ggz='git cherry -v'
@@ -136,23 +136,6 @@ alias grv='git remote -v'
 # git submodule
 alias gsm='git submodule'
 alias gsu='git submodule update --init'
-
-# o365 alias
-alias go365="git log \
-  --author=Terei \
-  --author=Alok \
-  --author=Jal \
-  --author=Sagar \
-  --author=Joshua \
-  --author='Vikas Goel' \
-  --author='Kaixuan Gao' \
-  --author=Hoang \
-  --author=Cary \
-  --author=Prateek  \
-  --author=Harish \
-  --author=Mohammad \
-  --author=Atul \
-"
 
 #simple web server at current director
 alias www='python -m http.server'

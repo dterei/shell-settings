@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+# go365 - git filtered by O365 team
+
+CMD=$1
+shift
+
+git $CMD \
+  --author=Terei \
+  --author=Alok \
+  --author=Jal \
+  --author=Sagar \
+  --author=Joshua \
+  --author='Vikas Goel' \
+  --author='Kaixuan Gao' \
+  --author=Hoang \
+  --author=Cary \
+  --author=Prateek  \
+  --author=Harish \
+  --author=Mohammad \
+  --author=Atul \
+  --author=Noel \
+  "$@"
