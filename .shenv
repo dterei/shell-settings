@@ -184,7 +184,10 @@ fi
 # docker-machine
 if [[ "$OSTYPE" =~ "darwin" ]]; then
   if command -v docker-machine &>/dev/null; then
-    eval "$(docker-machine env)"
+    docker-machine env &> /dev/null
+    if [[ $? -eq 0 ]]; then
+      eval "$(docker-machine env)"
+    fi
   fi
 fi
 
