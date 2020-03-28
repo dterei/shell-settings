@@ -181,15 +181,15 @@ if [ -d /opt/cabal/1.22/ ]; then
   export PATH=/opt/cabal/1.22/bin:${PATH}
 fi
 
-# docker-machine
-if [[ "$OSTYPE" =~ "darwin" ]]; then
-  if command -v docker-machine &>/dev/null; then
-    docker-machine env &> /dev/null
-    if [[ $? -eq 0 ]]; then
-      eval "$(docker-machine env)"
-    fi
-  fi
-fi
+## docker-machine
+#if [[ "$OSTYPE" =~ "darwin" ]]; then
+#  if command -v docker-machine &>/dev/null; then
+#    docker-machine env &> /dev/null
+#    if [[ $? -eq 0 ]]; then
+#      eval "$(docker-machine env)"
+#    fi
+#  fi
+#fi
 
 # pyenv
 if command -v pyenv &>/dev/null; then
