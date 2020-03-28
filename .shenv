@@ -89,7 +89,7 @@ if [[ "$OSTYPE" =~ "darwin" ]]; then
   fi
 
    # Java
-  export JAVA_HOME="$(/usr/libexec/java_home)"
+  export JAVA_HOME="$(/usr/libexec/java_home 2>/dev/null)"
 
   # Fix GPG Tools passphrase entry
   if [ -n "$SSH_CONNECTION" ]; then
