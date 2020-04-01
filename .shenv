@@ -188,6 +188,11 @@ fi
 #  fi
 #fi
 
+# osx keeps fucking up stdlibs, gcc works, not clang
+if [[ "$OSTYPE" =~ "darwin" ]]; then
+  export CC=gcc
+fi
+
 # pyenv
 if command -v pyenv &>/dev/null; then
   eval "$(pyenv init -)"
