@@ -27,9 +27,6 @@ export LESS="-XFR"
 export HOSTNAME="`hostname`"
 export GPG_TTY=`tty`
 
-# rubrik
-export DEPLOYMENT=dev-004
-
 # fix alacritty to a single DPI
 export WINIT_HIDPI_FACTOR=1.0
 
