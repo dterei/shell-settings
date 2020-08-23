@@ -19,3 +19,11 @@ host povo-stag
 host msft
   Hostname 104.42.55.241
   User dterei
+
+host pb1
+  Hostname 146.148.100.91
+  User david_terei_rubrik_com
+
+host pb3
+  Hostname 35.225.6.242
+  User david_terei_rubrik_com
