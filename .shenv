@@ -198,6 +198,9 @@ if command -v pyenv &>/dev/null; then
   eval "$(pyenv init -)"
 fi
 
+# rubrik
+export DEPLOYMENT=dev-004
+
 # Private scripts
 if [ -d ~/.scripts ] ; then
   export PATH="${HOME}/.scripts:${PATH}"
