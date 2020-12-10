@@ -253,3 +253,13 @@ fi
 
 # emulate Bash's PROMPT_COMMAND feature
 precmd() { eval "$PROMPT_COMMAND" }
+
+#########
+# ZPLUG #
+#########
+
+source ~/.zplug/init.zsh
+
+zplug 'wfxr/forgit'
+
+zplug load
