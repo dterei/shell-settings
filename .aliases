@@ -207,13 +207,13 @@ alias gclp='gcloud --project spark-prod-177204'
 alias gcld='gcloud --project spark-dev-004'
 
 # arcarnist
-alias af='arc feature'
-alias ad='arc diff'
-alias adn='arc diff --nounit --nolint --excuse "na"'
-alias ade='arc diff --edit'
-alias adc='arc diff --create'
-alias adnc='arc diff --nounit --nolint --excuse "na" --create'
-alias al='arc land'
+alias af='arc feature --no-update'
+alias ad='arc diff --no-update'
+alias adn='arc diff --nounit --nolint --excuse "na" --no-update'
+alias ade='arc diff --edit --no-update'
+alias adc='arc diff --create --no-update'
+alias adnc='arc diff --nounit --nolint --excuse "na" --create --no-update'
+alias al='arc land --no-update'
 
 # rubrik - spark
 alias sp='spark'
