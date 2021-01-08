@@ -213,7 +213,8 @@ alias adn='arc diff --nounit --nolint --excuse "na" --no-update'
 alias ade='arc diff --edit --no-update'
 alias adc='arc diff --create --no-update'
 alias adnc='arc diff --nounit --nolint --excuse "na" --create --no-update'
-alias al='arc land --no-update'
+alias arl='arc land --no-update'
+alias ars='arc sail --no-update'
 
 # rubrik - spark
 alias sp='spark'
