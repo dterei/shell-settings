@@ -20,8 +20,16 @@ host msft
   Hostname 104.42.55.241
   User dterei
 
+host pb0
+  Hostname 35.227.162.155
+  User david_terei_rubrik_com
+
 host pb1
   Hostname 146.148.100.91
+  User david_terei_rubrik_com
+
+host pb2
+  Hostname 34.77.220.216
   User david_terei_rubrik_com
 
 host pb3
