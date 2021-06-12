@@ -201,6 +201,7 @@ if command -v pyenv &>/dev/null; then
 fi
 
 # rubrik
+export METRICS_STARTUP_LOGS_DISABLED=true
 export DEPLOYMENT=dev-004
 
 # Private scripts
