@@ -1,0 +1,25 @@
+#!/usr/bin/env zsh
+# klogs - use fzf to quickly find pod logs in k8s
+
+plcmd() {    
+    context=$(kcontexts)     
+    read namespace pod < <(kpods $context)    
+    echo "kubectl logs $pod "$@" --context $context -n $namespace | plogs-simple"    
+}    
+
+kpods() {
+	kubectl get pods --context $1 --all-namespaces | fzf --reverse| awk '{printf ("%s %s\n", $1, $2)}'
+}
+
+kcontexts() {
+	kubectl config get-contexts | fzf --reverse | awk '{print $1}'
+}
+
+pl() {    
+    cmd=$(plcmd $@);    
+    echo "\n$cmd\n\n"       
+    print -s $cmd; # put cmd in history, works for zsh    
+    eval $(echo $cmd)    
+}
+
+pl
