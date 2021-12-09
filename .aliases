@@ -48,7 +48,6 @@ alias less='less -R'
 
 # cd aliases
 alias cd..='cd ..'
-alias .='pwd'
 alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
