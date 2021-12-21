@@ -274,3 +274,8 @@ source $ZPLUG_HOME/init.zsh
 zplug 'wfxr/forgit'
 
 zplug load
+
+# Switch to an arm64e shell by default
+if [ `machine` != arm64e ]; then
+    exec arch -arm64 zsh
+fi
