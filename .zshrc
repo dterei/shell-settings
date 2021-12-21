@@ -263,7 +263,12 @@ precmd() { eval "$PROMPT_COMMAND" }
 # ZPLUG #
 #########
 
-export ZPLUG_HOME=/usr/local/opt/zplug
+if [ -x /usr/local/opt/zplug/init.zsh ]; then
+	export ZPLUG_HOME=/usr/local/opt/zplug
+else
+	export ZPLUG_HOME=/opt/homebrew/opt/zplug
+fi
+
 source $ZPLUG_HOME/init.zsh
 
 zplug 'wfxr/forgit'
