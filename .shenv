@@ -57,7 +57,7 @@ fi
 if which fd > /dev/null; then
   export FZF_DEFAULT_COMMAND='fd --follow --hidden --type file'
   export FZF_CTRL_T_COMMAND='fd --hidden --follow --type file'
-  export FZF_CTRL_T_OPTS='--ansi'
+  export FZF_CTRL_T_OPTS="--ansi --preview 'bat --color=always {}'"
   export FZF_ALT_C_COMMAND='fd --hidden --follow --type directory'
 fi
 

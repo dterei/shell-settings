@@ -230,9 +230,12 @@ fi
 if [ -d /usr/share/fzf/ ]; then
   source '/usr/share/fzf/key-bindings.zsh'
   source '/usr/share/fzf/completion.zsh'
+elif [ -d /opt/homebrew/opt/fzf ]; then
+  source '/opt/homebrew/opt/fzf/shell/key-bindings.zsh'
+  source '/opt/homebrew/opt/fzf/shell/completion.zsh'
+elif [ -f ~/.fzf.zsh ]; then
+  source ~/.fzf.zsh
 fi
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # Kubectl
 if [ $commands[kubectl] ]; then
