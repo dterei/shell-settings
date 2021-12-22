@@ -8,14 +8,17 @@ test -x /usr/local/bin/brew || \
 # 2. Install usual packages
 /bin/bash -c "arch -arm64 brew install \
   alacritty \
+  bat \
   contexts \
   curl \
+  ctags \
   docker \
   dropbox \
   fd \
   fzf \
   gcc \
   git \
+  go \
   gpg \
   microsoft-office \
   notion \
@@ -25,13 +28,14 @@ test -x /usr/local/bin/brew || \
   rectangle \
   ripgrep \
   signal \
-  spark \
+  homebrew/cask/spark \
   spotify \
   svn \
   subversion \
   tmux \
   vim \
-  wget"
+  wget \
+  zplug"
 
 # 3. Install fonts
 /bin/bash -c "arch -arm64 brew install \
