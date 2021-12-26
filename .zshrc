@@ -87,12 +87,18 @@ setopt HISTIGNOREDUPS
 # COMPLETION SETTINGS #
 #######################
 
+if type brew &>/dev/null
+then
+  FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
+fi
+
 setopt recexact # in completion, recognise exact matches
 
 zstyle :compinstall filename '~/.zshrc'
 
 autoload -Uz compinit
 compinit
+
 zmodload -i zsh/complist
 
 # Cache zsh tab-completion
@@ -227,14 +233,14 @@ elif [ -f /opt/az/bin/az.completion.sh ]; then
 fi
 
 # FZF
-if [ -d /usr/share/fzf/ ]; then
+if [ -f ~/.fzf.zsh ]; then
+  source ~/.fzf.zsh
+elif [ -d /usr/share/fzf/ ]; then
   source '/usr/share/fzf/key-bindings.zsh'
   source '/usr/share/fzf/completion.zsh'
 elif [ -d /opt/homebrew/opt/fzf ]; then
   source '/opt/homebrew/opt/fzf/shell/key-bindings.zsh'
   source '/opt/homebrew/opt/fzf/shell/completion.zsh'
-elif [ -f ~/.fzf.zsh ]; then
-  source ~/.fzf.zsh
 fi
 
 # Kubectl
