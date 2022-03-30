@@ -44,6 +44,9 @@ window:
   #     - buttonless: Title bar, transparent background, but no title bar buttons
   decorations: none
 
+  # Opacity of borders
+  opacity: 1.0
+
 scrolling:
   # Maximum number of lines in the scrollback buffer.
   # Specifying '0' will disable scrolling.
@@ -243,9 +246,6 @@ bell:
   animation: EaseOutExpo
   duration: 0
   color: '0xffffff'
-
-# Background opacity
-background_opacity: 1.0
 
 # Mouse bindings
 #
