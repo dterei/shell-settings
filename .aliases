@@ -186,24 +186,6 @@ alias mk='minikube'
 
 # kubernetes
 alias kk='kubectl'
-alias km='kubectl --context=minikube --namespace=rubrik-spark'
-alias kmx='kubectl --context=minikube --namespace=rubrik-exocompute'
-alias kg='kubectl --context=dev-004 --namespace=rubrik-spark'
-alias kgx='kubectl --context=dev-004 --namespace=rubrik-exocompute'
-alias kd='kubectl --context=dev --namespace=rubrik-spark'
-alias kb='kubectl --context=benchmark --namespace=rubrik-spark'
-alias kx='kubectl --context=Testing-Azure-Simple --namespace=rubrik-exocompute'
-alias k9='kubectl --context=prod-900 --namespace=rubrik-spark'
-
-# aws
-alias awsm='aws --profile memcachier'
-alias awsr='aws --profile rubrikt'
-alias awso='aws --profile rubriko'
-
-# gcloud
-alias gcl='gcloud'
-alias gclp='gcloud --project spark-prod-177204'
-alias gcld='gcloud --project spark-dev-004'
 
 # arcarnist
 alias prep='sp-fastlint -f && sp-fastbazel'
@@ -216,11 +198,3 @@ alias adc='arc diff --create'
 alias add='arc diff --create'
 alias adnc='arc diff --nounit --nolint --excuse "na" --create'
 alias ars='arc sail'
-
-# rubrik - spark
-alias sp='spark'
-alias spl='source $(spark-env)'
-alias spe='spark env'
-alias spb='spark build'
-alias spm='spark minikube'
-alias spg='spark dev-004'
