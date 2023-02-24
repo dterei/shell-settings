@@ -198,3 +198,6 @@ alias adc='arc diff --create'
 alias add='arc diff --create'
 alias adnc='arc diff --nounit --nolint --excuse "na" --create'
 alias ars='arc sail'
+
+# rubrik - spark
+alias spl='source $(spark-env)'
