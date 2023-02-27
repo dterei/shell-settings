@@ -181,9 +181,6 @@ if [ -n "${ZSH_VERSION}" ]; then
   alias -g JM="| jq '.msg'"
 fi
 
-# minikube
-alias mk='minikube'
-
 # kubernetes
 alias kk='kubectl'
 
@@ -199,5 +196,5 @@ alias add='arc diff --create'
 alias adnc='arc diff --nounit --nolint --excuse "na" --create'
 alias ars='arc sail'
 
-# rubrik - spark
+# spark
 alias spl='source $(spark-env)'

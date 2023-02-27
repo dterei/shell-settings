@@ -197,10 +197,6 @@ if command -v pyenv &>/dev/null; then
   eval "$(pyenv init --path)"
 fi
 
-# rubrik
-export METRICS_STARTUP_LOGS_DISABLED=true
-export DEPLOYMENT=dev-004
-
 # Private scripts
 if [ -d ~/.scripts ] ; then
   export PATH="${HOME}/.scripts:${PATH}"
