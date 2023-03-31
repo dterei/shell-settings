@@ -48,9 +48,10 @@ fi
 
 # run ssh-agent if logged in via SSH (otherwise we rely on gnome).
 if [ -n "$PS1" ]; then
-  if [ -n "$SSH_CLIENT"  ] || [ -n "$SSH_TTY"  ]; then
-    source ~/.ssh_startup.sh
-  fi
+  # No, needed for Windows, so running
+  # if [ -n "$SSH_CLIENT"  ] || [ -n "$SSH_TTY"  ]; then
+    source ~/.scripts/ssh-agent-startup
+  # fi
 fi
 
 # use fd for fzf, supports .gitignore
@@ -195,6 +196,11 @@ fi
 if command -v pyenv &>/dev/null; then
   export PYENV_ROOT="$HOME/.pyenv"
   eval "$(pyenv init --path)"
+fi
+
+# local bin
+if [ -d ~/.local/bin ]; then
+  export PATH="${HOME}/.local/bin:${PATH}"
 fi
 
 # Private scripts
