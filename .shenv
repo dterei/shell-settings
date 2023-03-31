@@ -54,8 +54,14 @@ if [ -n "$PS1" ]; then
   # fi
 fi
 
+# Fix stupid Ubuntu
+if command -v fdfind &>/dev/null; then
+  alias fd=fdfind
+fi
+
 # use fd for fzf, supports .gitignore
 if which fd > /dev/null; then
+echo "yes"
   export FZF_DEFAULT_COMMAND='fd --follow --hidden --type file'
   export FZF_CTRL_T_COMMAND='fd --hidden --follow --type file'
   export FZF_CTRL_T_OPTS="--ansi --preview 'bat --color=always {}'"
