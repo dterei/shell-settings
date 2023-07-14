@@ -189,7 +189,7 @@ alias prep='sp-fastlint -f && sp-fastbazel'
 alias af='arc feature; fd -I arc.log.txt -X rm'
 alias ad='arc diff; fd -I arc.log.txt -X rm'
 alias adn='arc diff --nounit --nolint --excuse "na" --message "more work" --skip-staging; fd -I arc.log.txt -X rm'
-alias ars='arc sail; fd -I arc.log.txt -X rm'
+alias ars='yes y | arc sail; fd -I arc.log.txt -X rm'
 
 # spark
 alias spl='source $(spark-env)'
