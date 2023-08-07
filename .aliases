@@ -123,8 +123,7 @@ alias gcwip='git add --all . && git commit -m wip'
 
 # shortcuts for common commands
 alias ge='git rebase'
-alias gb='git branch'
-alias gbb='git branch -vv'
+alias gb='git branch -vv'
 alias gco='git checkout'
 alias ga='git add'
 alias gf='git fetch'
