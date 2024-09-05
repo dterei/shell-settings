@@ -192,3 +192,4 @@ alias ars='yes y | arc sail; fd -I arc.log.txt -X rm'
 
 # spark
 alias spl='source $(spark-env)'
+alias arc='LOG_TO_FILE=False arc'
