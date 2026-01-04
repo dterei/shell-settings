@@ -1,5 +1,3 @@
-live_config_reload = true
-
 [bell]
 animation = "EaseOutExpo"
 color = "0xffffff"
@@ -552,6 +550,9 @@ chars = """
 """
 key = "NumpadEnter"
 
+[general]
+live_config_reload = true
+
 [mouse]
 hide_when_typing = false
 
@@ -565,7 +566,7 @@ multiplier = 3
 
 [selection]
 save_to_clipboard = false
-semantic_escape_chars = ",│`|:\"' ()[]{}<>"
+semantic_escape_chars = """,│`|:"' ()[]{}<>"""
 
 [window]
 decorations = "none"
@@ -580,3 +581,5 @@ lines = 0
 [window.padding]
 x = 2
 y = 2
+
+[keyboard]
