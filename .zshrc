@@ -292,6 +292,3 @@ if [ $(uname -s) = "Darwin" ]; then
 	    exec arch -arm64 zsh
 	fi
 fi
-
-# OpenClaw Completion
-source "/Users/davidterei/.openclaw/completions/openclaw.zsh"
