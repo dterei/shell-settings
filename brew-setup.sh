@@ -10,16 +10,19 @@ test -x /usr/local/bin/brew || \
   alacritty \
   bat \
   contexts \
-  curl \
   ctags \
+  curl \
   docker \
   dropbox \
   fd \
+  font-source-code-pro \
+  font-source-code-pro-for-powerline \
   fzf \
   gcc \
   git \
   go \
   gpg \
+  homebrew/cask/spark \
   microsoft-office \
   notion \
   pkg-config \
@@ -28,16 +31,10 @@ test -x /usr/local/bin/brew || \
   rectangle \
   ripgrep \
   signal \
-  homebrew/cask/spark \
   spotify \
-  svn \
   subversion \
+  svn \
   tmux \
   vim \
   wget \
   zplug"
-
-# 3. Install fonts
-/bin/bash -c "arch -arm64 brew install \
-  homebrew/cask-fonts/font-source-code-pro \
-  homebrew/cask-fonts/font-source-code-pro-for-powerline"
