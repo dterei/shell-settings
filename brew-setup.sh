@@ -9,6 +9,7 @@ test -x /usr/local/bin/brew || \
 /bin/bash -c "arch -arm64 brew install \
   alacritty \
   bat \
+  claude-code \
   contexts \
   ctags \
   curl \
@@ -28,6 +29,7 @@ test -x /usr/local/bin/brew || \
   pkg-config \
   poetry \
   pyenv \
+  raycast \
   rectangle \
   ripgrep \
   signal \
