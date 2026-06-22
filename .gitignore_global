@@ -11,3 +11,8 @@
 # OS Generated Files
 .DS_Store*
 Thumbs.db
+
+# Rubrik
+activate-worktree.sh
+
+**/.claude/settings.local.json
