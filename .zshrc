@@ -75,6 +75,9 @@ setopt SHARE_HISTORY      # share history live across sessions (implies append +
 setopt EXTENDED_HISTORY   # record timestamps in history
 setopt HIST_IGNORE_DUPS   # don't record a line matching the previous one
 setopt HIST_IGNORE_SPACE  # don't record commands that start with a space
+setopt HIST_REDUCE_BLANKS # strip extra whitespace before recording
+setopt HIST_FIND_NO_DUPS  # skip duplicates when searching with Ctrl+P
+setopt HIST_VERIFY        # expand history (!!) before executing, not immediately
 
 
 #######################
