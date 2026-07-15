@@ -14,7 +14,7 @@ My personal shell settings, heavily customised and refined over the years.
 | `.bashrc` | Bash: interactive shell config, completions, prompt |
 | `.aliases` | Shared aliases and shell functions (git, ls, cd, kubectl, etc.) |
 | `.gitignore_global` | Global gitignore |
-| `gitconfig_template` | Git config template (see Large Repos section) |
+| `.gitconfig` | Git config (symlinked to `~/.gitconfig` by `setup.sh`) |
 | `.tmux.conf` | Tmux config |
 | `.ghci` / `.ghc` | GHCi config |
 | `alacritty.toml` | Alacritty terminal config |
@@ -48,7 +48,7 @@ Arch resets `PATH` after sourcing `.zshenv`, forcing PATH setup into `.zprofile`
 
 ## Git Config
 
-`gitconfig_template` contains the full git config. Apply it to `~/.gitconfig` directly — it isn't auto-symlinked by `setup.sh`.
+`.gitconfig` is symlinked to `~/.gitconfig` by `setup.sh`.
 
 **Workflow settings:**
 * `pull.rebase = true` — avoids accidental merge commits on pull
