@@ -97,7 +97,15 @@ setopt recexact # in completion, recognise exact matches
 zstyle :compinstall filename '~/.zshrc'
 
 autoload -Uz compinit
-compinit
+# Only rebuild the completion dump (with its slow security scan) when it's
+# missing or over a day old; otherwise reuse it via -C for fast startup.
+_zcompdump=~/.zsh/.zcompdump
+if [[ -f $_zcompdump && -n $(find "$_zcompdump" -mtime -1 2>/dev/null) ]]; then
+  compinit -C -d "$_zcompdump"
+else
+  compinit -d "$_zcompdump"
+fi
+unset _zcompdump
 
 zmodload -i zsh/complist
 
@@ -147,7 +155,6 @@ bindkey -M menuselect "^@"  accept-and-infer-next-history
 bindkey -M menuselect "^M" .accept-line
 # Sort files by date and follow symlinks
 #zstyle ':completion:*:*:*:*' file-sort date follow
-compinit -C
 # I like my Esc/ search very much, put it back
 bindkey -rM viins "\e/" 
 
