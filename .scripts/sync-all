@@ -6,7 +6,7 @@ function sync() {
   dir=$2
 
   if [[ -d $dir ]]; then
-    cd $dir
+    cd "$dir" || return
     echo "$name:"
     out=$(git status --porcelain | wc -l 2>&1)
     if [[ $out -ge 1 ]]; then
@@ -24,12 +24,11 @@ function sync() {
   fi
 }
 
-pushd ~ &> /dev/null
+pushd ~ &> /dev/null || exit
 
 echo "=> $HOSTNAME"
 sync "Settings" ~/shell-settings
 sync "Vim" ~/Vim
 sync "Scraps" ~/Projects/scraps/
 
-popd &> /dev/null
-
+popd &> /dev/null || exit

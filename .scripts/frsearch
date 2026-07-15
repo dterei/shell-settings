@@ -6,10 +6,10 @@ if [ -n "$1" ] && [ -n "$2" ]; then
   # BSD/macOS find (-E), mirroring the branch used in `sf`.
   case "$(uname -s)" in
     Darwin|*BSD)
-      find -E * -regex ".*$1" | xargs grep -E "$2"
+      find -E ./* -regex ".*$1" -exec grep -E "$2" {} +
       ;;
     *)
-      find * -regextype posix-extended -regex ".*$1" | xargs grep -E "$2"
+      find ./* -regextype posix-extended -regex ".*$1" -exec grep -E "$2" {} +
       ;;
   esac
 else

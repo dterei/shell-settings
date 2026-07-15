@@ -4,7 +4,7 @@
 FILE_TYPES="(s|cc|c|h|cmm|l?hs|x|y|pp|cabal|go|goc|rb|php|java|scala|json|xml|yml|py|js)"
 FILE_REGEX="[^_].*\.${FILE_TYPES}"
 
-me=`basename $0`
+me=$(basename "$0")
 
 if [ -n "$1" ]; then
   if hash rg 2>/dev/null; then
@@ -12,16 +12,18 @@ if [ -n "$1" ]; then
   elif hash ag 2>/dev/null; then
     ag --ignore-dir vendor "$@"
   else
+    # turn "foo bar" into the regex "foo\s+bar"
+    pat="${1// /\\s+}"
     if [[ "$OSTYPE" =~ "darwin" || "$OSTYPE" =~ "freebsd" ]]; then
-      find -E * -regex "${FILE_REGEX}" |\
-      grep -v "_darcs" |\
-      grep -v "gopath" |\
-      xargs egrep --color=always "`echo $1 | sed -e 's/ /\\\s\+/g'`"
+      find -E ./* -regex "${FILE_REGEX}" |
+      grep -v "_darcs" |
+      grep -v "gopath" |
+      xargs grep -E --color=always "$pat"
     else
-      find * -regextype posix-extended -regex "${FILE_REGEX}" |\
-      grep -v "_darcs" |\
-      grep -v "gopath" |\
-      xargs egrep --color=always "`echo $1 | sed -e 's/ /\\\s\+/g'`"
+      find ./* -regextype posix-extended -regex "${FILE_REGEX}" |
+      grep -v "_darcs" |
+      grep -v "gopath" |
+      xargs grep -E --color=always "$pat"
     fi
   fi
 else

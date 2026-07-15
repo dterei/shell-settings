@@ -10,7 +10,7 @@ function usage() {
 COUNT=1
 
 if [ $# -eq 1 ]; then
-  if [ $1 -gt 0 ]; then
+  if [ "$1" -gt 0 ]; then
     COUNT=$1
   else
     usage
@@ -20,4 +20,4 @@ elif [ $# -ne 0 ]; then
 fi
 
 git stash
-git reset --hard HEAD~$COUNT
+git reset --hard HEAD~"$COUNT"

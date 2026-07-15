@@ -1,8 +1,7 @@
 #!/usr/bin/env bash
 # check_all - Check my Vim & Shell repos are up-to-date.
 
-pushd ~
+pushd ~ || exit
 cd ~/shell-settings && echo "Settings" && git status -s
 cd ~/Vim && echo "Vim" && git status -s
-popd
-
+popd || exit

@@ -2,10 +2,10 @@
 
 set -e
 
-for i in $(seq 1 30); do
+for _ in $(seq 1 30); do
   if [ -d ".buildenv" ]; then
     FILE=$(pwd)/.buildenv/bin/activate
-    echo $FILE
+    echo "$FILE"
     exit 0
   fi
   if [ "$(pwd)" == "/" ]; then

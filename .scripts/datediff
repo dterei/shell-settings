@@ -10,6 +10,7 @@ usage() {
 # "yesterday"). Use system GNU date on Linux, or coreutils gdate on macOS
 # if it happens to be installed.
 if date -d @0 +%s >/dev/null 2>&1; then
+  # shellcheck disable=SC2209  # assign the command name to call later, not its output
   gnudate=date
 elif command -v gdate >/dev/null 2>&1; then
   gnudate=gdate

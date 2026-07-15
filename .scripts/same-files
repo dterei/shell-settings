@@ -2,7 +2,7 @@
 #same_files - Check if any files in two directories are the same
 
 if [ $# != 2 ]; then
-  echo "$(basename $0) <dir1> <dir2>"
+  echo "$(basename "$0") <dir1> <dir2>"
   exit 1
 fi
 
@@ -21,8 +21,7 @@ for f in "${DIR1}"/*; do
   if [ -f "$f" ]; then
     for g in "${DIR2}"/*; do
       if [ -f "$g" ]; then
-        diff -q "$f" "$g" &> /dev/null
-        if [ $? == 0 ]; then
+        if diff -q "$f" "$g" &> /dev/null; then
           echo "# Files match!"
           echo "file1: $f"
           echo "file2: $g"

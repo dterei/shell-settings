@@ -7,13 +7,10 @@ prog=${0##*/}
 # Text color variables
 bldblu='\e[1;34m'         # blue
 bldred='\e[1;31m'         # red
-bldwht='\e[1;37m'         # white
-txtbld=$(tput bold)       # bold
 txtund=$(tput sgr 0 1)    # underline
 txtrst='\e[0m'            # text reset
-info=${bldwht}*${txtrst}
-pass=${bldblu}*${txtrst}
-warn=${bldred}!${txtrst}
+pass="${bldblu}*${txtrst}"
+warn="${bldred}!${txtrst}"
 
 # Cross-platform clipboard write: pbcopy on macOS, xclip on Linux/X11.
 if command -v pbcopy >/dev/null 2>&1; then
@@ -41,5 +38,4 @@ fi
 
 # Copy file to clipboard, give feedback
 clip_copy < "$filename"
-echo -e "$pass ${txtund}"${filename##*/}"${txtrst} copied to clipboard"
-
+echo -e "$pass ${txtund}${filename##*/}${txtrst} copied to clipboard"

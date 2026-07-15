@@ -4,7 +4,7 @@
 CMD=$1
 shift
 
-git $CMD \
+git "$CMD" \
   --author=Terei \
   --author=Alok \
   --author=Jal \

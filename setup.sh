@@ -6,7 +6,7 @@ DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 # files to ignore processing
 IGNORE=". .. .gitignore .git .DS_Store"
 ignore() {
-  b=`basename $1`
+  b=$(basename "$1")
   for f in $IGNORE
   do
     if [ "$f" == "$b" ]; then
@@ -17,9 +17,9 @@ ignore() {
 }
 
 # process all . files
-for x in $DIR/.*
+for x in "$DIR"/.*
 do
-  ignore $x
+  ignore "$x"
   if [ $? -eq 1 ]; then
     continue
   fi
@@ -35,10 +35,10 @@ if [ -f "${DIR}/config" ]; then
   mkdir -p ~/.ssh
   ln -sf "${DIR}/config" ~/.ssh/config
 fi
-mkdir -p $HOME/.config/alacritty
-ln -sf "${DIR}/alacritty.toml" $HOME/.config/alacritty/alacritty.toml
-ln -sf "${HOME}/Dropbox/Sensitive/2fa" $HOME/.config/ga
+mkdir -p "$HOME/.config/alacritty"
+ln -sf "${DIR}/alacritty.toml" "$HOME/.config/alacritty/alacritty.toml"
+ln -sf "${HOME}/Dropbox/Sensitive/2fa" "$HOME/.config/ga"
 
 # setup zsh
-mkdir -p $HOME/.zsh
-ln -sfF "${DIR}/zsh-completes" $HOME/.zsh/zsh-completes
+mkdir -p "$HOME/.zsh"
+ln -sfF "${DIR}/zsh-completes" "$HOME/.zsh/zsh-completes"

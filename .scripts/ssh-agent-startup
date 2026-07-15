@@ -24,6 +24,7 @@
 
 # Prefer the macOS launchd agent when it's already wired up.
 if [ "$(uname -s)" = "Darwin" ] && [ -n "$SSH_AUTH_SOCK" ]; then
+	# shellcheck disable=SC2317  # reached when executed rather than sourced
 	return 0 2>/dev/null || exit 0
 fi
 
@@ -32,14 +33,16 @@ TIMEOUT=3600
 
 function start_agent {
 	echo "Initialising new SSH agent..."
-	/usr/bin/ssh-agent -t ${TIMEOUT} > ${SSH_ENV}
-	chmod 600 ${SSH_ENV}
-	source ${SSH_ENV} > /dev/null
+	/usr/bin/ssh-agent -t "${TIMEOUT}" > "${SSH_ENV}"
+	chmod 600 "${SSH_ENV}"
+	# shellcheck source=/dev/null
+	source "${SSH_ENV}" > /dev/null
 }
 
 # Source SSH settings, if applicable
 if [ -f "${SSH_ENV}" ]; then
-	source ${SSH_ENV} > /dev/null
+	# shellcheck source=/dev/null
+	source "${SSH_ENV}" > /dev/null
 	ps -p "${SSH_AGENT_PID:-}" | grep ssh-agent > /dev/null || {
 		start_agent;
 	}
