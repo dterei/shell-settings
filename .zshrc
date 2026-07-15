@@ -209,9 +209,9 @@ fi
 ##################
 
 # General completions
-if [[ -d ~/Settings/zsh-completes/ ]]; then
-  for f in `ls ~/Settings/zsh-completes/`; do
-    source ~/Settings/zsh-completes/$f
+if [[ -d ~/.zsh/zsh-completes/ ]]; then
+  for f in ~/.zsh/zsh-completes/*(N); do
+    source "$f"
   done
 fi
 

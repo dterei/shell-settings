@@ -1,8 +1,7 @@
 #!/usr/bin/env bash
 
-# settings location
-#DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd  )
-DIR=`pwd`
+# settings location (directory this script resides in, regardless of cwd)
+DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 
 # files to ignore processing
 IGNORE=". .. .mailrc .gitignore .git"
@@ -43,3 +42,4 @@ ln -sf "${HOME}/Dropbox/Sensitive/2fa" $HOME/.config/ga
 
 # setup zsh
 mkdir -p $HOME/.zsh
+ln -sfF "${DIR}/zsh-completes" $HOME/.zsh/zsh-completes
