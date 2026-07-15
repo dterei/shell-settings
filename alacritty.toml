@@ -36,7 +36,7 @@ persistent_logging = false
 render_timer = false
 
 [env]
-TERM = "xterm-256color"
+TERM = "alacritty"
 
 [font]
 size = 13
