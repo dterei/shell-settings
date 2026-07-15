@@ -32,8 +32,10 @@ shopt -s checkwinsize
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
-# change directory without cd
-shopt -s autocd
+# change directory without cd (autocd needs bash 4+; macOS ships 3.2)
+if ((BASH_VERSINFO[0] >= 4)); then
+	shopt -s autocd
+fi
 
 
 ####################
