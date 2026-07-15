@@ -248,11 +248,6 @@ if [ $commands[kubectl] ]; then
   source <(kubectl completion zsh)
 fi
 
-# Pyenv
-if [ $commands[pyenv] ]; then
-  eval "$(pyenv init -)"
-fi
-
 ###########
 # DIRENEV #
 ###########
