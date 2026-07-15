@@ -13,18 +13,20 @@ test -x /usr/local/bin/brew || \
   contexts \
   ctags \
   curl \
+  direnv \
   docker \
   dropbox \
   fd \
-  font-source-code-pro \
-  font-source-code-pro-for-powerline \
+  font-sauce-code-pro-nerd-font \
   fzf \
   gcc \
   git \
   go \
   gpg \
   homebrew/cask/spark \
+  jq \
   microsoft-office \
+  neovim \
   notion \
   pkg-config \
   poetry \
@@ -35,7 +37,6 @@ test -x /usr/local/bin/brew || \
   signal \
   spotify \
   subversion \
-  svn \
   tmux \
   vim \
   wget"
