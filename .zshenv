@@ -20,6 +20,11 @@
 # detect if this is a login shell. If it is, we don't soure `.shenv` here and
 # rely on `.zprofile` sourcing it instead.
 
+# Keep PATH entries unique for the whole session. Set early (before
+# path_helper and .shenv build up PATH) so duplicates never accumulate,
+# including across nested/re-sourced shells.
+typeset -U path PATH
+
 if [[ ! -o login  ]]; then
   if [ -f ~/.shenv ]; then
     source ~/.shenv

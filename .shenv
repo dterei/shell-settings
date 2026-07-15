@@ -188,3 +188,12 @@ fi
 if [ -d ~/bin ] ; then
   export PATH="${HOME}/bin:${PATH}"
 fi
+
+# Keep PATH free of duplicates (they accumulate via macOS path_helper and
+# nested/re-sourced shells). zsh handles this via `typeset -U path` in
+# .zshenv; dedup manually for bash, keeping the first occurrence.
+if [ -n "${BASH_VERSION}" ]; then
+  PATH=$(awk -v RS=: -v ORS=: '!seen[$0]++' <<< "${PATH}")
+  PATH=${PATH%:}
+  export PATH
+fi
