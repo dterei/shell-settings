@@ -197,7 +197,10 @@ HOST_SHOW=""
 
 autoload -Uz vcs_info add-zsh-hook
 zstyle ':vcs_info:*' enable git
-zstyle ':vcs_info:git:*' formats " %{$fg[cyan]%}(%b)%{$reset_color%}"
+zstyle ':vcs_info:git:*' check-for-changes true
+zstyle ':vcs_info:git:*' stagedstr '+'
+zstyle ':vcs_info:git:*' unstagedstr '*'
+zstyle ':vcs_info:git:*' formats " %{$fg[cyan]%}(%b%u%c)%{$reset_color%}"
 add-zsh-hook precmd vcs_info
 
 PROMPT="%{$reset_color%}[$HOST_SHOW%{$reset_color%}%c\${vcs_info_msg_0_}%(0?..%{$fg_bold[red]%} %?)%{$reset_color%}] "
