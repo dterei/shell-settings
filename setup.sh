@@ -4,7 +4,7 @@
 DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 
 # files to ignore processing
-IGNORE=". .. .mailrc .gitignore .git"
+IGNORE=". .. .mailrc .gitignore .git .DS_Store"
 ignore() {
   b=`basename $1`
   for f in $IGNORE
