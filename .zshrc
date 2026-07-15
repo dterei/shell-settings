@@ -35,10 +35,11 @@ fi
 
 setopt nobeep      # don't beep
 
-setopt autocd      # change to dirs without cd
-setopt autopushd   # auto append dirs to push/pop list
-setopt pushdminus  # swap meaning of +, - keys for dir stack
-setopt pushdsilent # don't print dir stack after push/pop
+setopt autocd           # change to dirs without cd
+setopt autopushd        # auto append dirs to push/pop list
+setopt pushdminus       # swap meaning of +, - keys for dir stack
+setopt pushdsilent      # don't print dir stack after push/pop
+setopt pushdignore_dups # don't push duplicate dirs onto the stack
 
 setopt autoresume   # allow resume of job by typing command name
 setopt longlistjobs # list jobs in long format
@@ -50,6 +51,7 @@ setopt glob extendedglob # extended pattern matching
 setopt numericglobsort   # sort glob patterns numerically
 
 setopt correct           # suggest corrections for mistyped commands
+setopt noclobber         # prevent > from overwriting existing files; use >| to force
 
 setopt rcquotes    # allow '' to specify an escape '
 
