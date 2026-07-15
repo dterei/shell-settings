@@ -15,9 +15,6 @@
 [ -z "$PS1" ] && return
 [[ $- != *i* ]] && return
 
-# launch tmux!
-# [[ -z "$TMUX" ]] && tmux
-
 autoload -U  zmv
 autoload -U  zcalc
 autoload -U  zargs
@@ -194,11 +191,7 @@ bindkey '\e[15~' insert-composed-char
 
 HOST_SHOW=""
 [[ -n $SSH_CLIENT ]] && HOST_SHOW+="%{$fg_bold[white]%}%m: "
-
-
-#PROMPT="%{$reset_color%}[$HOST_SHOW%{$fg[green]%}➜ %{$reset_color%}%{$fg_bold[blue]%}%c%(0?..%{$fg_bold[red]%} %?)%{$reset_color%}] "
 PROMPT="%{$reset_color%}[$HOST_SHOW%{$reset_color%}%c%(0?..%{$fg_bold[red]%} %?)%{$reset_color%}] "
-
 RPROMPT="%{$fg_bold[green]%}%~%{$reset_color%}"
 
 ##################
