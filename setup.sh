@@ -27,13 +27,6 @@ do
   ln -sfF "${x}" ~/
 done
 
-# setup mailrc
-if [[ "$OSTYPE" =~ "darwin" ]]; then
-  ln -sf "${DIR}/mailrc-osx" ~/.mailrc
-else
-  ln -sf "${DIR}/mailrc" ~/.mailrc
-fi
-
 # process any other files
 # ssh config is machine-specific and gitignored (see .gitignore); only
 # link it when a local copy exists so a fresh clone doesn't leave a

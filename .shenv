@@ -69,13 +69,6 @@ if which fd > /dev/null; then
   export FZF_ALT_C_COMMAND='fd --hidden --follow --type directory'
 fi
 
-# set maildrop location
-MAILFOLDER=~/.Mail
-if [ -d "${MAILFOLDER}" ]; then
-  export MAILDROP="${MAILFOLDER}/incoming-mail"
-  export MAIL="${MAILFOLDER}/incoming-mail"
-fi
-
 # Mac/OS X specifics
 if [[ "$OSTYPE" =~ "darwin" ]]; then
   # XCode Tools

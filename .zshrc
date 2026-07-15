@@ -52,8 +52,6 @@ setopt multios      # allow multi output directs (e.g like tee)
 setopt glob extendedglob # extended pattern matching
 setopt numericglobsort   # sort glob patterns numerically
 
-setopt mailwarning # print warning about new mail
-
 setopt rcquotes    # allow '' to specify an escape '
 
 # Emacs or Vim key bindings
