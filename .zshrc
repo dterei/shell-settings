@@ -288,7 +288,7 @@ if [ $commands[zoxide] ]; then
 fi
 
 ###########
-# DIRENEV #
+# DIRENV  #
 ###########
 
 if [ $commands[direnv] ]; then
