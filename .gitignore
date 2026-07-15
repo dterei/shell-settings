@@ -3,3 +3,8 @@
 .DS_Store*
 .ghc/ghci_history
 .ghc/x86_64-*
+
+# Machine-specific SSH config (private host/infra details, e.g.
+# gcloud-managed devpod tunnels). Symlinked into ~/.ssh/config by
+# setup.sh but never tracked.
+/config

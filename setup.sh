@@ -35,7 +35,13 @@ else
 fi
 
 # process any other files
-ln -sf "${DIR}/config" ~/.ssh/config
+# ssh config is machine-specific and gitignored (see .gitignore); only
+# link it when a local copy exists so a fresh clone doesn't leave a
+# dangling ~/.ssh/config symlink.
+if [ -f "${DIR}/config" ]; then
+  mkdir -p ~/.ssh
+  ln -sf "${DIR}/config" ~/.ssh/config
+fi
 mkdir -p $HOME/.config/alacritty
 ln -sf "${DIR}/alacritty.toml" $HOME/.config/alacritty/alacritty.toml
 ln -sf "${HOME}/Dropbox/Sensitive/2fa" $HOME/.config/ga
