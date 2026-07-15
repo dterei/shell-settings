@@ -7,7 +7,19 @@
 	defaultBranch = main
 [core]
 	excludesfile = ~/.gitignore_global
+	# Large-repo perf: FSEvents monitor + untracked cache so status/add/commit
+	# don't rescan the whole working tree.
+	fsmonitor = true
+	untrackedCache = true
 [color]
 	ui = true
 [diff]
 	ignoreSubmodules = dirty
+[index]
+	# compact, path-prefix-compressed index; skip index trailing-hash on write
+	version = 4
+	skipHash = true
+[fetch]
+	# keep commit-graph fresh (fast log/blame/merge-base); prune deleted branches
+	writeCommitGraph = true
+	prune = true
