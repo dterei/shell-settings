@@ -18,7 +18,6 @@
 # launch tmux!
 # [[ -z "$TMUX" ]] && tmux
 
-autoload -U  zsh/pcre
 autoload -U  zmv
 autoload -U  zcalc
 autoload -U  zargs
@@ -227,14 +226,8 @@ if [ -d /opt/google-cloud-sdk/ ]; then
   source '/opt/google-cloud-sdk/completion.zsh.inc'
 fi
 
-if [ -f '/home/davidt/Projects/google-cloud-sdk/completion.zsh.inc' ]; then
-  source '/home/davidt/Projects/google-cloud-sdk/completion.zsh.inc'
-fi
-
-# Azure CLI
-if [ -f /home/davidt/lib/azure-cli/az.completion ]; then
-  source '/home/davidt/lib/azure-cli/az.completion'
-elif [ -f /opt/az/bin/az.completion.sh ]; then
+# Azure CLI (completion normally loads via the site-functions FPATH above)
+if [ -f /opt/az/bin/az.completion.sh ]; then
   source '/opt/az/bin/az.completion.sh' 1> /dev/null;
 fi
 
