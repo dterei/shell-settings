@@ -16,12 +16,12 @@ if [ -n "$1" ]; then
       find -E * -regex "${FILE_REGEX}" |\
       grep -v "_darcs" |\
       grep -v "gopath" |\
-      xargs egrep --color=always "`echo $1 | sed -e 's/ /\\\s\+/'`"
+      xargs egrep --color=always "`echo $1 | sed -e 's/ /\\\s\+/g'`"
     else
       find * -regextype posix-extended -regex "${FILE_REGEX}" |\
       grep -v "_darcs" |\
       grep -v "gopath" |\
-      xargs egrep --color=always "`echo $1 | sed -e 's/ /\\\s\+/'`"
+      xargs egrep --color=always "`echo $1 | sed -e 's/ /\\\s\+/g'`"
     fi
   fi
 else

@@ -252,10 +252,3 @@ fi
 if [ $commands[direnv] ]; then
   eval "$(direnv hook zsh)"
 fi
-
-##################
-# PROMPT_COMMAND #
-##################
-
-# emulate Bash's PROMPT_COMMAND feature
-precmd() { eval "$PROMPT_COMMAND" }
