@@ -42,4 +42,5 @@ test -x /usr/local/bin/brew || \
   tmux \
   vim \
   wget \
-  zsh-autosuggestions"
+  zsh-autosuggestions \
+  zsh-syntax-highlighting"

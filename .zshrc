@@ -260,6 +260,25 @@ for _p in $_zas_paths; do
 done
 unset _zas_paths _p
 
+##########################
+# ZSH-SYNTAX-HIGHLIGHTING #
+##########################
+
+# Must be sourced last
+_zsh_paths=(
+  /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+  /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+  /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+  /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+)
+for _p in $_zsh_paths; do
+  if [ -f "$_p" ]; then
+    source "$_p"
+    break
+  fi
+done
+unset _zsh_paths _p
+
 ###########
 # DIRENEV #
 ###########
