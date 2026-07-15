@@ -1,0 +1,6 @@
+# Case-insensitive when query is all-lowercase, sensitive when it has uppercase
+--smart-case
+
+# Search hidden files/dirs but skip .git
+--hidden
+--glob=!.git/

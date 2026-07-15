@@ -56,6 +56,11 @@ if [ -n "$PS1" ]; then
   # fi
 fi
 
+# Ripgrep config
+if [ -f ~/.ripgreprc ]; then
+  export RIPGREP_CONFIG_PATH=~/.ripgreprc
+fi
+
 # Fix stupid Ubuntu
 if command -v fdfind &>/dev/null; then
   alias fd=fdfind
