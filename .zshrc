@@ -161,7 +161,6 @@ bindkey -rM viins "\e/"
 # Load known hosts file for auto-completion with ssh and scp commands
 if [ -f ~/.ssh/known_hosts ]; then
   zstyle ':completion:*' hosts $( sed 's/[, ].*$//' $HOME/.ssh/known_hosts )
-  zstyle ':completion:*:*:(ssh|scp):*:*' hosts `sed 's/^\([^ ,]*\).*$/$1/' ~/.ssh/known_hosts`
 fi
 
 # Prompt display
