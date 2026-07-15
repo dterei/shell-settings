@@ -194,7 +194,13 @@ bindkey '\e[15~' insert-composed-char
 
 HOST_SHOW=""
 [[ -n $SSH_CLIENT ]] && HOST_SHOW+="%{$fg_bold[white]%}%m: "
-PROMPT="%{$reset_color%}[$HOST_SHOW%{$reset_color%}%c%(0?..%{$fg_bold[red]%} %?)%{$reset_color%}] "
+
+autoload -Uz vcs_info add-zsh-hook
+zstyle ':vcs_info:*' enable git
+zstyle ':vcs_info:git:*' formats " %{$fg[cyan]%}(%b)%{$reset_color%}"
+add-zsh-hook precmd vcs_info
+
+PROMPT="%{$reset_color%}[$HOST_SHOW%{$reset_color%}%c\${vcs_info_msg_0_}%(0?..%{$fg_bold[red]%} %?)%{$reset_color%}] "
 RPROMPT="%{$fg_bold[green]%}%~%{$reset_color%}"
 
 ##################
