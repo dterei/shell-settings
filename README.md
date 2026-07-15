@@ -2,72 +2,96 @@
 
 My personal shell settings, heavily customised and refined over the years.
 
+## Files
+
+| File | Description |
+|------|-------------|
+| `.shenv` | Shared env vars and PATH setup — sourced by all shells |
+| `.zshenv` | Zsh: always loaded; sources `.shenv` for non-login shells |
+| `.zprofile` | Zsh: login shell; sources `.shenv` |
+| `.zshrc` | Zsh: interactive shell config, completions, prompt, keybindings |
+| `.profile` | Bash: login shell; delegates to `.bashrc` and sets locale |
+| `.bashrc` | Bash: interactive shell config, completions, prompt |
+| `.aliases` | Shared aliases and shell functions (git, ls, cd, kubectl, etc.) |
+| `.gitignore_global` | Global gitignore |
+| `gitconfig_template` | Git config template (see Large Repos section) |
+| `.tmux.conf` | Tmux config |
+| `.ghci` / `.ghc` | GHCi config |
+| `alacritty.toml` | Alacritty terminal config |
+| `.scripts/` | Personal utility scripts (added to `PATH` by `.shenv`) |
+| `zsh-completes/` | Extra zsh completions (symlinked to `~/.zsh/zsh-completes/`) |
+
+## Setup
+
+Run `setup.sh` to symlink all dotfiles into `~/`. It also:
+
+- Links `config` → `~/.ssh/config` (machine-specific, gitignored)
+- Links `alacritty.toml` → `~/.config/alacritty/alacritty.toml`
+- Creates `~/.zsh/` and links `zsh-completes/` into it
+
+Run `brew-setup.sh` on macOS to install packages via Homebrew.
+
 ## Zsh Load Order
 
-Global: zshenv -> zprofile -> zshrc -> zlogin
+| Context | Files loaded |
+|---------|-------------|
+| Always | `zshenv` |
+| Login only | `zshenv` → `zprofile` → `zlogin` |
+| Interactive only | `zshenv` → `zshrc` |
+| Login + Interactive | `zshenv` → `zprofile` → `zshrc` → `zlogin` |
 
-None:
-* zshenv
-
-Login Only:
-* zshenv -> zprofile -> zlogin
-
-Interactive Only:
-* zshenv -> zshrc
-
-Login + Interactive:
-* zshenv -> zprofile -> zshrc -> zlogin
-
-## Understanding Login + Interactive
-
-* New gnome-terminal: interactive
-* New tmux: login + interactive
-* New ssh: login + interactive
-* ssh <cmd>: none
-* ./script: none
+Common contexts: a new tmux window or SSH session is login+interactive; a plain terminal tab is interactive only; running a script is neither.
 
 ## Arch & Zsh
 
-Arch in a very annoying decision resets your `PATH` after sourcing `.zshenv`,
-forcing you to set your `PATH` in `.zprofile` or `.zshrc`. We work around this
-by sourcing `.shenv` to set the `PATH` from both `.zshenv` and `.zprofile`, but
-observing if this isn't a login shell to ensure only one of them fires.
+Arch resets `PATH` after sourcing `.zshenv`, forcing PATH setup into `.zprofile`. To handle this without duplicating logic, `.shenv` is sourced from both `.zshenv` (non-login) and `.zprofile` (login). Zsh also sets `typeset -U path` to deduplicate PATH entries across nested/re-sourced shells; bash deduplicates manually via `awk` at the end of `.shenv`.
 
-## Large Repos
+## Git Config
 
-`gitconfig_template` enables settings that speed up big working trees and deep
-histories (also applied to `~/.gitconfig` directly, since the template isn't
-auto-symlinked):
+`gitconfig_template` contains the full git config. Apply it to `~/.gitconfig` directly — it isn't auto-symlinked by `setup.sh`.
 
-* `core.fsmonitor` + `core.untrackedCache` — an FSEvents-backed monitor so
+**Workflow settings:**
+* `pull.rebase = true` — avoids accidental merge commits on pull
+* `rebase.autosquash = true` — auto-applies `fixup!`/`squash!` prefixes
+* `merge.conflictstyle = zdiff3` — shows common ancestor in conflict markers
+* `rerere.enabled = true` — remembers conflict resolutions across repeated rebases
+
+**Diff:** `core.pager = delta` routes all diff output through [delta](https://github.com/dandavison/delta) for syntax-highlighted, navigable diffs (`n`/`N` between hunks).
+
+**Large repo performance:**
+* `core.fsmonitor` + `core.untrackedCache` — FSEvents-backed monitor so
   `status`/`add`/`commit` stop rescanning the whole tree.
 * `index.version = 4` + `index.skipHash` — a leaner, faster index.
 * `fetch.writeCommitGraph` — keeps the commit-graph fresh for fast
   `log`/`blame`/`merge-base`; `fetch.prune` tidies deleted remote branches.
 
-Two bigger levers are per-repo and operational, not config — run them in the
-large repos themselves:
+Per-repo operational levers for very large repos:
 
-* Background maintenance (prefetch + commit-graph hourly, repack daily):
+```sh
+git maintenance start                    # prefetch + repack on a schedule
+git clone --filter=blob:none <url>       # partial clone
+git sparse-checkout set --cone <dirs>    # check out only what you need
+```
 
-  ```sh
-  cd /path/to/big-repo
-  git maintenance start          # register + schedule (launchd on macOS)
-  # git maintenance stop / unregister to undo
-  ```
+## Zsh Plugins
 
-* For very large monorepos, clone only what you need:
+Sourced conditionally from common install paths (Homebrew ARM/Intel, Arch, Debian):
 
-  ```sh
-  git clone --filter=blob:none <url>       # partial clone: fetch blobs on demand
-  git sparse-checkout set --cone <dirs>    # check out only the paths you work in
-  ```
+* **zsh-autosuggestions** — Fish-like inline suggestions from history; right arrow or `End` to accept
+* **zsh-syntax-highlighting** — colours commands red/green as you type (sourced last, as required)
+
+## Tools
+
+Key tools wired up in the config:
+
+| Tool | Wired up in | Notes |
+|------|-------------|-------|
+| [bat](https://github.com/sharkdp/bat) | `.shenv`, `.aliases` | `MANPAGER` for syntax-highlighted man pages; `cat` aliased to `bat` |
+| [fzf](https://github.com/junegunn/fzf) | `.zshrc` | Fuzzy finder; uses `fd` for file listing and `bat` for previews |
+| [zoxide](https://github.com/ajeetdsouza/zoxide) | `.zshrc` | Smart `cd`; `z <query>` jumps to frecent dirs, `zi` for interactive selection |
+| [delta](https://github.com/dandavison/delta) | `gitconfig_template` | Pager for all git diff output |
+| [direnv](https://direnv.net) | `.zshrc` | Per-directory env var loading |
 
 ## Licensing
 
-This library is BSD-licensed.
-
-## Authors
-
-This library is written and maintained by [David
-Terei](mailto:code@davidterei.com).
+BSD-licensed. Written and maintained by [David Terei](mailto:code@davidterei.com).
