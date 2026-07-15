@@ -1,4 +1,4 @@
-#!/bin/env bash
+#!/usr/bin/env bash
 
 echo "# Display Server"
 echo $XDG_SESSION_TYPE

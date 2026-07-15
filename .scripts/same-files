@@ -1,4 +1,4 @@
-#!/bin/env bash
+#!/usr/bin/env bash
 #same_files - Check if any files in two directories are the same
 
 if [ $# != 2 ]; then
