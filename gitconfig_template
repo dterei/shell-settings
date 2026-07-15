@@ -2,7 +2,9 @@
 	name = David Terei
 	email = code@davidterei.com
 [push]
-	default = upstream
+	default = simple
+[init]
+	defaultBranch = main
 [core]
 	excludesfile = ~/.gitignore_global
 [color]
