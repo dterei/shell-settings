@@ -19,6 +19,15 @@
 	# compact, path-prefix-compressed index; skip index trailing-hash on write
 	version = 4
 	skipHash = true
+[pull]
+	rebase = true
+[rebase]
+	autosquash = true
+[merge]
+	# shows common ancestor in conflict markers — easier to resolve
+	conflictstyle = zdiff3
+[rerere]
+	enabled = true
 [fetch]
 	# keep commit-graph fresh (fast log/blame/merge-base); prune deleted branches
 	writeCommitGraph = true
