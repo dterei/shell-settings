@@ -3,6 +3,7 @@
 	email = code@davidterei.com
 [push]
 	default = simple
+	autoSetupRemote = true
 [init]
 	defaultBranch = main
 [core]
