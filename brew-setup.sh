@@ -17,6 +17,7 @@ test -x /usr/local/bin/brew || \
   docker \
   dropbox \
   fd \
+  git-delta \
   font-sauce-code-pro-nerd-font \
   fzf \
   gcc \
