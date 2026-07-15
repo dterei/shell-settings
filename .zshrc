@@ -108,9 +108,9 @@ zmodload -i zsh/complist
 
 # Cache zsh tab-completion
 zstyle ':completion:*' use-cache on
-zstyle ':completion:*' cache-path ~/.zsh/cache 
+zstyle ':completion:*' cache-path ~/.zsh/cache
 # Make completion style a little nicer looking
-zstyle ':completion:*:descriptions' format '%U%B%d%b%u' 
+zstyle ':completion:*:descriptions' format '%U%B%d%b%u'
 zstyle ':completion:*:*:*:*:*' menu yes select
 
 # Control the menu completion with zstyle
@@ -127,7 +127,7 @@ zstyle ':completion:*' max-errors 4 not-numeric
 # Corrections still work, ie cd /u/l/s/zsh<Tab> works
 zstyle ':completion:*' prompt 'Made %e corrections'
 zstyle ':completion:*:expand:*:*' tag-order 'all-expansions expansions'
-zstyle ':completion:*:*:*:*' group-order all-expansions expansions 
+zstyle ':completion:*:*:*:*' group-order all-expansions expansions
 # This enables menu completion, but on the 2nd tab only
 # Select without =1 does not work the same way
 zstyle ':completion:*:*:*:*' menu select=1
@@ -138,7 +138,7 @@ zstyle ':completion:*:*:*:*' list-suffixes yes
 # Alt-backspace to undo
 bindkey -M menuselect "\M-^?" undo
 bindkey -M menuselect "^Z" undo
-# Incremental search forward and backward like in emacs 
+# Incremental search forward and backward like in emacs
 # (requires stty -ixon)
 bindkey -M menuselect "^S" history-incremental-search-forward
 bindkey -M menuselect "^R" history-incremental-search-backward
@@ -153,7 +153,7 @@ bindkey -M menuselect "^M" .accept-line
 # Sort files by date and follow symlinks
 #zstyle ':completion:*:*:*:*' file-sort date follow
 # I like my Esc/ search very much, put it back
-bindkey -rM viins "\e/" 
+bindkey -rM viins "\e/"
 
 # Load known hosts file for auto-completion with ssh and scp commands
 if [ -f ~/.ssh/known_hosts ]; then
@@ -195,7 +195,7 @@ bindkey '\e[15~' insert-composed-char
 HOST_SHOW=""
 [[ -n $SSH_CLIENT ]] && HOST_SHOW+="%{$fg_bold[white]%}%m: "
 
- 
+
 #PROMPT="%{$reset_color%}[$HOST_SHOW%{$fg[green]%}➜ %{$reset_color%}%{$fg_bold[blue]%}%c%(0?..%{$fg_bold[red]%} %?)%{$reset_color%}] "
 PROMPT="%{$reset_color%}[$HOST_SHOW%{$reset_color%}%c%(0?..%{$fg_bold[red]%} %?)%{$reset_color%}] "
 
