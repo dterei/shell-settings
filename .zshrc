@@ -240,9 +240,16 @@ elif [ -d /opt/homebrew/opt/fzf ]; then
   source '/opt/homebrew/opt/fzf/shell/completion.zsh'
 fi
 
-# Kubectl
+# Kubectl (cache the completion so we don't shell out to kubectl on every
+# startup; regenerate when the kubectl binary is newer than the cache)
 if [ $commands[kubectl] ]; then
-  source <(kubectl completion zsh)
+  _kubecomp=~/.zsh/cache/kubectl.zsh
+  if [[ ! -s $_kubecomp || $commands[kubectl] -nt $_kubecomp ]]; then
+    mkdir -p "${_kubecomp:h}"
+    kubectl completion zsh > "$_kubecomp"
+  fi
+  source "$_kubecomp"
+  unset _kubecomp
 fi
 
 ###########
