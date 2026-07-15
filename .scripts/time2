@@ -3,13 +3,14 @@
 
 fmt="Time: %U user, %S kernel, %E wall\nCPU: %P\nMemory (Kb): %M"
 
-# The -f format string is a GNU time feature (BSD /usr/bin/time uses -l).
-# Prefer GNU coreutils' gtime on macOS, else the system time if it's GNU.
+# The -f format string is a GNU time feature. Prefer GNU time when present
+# (gtime on macOS, or the system time on Linux); otherwise fall back to the
+# built-in BSD time, whose -l flag reports the same timing + memory data
+# (just in a fixed format) so no extra package is needed.
 if command -v gtime >/dev/null 2>&1; then
   exec gtime -f "$fmt" "$@"
 elif /usr/bin/time -f "" true >/dev/null 2>&1; then
   exec /usr/bin/time -f "$fmt" "$@"
 else
-  echo "time2: needs GNU time (on macOS: brew install gnu-time for 'gtime')" >&2
-  exit 1
+  exec /usr/bin/time -l "$@"
 fi

@@ -6,25 +6,42 @@ usage() {
   exit 1
 }
 
-# Flexible date parsing (date -d "...") is a GNU feature. Use the system
-# date on Linux; on macOS/BSD fall back to GNU coreutils' gdate.
+# GNU date's -d parses free-form input (incl. relative dates like
+# "yesterday"). Use system GNU date on Linux, or coreutils gdate on macOS
+# if it happens to be installed.
 if date -d @0 +%s >/dev/null 2>&1; then
   gnudate=date
 elif command -v gdate >/dev/null 2>&1; then
   gnudate=gdate
 else
-  echo "datediff: needs GNU date (on macOS: brew install coreutils for 'gdate')" >&2
-  exit 1
+  gnudate=""
 fi
 
-datediff() {
-  d1=$($gnudate -d "$1" +%s)
-  d2=$($gnudate -d "$2" +%s)
-  echo $(( (d1 - d2) / 86400 )) days
+# Convert a date string to epoch seconds. Falls back to BSD `date -j -f`
+# against common fixed formats so it works on a stock macOS with no extra
+# packages (fixed formats only there -- no relative dates).
+to_epoch() {
+  if [ -n "$gnudate" ]; then
+    "$gnudate" -d "$1" +%s
+    return
+  fi
+
+  local fmt epoch
+  for fmt in "%Y-%m-%d %H:%M:%S" "%Y-%m-%d %H:%M" "%Y-%m-%d" "%Y/%m/%d" \
+             "%m/%d/%Y" "%d-%m-%Y" "%d %b %Y" "%b %d %Y"; do
+    if epoch=$(date -j -f "$fmt" "$1" +%s 2>/dev/null); then
+      echo "$epoch"
+      return 0
+    fi
+  done
+  echo "datediff: could not parse date '$1'" >&2
+  return 1
 }
 
 if [ -n "$1" ] && [ -n "$2" ]; then
-  datediff "$1" "$2"
+  d1=$(to_epoch "$1") || exit 1
+  d2=$(to_epoch "$2") || exit 1
+  echo $(( (d1 - d2) / 86400 )) days
 else
   usage
 fi
