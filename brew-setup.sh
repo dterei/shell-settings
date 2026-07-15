@@ -38,5 +38,4 @@ test -x /usr/local/bin/brew || \
   svn \
   tmux \
   vim \
-  wget \
-  zplug"
+  wget"

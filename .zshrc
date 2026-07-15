@@ -270,24 +270,6 @@ fi
 # emulate Bash's PROMPT_COMMAND feature
 precmd() { eval "$PROMPT_COMMAND" }
 
-#########
-# ZPLUG #
-#########
-
-if [ -f /usr/share/zplug/init.zsh ]; then # Linux
-	source /usr/share/zplug/init.zsh
-elif [ -f /usr/local/opt/zplug/init.zsh ]; then # OSX_X86
-	export ZPLUG_HOME=/usr/local/opt/zplug
-	source $ZPLUG_HOME/init.zsh
-else # OSX_ARM64
-	export ZPLUG_HOME=/opt/homebrew/opt/zplug
-	source $ZPLUG_HOME/init.zsh
-fi
-
-zplug 'wfxr/forgit'
-
-zplug load
-
 # Switch to an arm64e shell by default
 if [ $(uname -s) = "Darwin" ]; then
 	if [ `machine` != arm64e ]; then
