@@ -279,6 +279,14 @@ for _p in $_zsh_paths; do
 done
 unset _zsh_paths _p
 
+##########
+# ZOXIDE #
+##########
+
+if [ $commands[zoxide] ]; then
+  eval "$(zoxide init zsh)"
+fi
+
 ###########
 # DIRENEV #
 ###########

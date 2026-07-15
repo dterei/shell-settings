@@ -43,4 +43,5 @@ test -x /usr/local/bin/brew || \
   vim \
   wget \
   zsh-autosuggestions \
+  zoxide \
   zsh-syntax-highlighting"
