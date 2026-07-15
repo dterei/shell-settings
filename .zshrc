@@ -272,6 +272,7 @@ for _p in $_zas_paths; do
   fi
 done
 unset _zas_paths _p
+ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 
 ##########################
 # ZSH-SYNTAX-HIGHLIGHTING #
