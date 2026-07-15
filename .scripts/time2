@@ -1,5 +1,15 @@
 #!/usr/bin/env bash
 # time2 - time a program with some nicer defaults for data
 
-exec /usr/bin/time -f "Time: %U user, %S kernel, %E wall\nCPU: %P\nMemory (Kb): %M" "$@"
+fmt="Time: %U user, %S kernel, %E wall\nCPU: %P\nMemory (Kb): %M"
 
+# The -f format string is a GNU time feature (BSD /usr/bin/time uses -l).
+# Prefer GNU coreutils' gtime on macOS, else the system time if it's GNU.
+if command -v gtime >/dev/null 2>&1; then
+  exec gtime -f "$fmt" "$@"
+elif /usr/bin/time -f "" true >/dev/null 2>&1; then
+  exec /usr/bin/time -f "$fmt" "$@"
+else
+  echo "time2: needs GNU time (on macOS: brew install gnu-time for 'gtime')" >&2
+  exit 1
+fi

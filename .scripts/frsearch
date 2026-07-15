@@ -1,12 +1,20 @@
 #!/usr/bin/env bash
 # frsearch - nice function for easy text searching in files
 
-if [ -n "$1" -a -n "$2" ]; then
-	find * -regextype posix-extended -regex ".*$1" | xargs egrep "$2"
+if [ -n "$1" ] && [ -n "$2" ]; then
+  # Extended-regex file matching differs between GNU find (-regextype) and
+  # BSD/macOS find (-E), mirroring the branch used in `sf`.
+  case "$(uname -s)" in
+    Darwin|*BSD)
+      find -E * -regex ".*$1" | xargs grep -E "$2"
+      ;;
+    *)
+      find * -regextype posix-extended -regex ".*$1" | xargs grep -E "$2"
+      ;;
+  esac
 else
-	echo "Find all keywords in matching files below current directory,"
-	echo "using extended regex for file matching."
-	echo ""
-	echo "Usage: frsearch <files> <keyword>"
+  echo "Find all keywords in matching files below current directory,"
+  echo "using extended regex for file matching."
+  echo ""
+  echo "Usage: frsearch <files> <keyword>"
 fi
-

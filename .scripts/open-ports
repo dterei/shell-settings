@@ -1,3 +1,18 @@
 #!/usr/bin/env bash
-netstat -tulpn
+# open-ports - list listening TCP/UDP sockets and their owning processes
 
+# netstat's -tulpn flags are Linux-only; macOS/BSD netstat differs, so use
+# lsof there instead.
+case "$(uname -s)" in
+  Linux)
+    netstat -tulpn
+    ;;
+  Darwin|*BSD)
+    # Some entries owned by other users need sudo to show the process.
+    lsof -nP -iTCP -sTCP:LISTEN
+    lsof -nP -iUDP
+    ;;
+  *)
+    netstat -an
+    ;;
+esac

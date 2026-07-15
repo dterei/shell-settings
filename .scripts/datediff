@@ -6,14 +6,25 @@ usage() {
   exit 1
 }
 
+# Flexible date parsing (date -d "...") is a GNU feature. Use the system
+# date on Linux; on macOS/BSD fall back to GNU coreutils' gdate.
+if date -d @0 +%s >/dev/null 2>&1; then
+  gnudate=date
+elif command -v gdate >/dev/null 2>&1; then
+  gnudate=gdate
+else
+  echo "datediff: needs GNU date (on macOS: brew install coreutils for 'gdate')" >&2
+  exit 1
+fi
+
 datediff() {
-  d1=$(date -d "$1" +%s)
-  d2=$(date -d "$2" +%s)
+  d1=$($gnudate -d "$1" +%s)
+  d2=$($gnudate -d "$2" +%s)
   echo $(( (d1 - d2) / 86400 )) days
 }
 
-if [ -n "$1" -a -n "$2" ]; then
-  datediff $1 $2
+if [ -n "$1" ] && [ -n "$2" ]; then
+  datediff "$1" "$2"
 else
   usage
 fi
