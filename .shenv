@@ -29,6 +29,10 @@ export VISUAL="$EDITOR"
 export VIEWER="less"
 export PAGER="less"
 export LESS="-FR"
+if command -v bat >/dev/null 2>&1; then
+  export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+  export MANROFFOPT="-c"
+fi
 export HOSTNAME="${HOSTNAME:-${HOST:-$(hostname)}}"
 GPG_TTY=$(tty)
 export GPG_TTY

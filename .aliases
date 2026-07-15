@@ -158,3 +158,8 @@ if command -v nvim &>/dev/null; then
   alias vi='nvim'
   alias vim='nvim'
 fi
+
+# bat as cat (auto-disables decorations when piped)
+if command -v bat &>/dev/null; then
+  alias cat='bat'
+fi
