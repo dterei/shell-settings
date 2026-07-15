@@ -21,11 +21,6 @@ if [ "$TERM" != "dumb" ]; then
 	fi
 fi
 
-alias virshz='virsh -c qemu:///system'
-
-# have xclip use gtk clipboard
-alias xclip='xclip -sel clip'
-
 # # turn on some good! regular expression by default
 # if echo "a" | sed -r "s/a//" &>/dev/null; then
 # 	alias sed='sed -r'
@@ -67,7 +62,6 @@ function take() {
 # nice shorter commands
 alias _='sudo -E'
 alias fz='fzf-tmux'
-alias sctl='sudo systemctl'
 
 # xopen
 if [[ "$OSTYPE" =~ "darwin" ]]; then
