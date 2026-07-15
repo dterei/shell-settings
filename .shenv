@@ -28,7 +28,7 @@ export SVN_EDITOR="$EDITOR"
 export VISUAL="$EDITOR"
 export VIEWER="less"
 export PAGER="less"
-export LESS="-XFR"
+export LESS="-FR"
 export HOSTNAME="${HOSTNAME:-${HOST:-$(hostname)}}"
 export GPG_TTY=`tty`
 
@@ -84,8 +84,10 @@ if [[ "$OSTYPE" =~ "darwin" ]]; then
      eval "$(/opt/homebrew/bin/brew shellenv)"
   fi
 
-   # Java
-  export JAVA_HOME="$(/usr/libexec/java_home 2>/dev/null)"
+   # Java (only export when a JDK is actually present)
+  _java_home="$(/usr/libexec/java_home 2>/dev/null)"
+  [ -n "$_java_home" ] && export JAVA_HOME="$_java_home"
+  unset _java_home
 
   # Fix GPG Tools passphrase entry
   if [ -n "$SSH_CONNECTION" ]; then
