@@ -34,6 +34,7 @@ test -x /usr/local/bin/brew || \
   raycast \
   rectangle \
   ripgrep \
+  shellcheck \
   signal \
   spotify \
   subversion \
