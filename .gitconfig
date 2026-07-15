@@ -16,6 +16,7 @@
 	ui = true
 [diff]
 	ignoreSubmodules = dirty
+	algorithm = histogram
 [index]
 	# compact, path-prefix-compressed index; skip index trailing-hash on write
 	version = 4
