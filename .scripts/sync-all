@@ -27,7 +27,7 @@ function sync() {
 pushd ~ &> /dev/null
 
 echo "=> $HOSTNAME"
-sync "Settings" ~/Settings
+sync "Settings" ~/shell-settings
 sync "Vim" ~/Vim
 sync "Scraps" ~/Projects/scraps/
 
