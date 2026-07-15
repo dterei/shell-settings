@@ -93,9 +93,9 @@ if [ -d /opt/google-cloud-sdk/ ]; then
   source '/opt/google-cloud-sdk/completion.bash.inc'
 fi
 
-# Azure CLI
-if [ -f '${HOME}/lib/azure-cli/az.completion' ]; then
-  source '${HOME}/lib/azure-cli/az.completion'
+# Azure CLI (Homebrew ships bash completion under its bash_completion.d)
+if command -v brew &>/dev/null && [ -f "$(brew --prefix)/etc/bash_completion.d/az" ]; then
+  source "$(brew --prefix)/etc/bash_completion.d/az"
 fi
 
 # FZF
