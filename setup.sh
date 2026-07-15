@@ -38,7 +38,7 @@ fi
 # process any other files
 ln -sf "${DIR}/config" ~/.ssh/config
 mkdir -p $HOME/.config/alacritty
-ln -sf "${DIR}/alacritty.yml" $HOME/.config/alacritty/alacritty.yml
+ln -sf "${DIR}/alacritty.toml" $HOME/.config/alacritty/alacritty.toml
 ln -sf "${HOME}/Dropbox/Sensitive/2fa" $HOME/.config/ga
 
 # setup zsh
