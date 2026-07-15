@@ -156,13 +156,19 @@ if [ -d ${HOME}/.cargo/bin ]; then
   export PATH="$HOME/.cargo/bin:$PATH"
 fi
 
-# pyenv (single init here — .shenv is sourced by every shell, so the
-# shims path and interactive integration don't need duplicating in
-# .zshrc; `pyenv init -` sets up both)
+# pyenv: put the shims on PATH eagerly (cheap, so python/pip resolve
+# everywhere, including non-interactive shells), but defer the expensive
+# `pyenv init -` shell integration until the first `pyenv` call to keep
+# startup fast. (.shenv is sourced by every shell.)
 if command -v pyenv &>/dev/null; then
   export PYENV_ROOT="$HOME/.pyenv"
   [ -d "$PYENV_ROOT/bin" ] && export PATH="$PYENV_ROOT/bin:$PATH"
-  eval "$(pyenv init -)"
+  [ -d "$PYENV_ROOT/shims" ] && export PATH="$PYENV_ROOT/shims:$PATH"
+  pyenv() {
+    unset -f pyenv
+    eval "$(command pyenv init -)"
+    pyenv "$@"
+  }
 fi
 
 # krewl
