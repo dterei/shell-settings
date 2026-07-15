@@ -49,6 +49,8 @@ setopt multios      # allow multi output directs (e.g like tee)
 setopt glob extendedglob # extended pattern matching
 setopt numericglobsort   # sort glob patterns numerically
 
+setopt correct           # suggest corrections for mistyped commands
+
 setopt rcquotes    # allow '' to specify an escape '
 
 # Emacs or Vim key bindings
