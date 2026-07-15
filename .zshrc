@@ -269,10 +269,3 @@ fi
 
 # emulate Bash's PROMPT_COMMAND feature
 precmd() { eval "$PROMPT_COMMAND" }
-
-# Switch to an arm64e shell by default
-if [ $(uname -s) = "Darwin" ]; then
-	if [ `machine` != arm64e ]; then
-	    exec arch -arm64 zsh
-	fi
-fi
