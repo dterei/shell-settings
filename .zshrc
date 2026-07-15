@@ -239,6 +239,24 @@ if [ $commands[kubectl] ]; then
   unset _kubecomp
 fi
 
+########################
+# ZSH-AUTOSUGGESTIONS  #
+########################
+
+_zas_paths=(
+  /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+  /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+  /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+  /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+)
+for _p in $_zas_paths; do
+  if [ -f "$_p" ]; then
+    source "$_p"
+    break
+  fi
+done
+unset _zas_paths _p
+
 ###########
 # DIRENEV #
 ###########

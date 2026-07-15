@@ -40,4 +40,5 @@ test -x /usr/local/bin/brew || \
   subversion \
   tmux \
   vim \
-  wget"
+  wget \
+  zsh-autosuggestions"
