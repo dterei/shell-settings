@@ -42,3 +42,7 @@ ln -sf "${HOME}/Dropbox/Sensitive/2fa" "$HOME/.config/ga"
 # setup zsh
 mkdir -p "$HOME/.zsh"
 ln -sfF "${DIR}/zsh-completes" "$HOME/.zsh/zsh-completes"
+
+# setup claude
+mkdir -p "$HOME/.claude"
+ln -sf "${DIR}/claude/CLAUDE.md" "$HOME/.claude/CLAUDE.md"
