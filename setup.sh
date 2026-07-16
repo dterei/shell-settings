@@ -46,3 +46,4 @@ ln -sfF "${DIR}/zsh-completes" "$HOME/.zsh/zsh-completes"
 # setup claude
 mkdir -p "$HOME/.claude"
 ln -sf "${DIR}/claude/CLAUDE.md" "$HOME/.claude/CLAUDE.md"
+ln -sf "${DIR}/claude/keybindings.json" "$HOME/.claude/keybindings.json"
