@@ -2,10 +2,13 @@
 
 ## Style
 - Concise responses — no padding, no trailing summaries of what was just done
+- Keep explanations, design docs and plans concise and shorter, assume you are
+  explaining things to a principal engineer
+- Aim for brevity
+- Don't explain the motivation or context of the work in any great detail, keep
+  such descriptions to a few sentences
 - No emojis
-- No multi-paragraph docstrings or comment blocks; one short line max
 - No comments explaining what code does — only why, when non-obvious
-- Default to writing no comments at all
 
 ## Code
 - Match the style and conventions of the surrounding code
