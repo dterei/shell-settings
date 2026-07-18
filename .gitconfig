@@ -39,3 +39,5 @@
 	# keep commit-graph fresh (fast log/blame/merge-base); prune deleted branches
 	writeCommitGraph = true
 	prune = true
+[maintenance]
+	repo = /Users/dterei/Projects/sdmain
