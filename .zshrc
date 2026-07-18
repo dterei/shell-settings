@@ -76,6 +76,7 @@ HISTFILE=~/.zsh/.zsh_history
 HISTSIZE=50000
 SAVEHIST=$HISTSIZE
 setopt EXTENDED_HISTORY   # record timestamps in history
+setopt INC_APPEND_HISTORY # append at exit to share history
 setopt HIST_IGNORE_DUPS   # don't record a line matching the previous one
 setopt HIST_IGNORE_SPACE  # don't record commands that start with a space
 setopt HIST_REDUCE_BLANKS # strip extra whitespace before recording
@@ -87,9 +88,8 @@ setopt HIST_VERIFY        # expand history (!!) before executing, not immediatel
 # COMPLETION SETTINGS #
 #######################
 
-if type brew &>/dev/null
-then
-  FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
+if [[ -n $HOMEBREW_PREFIX ]]; then
+  FPATH="$HOMEBREW_PREFIX/share/zsh/site-functions:${FPATH}"
 fi
 
 setopt recexact # in completion, recognise exact matches
@@ -157,11 +157,6 @@ bindkey -M menuselect "^M" .accept-line
 #zstyle ':completion:*:*:*:*' file-sort date follow
 # I like my Esc/ search very much, put it back
 bindkey -rM viins "\e/"
-
-# Load known hosts file for auto-completion with ssh and scp commands
-if [ -f ~/.ssh/known_hosts ]; then
-  zstyle ':completion:*' hosts $( sed 's/[, ].*$//' $HOME/.ssh/known_hosts )
-fi
 
 # Prompt display
 autoload -U promptinit
