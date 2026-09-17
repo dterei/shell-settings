@@ -7,15 +7,11 @@ test -x /usr/local/bin/brew || \
 
 # 2. Install usual packages
 /bin/bash -c "arch -arm64 brew install \
-  alacritty \
   bat \
-  claude-code \
   contexts \
   ctags \
   curl \
   direnv \
-  docker \
-  dropbox \
   fd \
   git-delta \
   font-sauce-code-pro-nerd-font \
@@ -24,11 +20,8 @@ test -x /usr/local/bin/brew || \
   git \
   go \
   gpg \
-  homebrew/cask/spark \
   jq \
-  microsoft-office \
   neovim \
-  notion \
   pkg-config \
   poetry \
   pyenv \
@@ -36,9 +29,6 @@ test -x /usr/local/bin/brew || \
   rectangle \
   ripgrep \
   shellcheck \
-  signal \
-  spotify \
-  subversion \
   tmux \
   vim \
   wget \
