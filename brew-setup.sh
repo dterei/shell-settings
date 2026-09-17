@@ -29,6 +29,9 @@ test -x /usr/local/bin/brew || \
   rectangle \
   ripgrep \
   shellcheck \
+  tree-sitter \
+  tree-sitter-cli \
+  tr \
   tmux \
   vim \
   wget \
