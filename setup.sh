@@ -46,3 +46,7 @@ ln -sfF "${DIR}/zsh-completes" "$HOME/.zsh/zsh-completes"
 # setup claude
 mkdir -p "$HOME/.claude"
 ln -sf "${DIR}/claude/CLAUDE.md" "$HOME/.claude/CLAUDE.md"
+
+# setup ghostty
+mkdir -p "$HOME/.config/ghostty"
+ln -sf "${DIR}/ghostty.config" "$HOME/.config/ghostty/config"
