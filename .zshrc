@@ -249,9 +249,9 @@ if [ $commands[kubectl] ]; then
   unset _kubecomp
 fi
 
-########################
-# ZSH-AUTOSUGGESTIONS  #
-########################
+#######################
+# ZSH-AUTOSUGGESTIONS #
+#######################
 
 _zas_paths=(
   /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
@@ -268,9 +268,9 @@ done
 unset _zas_paths _p
 ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 
-##########################
+###########################
 # ZSH-SYNTAX-HIGHLIGHTING #
-##########################
+###########################
 
 # Must be sourced last
 _zsh_paths=(
@@ -295,10 +295,28 @@ if [ $commands[zoxide] ]; then
   eval "$(zoxide init zsh)"
 fi
 
-###########
-# DIRENV  #
-###########
+##########
+# DIRENV #
+##########
 
 if [ $commands[direnv] ]; then
   eval "$(direnv hook zsh)"
+fi
+
+#############
+# SECRETIVE #
+#############
+
+SECRETIVE=/Users/davidt/Library/Containers/com.maxgoedjen.Secretive.SecretAgent
+if [ -d $SECRETIVE ]; then
+  export SSH_AUTH_SOCK=$SECRETIVE/Data/socket.ssh
+fi
+
+########
+# CODE #
+########
+
+CODE=/Users/davidt/code/tools/config/local/zsh/zshrc
+if [ -f $CODE ]; then
+  source $CODE
 fi

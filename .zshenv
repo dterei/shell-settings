@@ -30,3 +30,8 @@ if [[ ! -o login  ]]; then
     source ~/.shenv
   fi
 fi
+
+CODE=/Users/davidt/code/tools/config/local/zsh/zshenv
+if [ -f $CODE ]; then
+  source $CODE
+fi
