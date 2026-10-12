@@ -81,6 +81,10 @@ if [[ "$OSTYPE" =~ "darwin" ]]; then
     export PATH="/Library/Developer/CommandLineTools/usr/bin:${PATH}"
   fi
 
+  # Fix cc
+  export CC="$(xcrun -f clang)"
+  export SDKROOT="$(xcrun --show-sdk-path)"
+
    # Brew
   if [ -d /usr/local/bin ] ; then
     export PATH="/usr/local/bin:/usr/local/sbin:${PATH}"
