@@ -29,6 +29,16 @@ if [ -f /etc/zsh_command_not_found ]; then
 	source /etc/zsh_command_not_found
 fi
 
+########
+# CODE #
+########
+
+CODE=/Users/davidt/code/tools/config/local/zsh/zshrc
+if [ -f $CODE ]; then
+  source $CODE
+fi
+
+
 ####################
 # GENERAL SETTINGS #
 ####################
@@ -158,7 +168,11 @@ bindkey -M menuselect "^M" .accept-line
 # I like my Esc/ search very much, put it back
 bindkey -rM viins "\e/"
 
-# Prompt display
+
+###############
+# PROMPT INIT #
+###############
+
 autoload -U promptinit
 autoload colors; colors; colors zsh/terminfo
 if [[ "$terminfo[colors]" -ge 8 ]]; then
@@ -243,10 +257,14 @@ if [ $commands[kubectl] ]; then
   _kubecomp=~/.zsh/cache/kubectl.zsh
   if [[ ! -s $_kubecomp || $commands[kubectl] -nt $_kubecomp ]]; then
     mkdir -p "${_kubecomp:h}"
-    kubectl completion zsh > "$_kubecomp"
+    kubectl completion zsh >| "$_kubecomp"
   fi
   source "$_kubecomp"
   unset _kubecomp
+fi
+
+if [ $commands[ttp] ]; then
+  source <(ttp --completion zsh)
 fi
 
 #######################
@@ -310,13 +328,4 @@ fi
 SECRETIVE=/Users/davidt/Library/Containers/com.maxgoedjen.Secretive.SecretAgent
 if [ -d $SECRETIVE ]; then
   export SSH_AUTH_SOCK=$SECRETIVE/Data/socket.ssh
-fi
-
-########
-# CODE #
-########
-
-CODE=/Users/davidt/code/tools/config/local/zsh/zshrc
-if [ -f $CODE ]; then
-  source $CODE
 fi
